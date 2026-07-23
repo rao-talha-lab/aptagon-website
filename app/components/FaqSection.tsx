@@ -2,61 +2,51 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { IoAdd, IoClose } from "react-icons/io5";
 
 const faqs = [
   {
     question: "What services does Aptagon Technologies provide?",
-    answer:
-      "Aptagon Technologies offers web development, mobile app development, custom software, UI/UX design, digital marketing, and IT consulting solutions.",
+    answer: "Aptagon Technologies offers web development, mobile app development, custom software, UI/UX design, digital marketing, and IT consulting solutions.",
   },
   {
     question: "Do you develop custom software?",
-    answer:
-      "Yes, we specialize in developing custom software solutions tailored to your unique business requirements.",
+    answer: "Yes, we specialize in developing custom software solutions tailored to your business needs.",
   },
   {
     question: "How long does a project usually take?",
-    answer:
-      "Project timelines vary depending on complexity, requirements, and scope. We provide clear timelines after requirement analysis.",
-  },
-  {
-    question: "How long does a project usually take?",
-    answer:
-      "Timelines generally range from a few weeks for smaller tools to a few months for enterprise platforms.",
+    answer: "Project timelines vary depending on complexity, requirements, and scope. We provide clear timelines after requirement analysis.",
   },
   {
     question: "How is project pricing decided?",
-    answer:
-      "Pricing is based on project scope, complexity, required tech stack, and project timeline.",
+    answer: "Pricing is based on project scope, complexity, technologies used, and timeline.",
   },
   {
     question: "Can you upgrade or improve an existing website or app?",
-    answer:
-      "Yes, we can enhance performance, UI/UX, features, and security of existing websites or applications.",
+    answer: "Yes, we can enhance performance, UI/UX, features, and security of existing websites or applications.",
   },
 ];
 
 export default function FaqSection() {
-  // Set index 0 to open by default to match the provided screenshot
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="w-full bg-[#FAFAFA] dark:bg-[#121212] py-16 px-4 sm:px-6 transition-colors duration-300">
-      <div className="mx-auto max-w-7xl">
+    <section className="w-full bg-[#F8FAFC] py-16 overflow-hidden">
+      <div className="mx-auto max-w-5xl px-6">
         
-        {/* HEADING */}
-        <motion.div
+        {/* Main Heading */}
+        <motion.div 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
-          className="text-center mb-10"
+          className="text-center mb-12"
         >
-          <h2 className="text-[30px] sm:text-[36px] lg:text-[46px] font-inter font-bold text-[#355ECE] tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-black text-[#335ECE] tracking-tight">
             Frequently Asked Questions
           </h2>
         </motion.div>
 
-        {/* ACCORDION ITEMS */}
+        {/* FAQ List */}
         <div className="space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
@@ -64,54 +54,58 @@ export default function FaqSection() {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{
-                  duration: 0.3,
-                  delay: index * 0.05,
-                  ease: "easeOut",
+                initial={{ opacity: 0, x: -50 }} 
+                whileInView={{ opacity: 1, x: 0 }} 
+                transition={{ 
+                  duration: 0.3, 
+                  delay: index * 0.06, 
+                  ease: "easeOut" 
                 }}
                 viewport={{ once: false, amount: 0.2 }}
-                /* Clean white box styling with soft elevation shadow matching screenshot */
-                className="bg-white dark:bg-[#1E1E1E] rounded-lg border border-gray-100 dark:border-[#2D2D2D] shadow-[0_4px_16px_rgba(0,0,0,0.1)] overflow-hidden transition-shadow duration-200 hover:shadow-[0_6px_20px_rgba(0,0,0,0.06)]"
+                
+                /* BOTTOM BORDER & SHADOW MATCHER */
+                className="rounded-sm bg-white border-t border-x border-gray-200 border-b-4 border-b-gray-300 shadow-md overflow-hidden transition-all duration-200"
               >
-                {/* QUESTION BUTTON */}
+                {/* Question Area */}
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between px-6 sm:px-8 py-5 text-left focus:outline-none cursor-pointer"
+                  className="flex w-full items-center justify-between px-6 py-4 text-left focus:outline-none"
                 >
-                  <span className="text-[16px] sm:text-[18px] font-inter font-bold text-[#355ECE] leading-snug">
+                  <span className="text-base md:text-lg font-bold text-[#355ED1]">
                     {faq.question}
                   </span>
 
-                  {/* TOGGLE ICON (+ / ✕) */}
-                  <span className="text-[#355ED1] text-2xl font-bold shrink-0 ml-4 transition-transform duration-200">
-                    {isOpen ? "✕" : "+"}
-                  </span>
+                  <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center text-[#355ED1]">
+                    {isOpen ? (
+                      <IoClose className="text-xl" />
+                    ) : (
+                      <IoAdd className="text-xl" />
+                    )}
+                  </div>
                 </button>
 
-                {/* ANSWER CONTENT */}
+                {/* Answer Area */}
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
-                      animate={{
-                        height: "auto",
+                      animate={{ 
+                        height: "auto", 
                         opacity: 1,
                         transition: {
-                          height: { duration: 0.3, ease: "easeInOut" },
-                          opacity: { duration: 0.2 },
-                        },
+                          height: { duration: 0.25, ease: "easeOut" },
+                          opacity: { duration: 0.2, delay: 0.05 }
+                        }
                       }}
-                      exit={{
-                        height: 0,
+                      exit={{ 
+                        height: 0, 
                         opacity: 0,
-                        transition: { duration: 0.2, ease: "easeInOut" },
+                        transition: { duration: 0.2, ease: "easeInOut" }
                       }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 sm:px-8 pb-6 pt-1">
-                        <p className="text-[16px] sm:text-[16px] font-inter leading-relaxed text-[#666666] dark:text-gray-300 font-regular">
+                      <div className="px-6 pb-5 pt-0">
+                        <p className="text-xs md:text-sm leading-relaxed text-gray-500 font-medium">
                           {faq.answer}
                         </p>
                       </div>
@@ -122,7 +116,6 @@ export default function FaqSection() {
             );
           })}
         </div>
-
       </div>
     </section>
   );

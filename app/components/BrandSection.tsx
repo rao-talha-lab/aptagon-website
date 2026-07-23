@@ -216,19 +216,19 @@ import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 
 const clients = [
-  { name: "WickenSoft",           url: "www.wickensoft.com",        desc: "Worked with WickenSoft to deliver reliable and innovative technology solutions.",                      img: "/logos/wicken.png",    color: "#073A53" },
-  { name: "Windsor",              url: "www.windsor.com",           desc: "Collaborated with Windsor to deliver technology solutions for their education consultancy.",               img: "/logos/windsor.png",   color: "#073A53" },
-  { name: "Free Word Unscrambler", url: "www.wordunscramble.com",    desc: "Delivered a reliable digital solution to enhance Free Word Unscrambler performance and usability.",      img: "/logos/trendbost.png", color: "#073A53" },
+  { name: "WickenSoft",            url: "www.wickensoft.com",        desc: "Worked with WickenSoft to deliver reliable and innovative technology solutions.",               img: "/logos/wicken.png",    color: "#073A53" },
+  { name: "Windsor",               url: "www.windsor.com",           desc: "Collaborated with Windsor to deliver technology solutions for their education consultancy.",               img: "/logos/windsor.png",   color: "#073A53" },
+  { name: "Free Word Unscrambler", url: "www.wordunscramble.com",    desc: "Delivered a reliable digital solution to enhance Free Word Unscrambler performance and usability.",      img: "/logos/trendbost.png",  color: "#073A53" },
   { name: "Sadsan",                url: "www.sadsantechnologies.com", desc: "Provided modern digital solutions to support efficient business operations and platform performance.",    img: "/logos/sadsan.png",    color: "#073A53" },
-  { name: "PVP.com",              url: "www.pvp.com",               desc: "Delivered reliable digital solutions to enhance platform performance and user experience.",               img: "/logos/PVP.png",       color: "#073A53" },
+  { name: "PVP.com",               url: "www.pvp.com",               desc: "Delivered reliable digital solutions to enhance platform performance and user experience.",               img: "/logos/PVP.png",       color: "#073A53" },
   { name: "PSG (Proximus)",        url: "www.psg.com",               desc: "Worked with PSG to deliver reliable technology solutions that support their digital growth.",             img: "/logos/PSG.png",       color: "#073A53" },
-  { name: "Infinex",              url: "www.zetastudy.com",        desc: "Worked with Zeta Study to deliver reliable digital solutions for their education consultancy platform.",  img: "/logos/ZZETA.png",     color: "#073A53" },
-  { name: "DataCore",             url: "www.datacore.com",          desc: "Managing massive data ecosystems with enterprise-grade cloud storage and security protocols.",             img: "/logos/word.png",      color: "#073A53" },
+  { name: "Infinex",               url: "www.zetastudy.com",         desc: "Worked with Zeta Study to deliver reliable digital solutions for their education consultancy platform.",  img: "/logos/ZZETA.png",     color: "#073A53" },
+  { name: "DataCore",              url: "www.datacore.com",          desc: "Managing massive data ecosystems with enterprise-grade cloud storage and security protocols.",             img: "/logos/Word.png",      color: "#073A53" },
 ];
 
-const CARD_W = 220;
-const CARD_H = 280;
-const RADIUS  = 460;
+const CARD_W = 200;
+const CARD_H = 260;
+const RADIUS  = 430;
 const TOTAL   = clients.length;
 
 export default function ClientsSection3D() {
@@ -244,9 +244,9 @@ export default function ClientsSection3D() {
     const loop = (now: number) => {
       const dt = (now - last) / 1000;
       last = now;
-      if (!isDragging.current) targetAngleRef.current += dt * 10;
+      if (!isDragging.current) targetAngleRef.current += dt * 11;
       angleRef.current += (targetAngleRef.current - angleRef.current) * 0.055;
-      setTick((t) => t + 1);
+      setTick(t => t + 1);
       rafRef.current = requestAnimationFrame(loop);
     };
     rafRef.current = requestAnimationFrame(loop);
@@ -254,8 +254,7 @@ export default function ClientsSection3D() {
   }, []);
 
   const onPointerDown = (e: React.PointerEvent) => {
-    isDragging.current = true;
-    lastX.current = e.clientX;
+    isDragging.current = true; lastX.current = e.clientX;
     (e.target as HTMLElement).setPointerCapture(e.pointerId);
   };
   const onPointerMove = (e: React.PointerEvent) => {
@@ -263,300 +262,144 @@ export default function ClientsSection3D() {
     targetAngleRef.current -= (e.clientX - lastX.current) * 0.22;
     lastX.current = e.clientX;
   };
-  const onPointerUp = () => {
-    isDragging.current = false;
-  };
+  const onPointerUp = () => { isDragging.current = false; };
 
   return (
     <>
       <style>{`
-        @keyframes cs-shimmer  { 0%{background-position:200% center} 100%{background-position:-200% center} }
         @keyframes cs-dotpulse { 0%,100%{transform:scale(1);opacity:.5} 50%{transform:scale(2.2);opacity:1} }
         @keyframes cs-gridmv   { to{background-position:60px 60px} }
       `}</style>
 
+      {/* ── Light Theme Background ── */}
       <section
         style={{
-          position: "relative",
-          width: "100%",
-          height: "90vh",
-          background: "rgba(51,94,206,0.04)",
-          overflow: "hidden",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "grab",
-          userSelect: "none",
+          position:"relative",
+          width:"100%",
+          minHeight:"680px",
+          paddingTop: "60px",
+          paddingBottom: "80px",
+          background:"#E7EBF7", // Light background color
+          overflow:"hidden",
+          display:"flex",
+          flexDirection: "column",
+          alignItems:"center",
+          justifyContent:"center",
+          cursor:"grab",
+          userSelect:"none",
         }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerLeave={onPointerUp}
       >
-        {/* ── Deep space bg grid ── */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            opacity: 0.08,
-            backgroundImage:
-              "linear-gradient(#335ECE 1px,transparent 1px),linear-gradient(90deg,#335ECE 1px,transparent 1px)",
-            backgroundSize: "60px 60px",
-            animation: "cs-gridmv 25s linear infinite",
-            pointerEvents: "none",
-          }}
-        />
+
+        {/* ── Light Grid overlay ── */}
+        <div style={{ position:"absolute", inset:0, opacity:.12, backgroundImage:"linear-gradient(#335ECE 1px,transparent 1px),linear-gradient(90deg,#335ECE 1px,transparent 1px)", backgroundSize:"60px 60px", animation:"cs-gridmv 25s linear infinite", pointerEvents:"none" }} />
 
         {/* ── HEADING ── */}
-        <div
-          style={{
-            position: "absolute",
-            top: "7%",
-            left: "50%",
-            transform: "translateX(-50%)",
-            zIndex: 20,
-            textAlign: "center",
-            pointerEvents: "none",
-            width: "100%",
-            maxWidth: 640,
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 12,
-              marginBottom: 12,
-            }}
-          >
-            <div
-              style={{
-                height: 1,
-                width: 40,
-                background: "linear-gradient(90deg,transparent,rgba(51,94,206,0.6))",
-              }}
-            />
-            <span
-              style={{
-                width: 6,
-                height: 6,
-                borderRadius: "50%",
-                background: "#335ECE",
-                animation: "cs-dotpulse 2.2s ease-in-out infinite",
-                boxShadow: "0 0 10px #335ECE",
-              }}
-            />
-            <span
-              style={{
-                fontSize: 10,
-                letterSpacing: "0.45em",
-                fontWeight: 700,
-                color: "#073A53",
-                textTransform: "uppercase",
-              }}
-            >
-              Trusted Worldwide
-            </span>
-            <span
-              style={{
-                width: 6,
-                height: 6,
-                borderRadius: "50%",
-                background: "rgba(51,94,206,0.4)",
-                boxShadow: "0 0 8px rgba(51,94,206,0.4)",
-              }}
-            />
-            <div
-              style={{
-                height: 1,
-                width: 40,
-                background: "linear-gradient(90deg,rgba(51,94,206,0.6),transparent)",
-              }}
-            />
+        <div style={{ position:"relative", zIndex:20, textAlign:"center", pointerEvents:"none", width:"100%", maxWidth:640, marginBottom: "40px" }}>
+          <div style={{ display:"flex", alignItems:"center", justifyContent:"center", gap:12, marginBottom:12 }}>
+            <div style={{ height:1, width:40, background:"linear-gradient(90deg,transparent,rgba(51,94,206,0.6))" }} />
+            <span style={{ width:6, height:6, borderRadius:"50%", background:"#335ECE", animation:"cs-dotpulse 2.2s ease-in-out infinite", boxShadow:"0 0 10px #335ECE" }} />
+            <span style={{ fontSize:10, letterSpacing:"0.45em", fontWeight:700, color:"#073A53", textTransform:"uppercase" }}>Trusted Worldwide</span>
+            <span style={{ width:6, height:6, borderRadius:"50%", background:"rgba(51,94,206,0.4)", boxShadow:"0 0 8px rgba(51,94,206,0.4)" }} />
+            <div style={{ height:1, width:40, background:"linear-gradient(90deg,rgba(51,94,206,0.6),transparent)" }} />
           </div>
-          <h2
-            style={{
-              fontSize: "clamp(34px,5vw,60px)",
-              fontWeight: 900,
-              letterSpacing: "-0.04em",
-              margin: "0 0 0",
-              color: "transparent",
-              background:
-                "linear-gradient(120deg,#073A53 0%,#335ECE 50%,#073A53 100%)",
-              backgroundSize: "250% auto",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              animation: "cs-shimmer 6s linear infinite",
-            }}
-          >
+          <h2 style={{ fontSize:"clamp(32px,4vw,52px)", fontWeight:900, letterSpacing:"-0.04em", margin:"0", color:"#335ECE" }}>
             Our Global Clients
           </h2>
         </div>
 
-        {/* ── 3D CAROUSEL CONTAINER ── */}
-        <div
-          style={{
-            position: "relative",
-            width: CARD_W,
-            height: CARD_H,
-            perspective: 1200, // Reduced perspective value to make front cards naturally pop sharper
-            zIndex: 10,
-            marginTop: 70,
-          }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              width: CARD_W,
-              height: CARD_H,
-              transformStyle: "preserve-3d",
-              transform: "rotateX(-3deg)",
-            }}
-          >
+        {/* ── 3D CAROUSEL ── */}
+        <div style={{ position:"relative", width:CARD_W, height:CARD_H, perspective:1400, zIndex:10, marginTop:10 }}>
+          <div style={{ position:"absolute", width:CARD_W, height:CARD_H, transformStyle:"preserve-3d", transform: "rotateX(-4deg)" }}>
             {clients.map((client, i) => {
               const angle       = angleRef.current + (i / TOTAL) * 360;
               const rad         = (angle * Math.PI) / 180;
               const x           = Math.sin(rad) * RADIUS;
               const z           = Math.cos(rad) * RADIUS;
               const normalizedZ = (z + RADIUS) / (RADIUS * 2);
-
-              // Sharp opacity rendering: front cards stay 100% visible
-              const opacity = Math.max(0.2, normalizedZ);
-              const isActive = z > RADIUS * 0.4;
-
-              // FIX: Completely remove blur filter on active/front cards to guarantee 100% vector text crispness
-              const blur = isActive ? 0 : Math.min(3, (1 - normalizedZ) * 4);
+              const scale       = 0.5 + normalizedZ * 0.58;
+              const opacity     = 0.25 + normalizedZ * 0.75;
+              const blur        = (1 - normalizedZ) * 4;
+              const isActive    = z > RADIUS * 0.72;
 
               return (
-                <div
-                  key={client.name}
-                  style={{
-                    position: "absolute",
-                    left: "50%",
-                    top: "50%",
-                    width: CARD_W,
-                    height: CARD_H,
-                    // FIX: Replaced double scale transform with pure 3D translate positioning to prevent raster blur
-                    transform: `translate3d(-50%, -50%, 0px) translate3d(${x}px, 0px, ${z}px)`,
-                    opacity,
-                    filter: blur > 0 ? `blur(${blur}px)` : "none",
-                    zIndex: Math.round(normalizedZ * 100),
-                    willChange: "transform, opacity",
-                    backfaceVisibility: "hidden", // Prevents WebKit font smearing during motion
-                    WebkitFontSmoothing: "antialiased",
-                  }}
-                >
-                  {/* CARD CONTAINER */}
-                  <div
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      borderRadius: 24,
-                      position: "relative",
-                      overflow: "hidden",
-                      background: "#ffffff",
-                      border: isActive
-                        ? "2px solid #335ECE"
-                        : "1.5px solid rgba(7,58,83,0.15)",
-                      boxShadow: isActive
-                        ? "0 20px 45px rgba(51,94,206,0.18), 0 4px 16px rgba(7,58,83,0.08)"
-                        : "0 4px 16px rgba(7,58,83,0.05)",
-                      display: "flex",
-                      flexDirection: "column",
-                      transform: "translateZ(0)", // Force GPU layer rendering
-                    }}
-                  >
+                <div key={client.name} style={{
+                  position:"absolute", left:"50%", top:"50%",
+                  width:CARD_W, height:CARD_H,
+                  transform:`translate(-50%,-50%) translateX(${x}px) translateZ(${z}px) scale(${scale})`,
+                  opacity, filter:`blur(${blur}px)`,
+                  zIndex:Math.round(normalizedZ * 100),
+                  willChange:"transform,opacity,filter",
+                }}>
+
+                  <div style={{
+                    width:"100%", height:"100%",
+                    borderRadius:24,
+                    position:"relative",
+                    overflow:"hidden",
+                    background: "#ffffff",
+                    border: "1.5px solid #335ECE",
+                    boxShadow: isActive
+                      ? "0 16px 40px rgba(51,94,206,0.2), 0 4px 16px rgba(7,58,83,0.12)"
+                      : "0 4px 20px rgba(7,58,83,0.08)",
+                    display:"flex", flexDirection:"column",
+                  }}>
+
                     {/* LOGO ZONE */}
-                    <div
-                      style={{
-                        position: "relative",
-                        width: "100%",
-                        height: 85,
-                        flexShrink: 0,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        padding: "18px 20px 10px",
-                        background: "transparent",
-                      }}
-                    >
-                      <div
-                        style={{
-                          position: "relative",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                      >
+                    <div style={{
+                      position:"relative",
+                      width:"100%", height:75, flexShrink:0,
+                      display:"flex", alignItems:"center", justifyContent:"center",
+                      padding:"16px 18px 8px",
+                      background:"transparent",
+                    }}>
+                      <div style={{ position:"relative", width:"100%", height:"100%", background:"transparent" }}>
                         <Image
                           src={client.img}
                           alt={client.name}
                           fill
-                          sizes="220px"
-                          priority={i < 4} // Priority preload front-facing images
-                          style={{
-                            objectFit: "contain",
-                            objectPosition: "center",
-                          }}
+                          sizes="160px"
+                          style={{ objectFit:"contain", objectPosition:"center" }}
                         />
                       </div>
                     </div>
 
                     {/* DIVIDER */}
-                    <div
-                      style={{
-                        width: "85%",
-                        height: 1,
-                        background: "rgba(51,94,206,0.25)",
-                        margin: "0 auto",
-                      }}
-                    />
+                    <div style={{ width:"85%", height:1, background:"rgba(51,94,206,0.3)", margin:"0 auto" }} />
 
                     {/* URL */}
-                    <div style={{ padding: "10px 16px 0", textAlign: "center" }}>
-                      <span
-                        style={{
-                          fontSize: 9,
-                          fontWeight: 700,
-                          color: "#335ECE",
-                          letterSpacing: "0.04em",
-                        }}
-                      >
+                    <div style={{ padding:"6px 14px 0", textAlign:"center" }}>
+                      <span style={{
+                        fontSize:8, fontWeight:600,
+                        color:"#335ECE",
+                        letterSpacing:"0.04em",
+                      }}>
                         {client.url}
                       </span>
                     </div>
 
                     {/* DESCRIPTION */}
-                    <div
-                      style={{
-                        padding: "6px 16px 16px",
-                        textAlign: "center",
-                        flex: 1,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <p
-                        style={{
-                          fontSize: 10.5,
-                          lineHeight: 1.6,
-                          color: "#073A53",
-                          fontWeight: 600,
-                          margin: 0,
-                          WebkitFontSmoothing: "antialiased",
-                        }}
-                      >
+                    <div style={{ padding:"6px 14px", textAlign:"center", flex:1, display:"flex", alignItems:"center", justifyContent:"center" }}>
+                      <p style={{
+                        fontSize:10, lineHeight:1.5,
+                        color:"#000102",
+                        fontWeight:600,
+                        margin:0,
+                      }}>
                         {client.desc}
                       </p>
                     </div>
+
                   </div>
-                  {/* END CARD */}
                 </div>
               );
             })}
           </div>
         </div>
+
       </section>
     </>
   );

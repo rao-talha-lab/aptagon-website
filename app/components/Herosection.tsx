@@ -75,8 +75,7 @@ const TypewriterEffect = ({
   }
 
   return (
-    <span className="inline-block text-[52px] font-bold md:text-[62px] lg:text-[68px] font-['Poppins'] tracking-tight leading-tight">
-      <span className={firstWordColor}>{firstWordTyped}</span>
+<span className="inline-block text-[32px] sm:text-[40px] md:text-[48px] lg:text-[42px] xl:text-[52px] font-bold font-['Poppins'] tracking-tight leading-tight">      <span className={firstWordColor}>{firstWordTyped}</span>
 
       <span className={restColor}>{restOfTextTyped}</span>
 
@@ -444,10 +443,10 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
               {tagline}
             </motion.p>
 
-            <motion.h1
-              variants={itemVariants}
-              className="text-[48px] md:text-[60px] lg:text-[68px] font-['Poppins'] font-bold text-[#355ED1] mb-2 tracking-tighter leading-none"
-            >
+          <motion.h1
+  variants={itemVariants}
+  className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[42px] xl:text-[52px] max-w-full lg:max-w-[480px] xl:max-w-[580px] font-['Poppins'] font-bold text-[#355ED1] mb-2 tracking-tighter leading-tight"
+>
               We Build Digital <br />
               <span className="lg:whitespace-nowrap">
               <TypewriterEffect

@@ -11,37 +11,37 @@ import Link from "next/link";
 
 function BPAIcon({ active }: { active: boolean }) {
   return (
-    <Image src="/services-images/services-icons/bpa.png" alt="Business Process Automation" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+    <Image src="/services-images/services-icons/bpa.png" alt="Business Process Automation" width={48} height={48} />
   );
 }
 
 function UIUXIcon({ active }: { active: boolean }) {
   return (
-    <Image src="/services-images/services-icons/uiux.png" alt="UI/UX Designing" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain"/>
+    <Image src="/services-images/services-icons/uiux.png" alt="UI/UX Designing" width={48} height={48} />
   );
 }
 
 function ChatbotIcon({ active }: { active: boolean }) {
   return (
-    <Image src="/services-images/services-icons/chatbot.png" alt="Chatbot Development" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain"/>
+    <Image src="/services-images/services-icons/chatbot.png" alt="Chatbot Development" width={48} height={48} />
   );
 }
 
 function SQAIcon({ active }: { active: boolean }) {
   return (
-    <Image src="/services-images/services-icons/sqa.png" alt="Software Quality Assurance" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain"/>
+    <Image src="/services-images/services-icons/sqa.png" alt="Software Quality Assurance" width={48} height={48} />
   );
 }
 
 function WebDevIcon({ active }: { active: boolean }) {
   return (
-    <Image src="/services-images/services-icons/webdev.png" alt="Web Development" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain"/>
+    <Image src="/services-images/services-icons/webdev.png" alt="Web Development" width={48} height={48} />
   );
 }
 
 function AIGenIcon({ active }: { active: boolean }) {
   return (
-    <Image src="/services-images/services-icons/aigen.png" alt="AI & Generative Solutions" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain"/>
+    <Image src="/services-images/services-icons/aigen.png" alt="AI & Generative Solutions" width={48} height={48} />
   );
 }
 
@@ -97,7 +97,7 @@ const SERVICES = [
     slug: "/services/business-process-automation",
     buttonLabel: "Business Process Automation",
     Icon: BPAIcon,
-    description: "Cut manual work, reduce errors, and speed up operations with automation built around how your business actually runs.",
+    description: "Streamline operations with intelligent automation solutions. We simplify workflows, cut manual tasks, and boost overall business efficiency and speed.",
     tools: [
       { name: "Zapier", Logo: ZapierLogo },
       { name: "UiPath", Logo: UiPathLogo },
@@ -114,7 +114,7 @@ const SERVICES = [
     slug: "/services/ui-ux",
     buttonLabel: "UI/UX Designing",
     Icon: UIUXIcon,
-    description: "Craft intuitive, user-friendly interfaces that engage and delight users. We combine beautiful design with seamless usability to create exceptional digital experiences.",
+    description: "Craft intuitive and visually engaging interfaces that delight users. Our design team blends aesthetics with usability to create products people love.",
     tools: [
       { name: "Figma", Logo: FigmaLogo },
       { name: "Adobe XD", Logo: AdobeXDLogo },
@@ -131,7 +131,7 @@ const SERVICES = [
     slug: "/services/chatbots",
     buttonLabel: "Chatbot Development",
     Icon: ChatbotIcon,
-    description: "Build intelligent chatbots that engage customers 24/7. From instant support to AI-powered conversations, we create bots that boost engagement and drive conversions.",
+    description: "Build intelligent chatbots that engage customers 24/7. From rule-based flows to AI-powered conversations, we deliver bots that convert and retain.",
     tools: [
       { name: "Dialogflow", Logo: DialogflowLogo },
       { name: "Rasa", Logo: RasaLogo },
@@ -148,7 +148,7 @@ const SERVICES = [
     slug: "/services/sqa",
     buttonLabel: "Software Quality Assurance",
     Icon: SQAIcon,
-    description: "Deliver reliable, bug-free software with comprehensive quality assurance. We identify issues early, improve performance, and ensure every release is production-ready.",
+    description: "Ensure your software meets the highest quality standards. Our QA experts deliver comprehensive testing that catches bugs before they reach production.",
     tools: [
       { name: "Selenium", Logo: SeleniumLogo },
       { name: "Jest", Logo: JestLogo },
@@ -165,7 +165,7 @@ const SERVICES = [
     slug: "/services/web-development",
     buttonLabel: "Web Development",
     Icon: WebDevIcon,
-    description: "Build fast, scalable, and modern web applications tailored to your business. From landing pages to complex platforms, we build reliable solutions that drive growth.",
+    description: "Build fast, scalable, and modern web applications tailored to your business. From landing pages to complex platforms, we engineer solutions that perform.",
     tools: [
       { name: "React", Logo: ReactLogo },
       { name: "Next.js", Logo: NextjsLogo },
@@ -182,7 +182,7 @@ const SERVICES = [
     slug: "/services/ai",
     buttonLabel: "AI & Generative Solutions",
     Icon: AIGenIcon,
-    description: "Harness the power of generative AI to transform your business. From LLM integration to custom AI workflows, we build intelligent solutions that automate, adapt, and scale.",
+    description: "Harness the power of generative AI to transform your business. From LLM integration to custom AI pipelines, we build intelligent systems that learn and grow.",
     tools: [
       { name: "OpenAI", Logo: OpenAILogo },
       { name: "Anthropic", Logo: AnthropicLogo },
@@ -194,9 +194,6 @@ const SERVICES = [
   },
 ];
 
-// Create an animated motion component wrapping Next.js Link
-const MotionLink = motion.create(Link);
-
 // ─────────────────────────────────────────────
 //  COMPONENT
 // ─────────────────────────────────────────────
@@ -206,31 +203,31 @@ export default function ServicesSection() {
   const active = SERVICES.find((s) => s.id === activeId)!;
 
   return (
-    <section className="w-full py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#335ECE1A" }}>
-      <div className="max-w-[1440px] mx-auto">
+    <section className="w-full py-14 px-6 sm:px-10 lg:px-20" style={{ backgroundColor: "#E7EBF7" }}>
+      <div className="max-w-6xl mx-auto">
 
         {/* ── HEADER ─────────────────────────────────────── */}
         <h2
-          className="text-3xl sm:text-4xl lg:text-[40px] font-inter font-bold tracking-tight mb-3"
+          className="text-3xl sm:text-4xl font-extrabold leading-tight mb-3"
           style={{ color: "#335ECE" }}
         >
           Delivering Excellence Through Our Services
         </h2>
 
         <p
-          className="text-[15px] sm:text-[14px] font-inter font-medium leading-relaxed mb-10"
-          style={{ color: "#666666", maxWidth: "600px" }}
+          className="text-sm sm:text-[15px] leading-relaxed mb-10"
+          style={{ color: "#666666", maxWidth: "480px" }}
         >
           From custom software development to AI-driven automation, we create
           solutions that move your business forward.
         </p>
 
         {/* ── BODY ───────────────────────────────────────── */}
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-12">
+        <div className="flex flex-col lg:flex-row gap-10 items-start">
 
-          {/* LEFT — 3×2 card grid*/}
-          <div className="w-full lg:w-[52%] shrink-0">
-            <div className="grid grid-cols-3 gap-3 sm:gap-4">
+          {/* LEFT — 3×2 card grid */}
+          <div className="w-full lg:w-1/2 flex-shrink-0">
+            <div className="grid grid-cols-3 gap-4">
               {SERVICES.map((svc) => {
                 const isActive = svc.id === activeId;
                 return (
@@ -240,11 +237,11 @@ export default function ServicesSection() {
                     className="flex flex-col items-center cursor-pointer justify-center rounded-xl transition-all duration-200 focus:outline-none"
                     style={{
                       backgroundColor: "white",
-                      paddingTop: "24px",
-                      paddingBottom: "20px",
-                      paddingLeft: "12px",
-                      paddingRight: "12px",
-                      gap: "12px",
+                      paddingTop: "28px",
+                      paddingBottom: "22px",
+                      paddingLeft: "10px",
+                      paddingRight: "10px",
+                      gap: "14px",
                       border: isActive ? "2px solid #335ECE" : "2px solid transparent",
                       boxShadow: isActive
                         ? "0 4px 18px rgba(13,158,150,0.13)"
@@ -253,8 +250,8 @@ export default function ServicesSection() {
                   >
                     <svc.Icon active={isActive} />
                     <span
-                      className="text-[14px] sm:text-[15px] font-inter font-bold text-center"
-                      style={{ color: "#666666", lineHeight: "1.35" }}
+                      className="text-[11px] sm:text-[12.5px] font-bold text-center"
+                      style={{ color: "#666666", lineHeight: "1.45" }}
                     >
                       {svc.line1}
                       <br />
@@ -266,12 +263,12 @@ export default function ServicesSection() {
             </div>
           </div>
 
-          {/* RIGHT — detail panel aligned right */}
-          <div className="w-full lg:w-[45%] flex flex-col pt-2">
+          {/* RIGHT — detail panel */}
+          <div className="w-full lg:w-1/2 flex flex-col">
 
             {/* Title */}
             <h3
-              className="text-2xl sm:text-[32px] font-extrabold leading-tight mb-4"
+              className="text-2xl sm:text-[30px] font-extrabold leading-tight mb-5"
               style={{ color: "#335ECE" }}
             >
               {active.titleBold}{" "}
@@ -280,35 +277,39 @@ export default function ServicesSection() {
 
             {/* Description */}
             <p
-              className="text-[16px] sm:text-[18px] font-inter font-medium leading-relaxed mb-8 text-justify"
+              className="text-sm sm:text-[15px] font-semibold leading-relaxed mb-8"
               style={{ color: "#666666" }}
             >
               {active.description}
             </p>
 
             {/* Tool logos */}
-            <div className="flex items-center flex-wrap gap-3.5 mb-8">
+            <div className="flex items-center flex-wrap gap-3 mb-9">
               {active.tools.map((tool) => (
                 <div
                   key={tool.name}
                   title={tool.name}
-                  className="w-11 h-11 rounded-full overflow-hidden cursor-pointer shrink-0 transition-transform duration-200 hover:scale-110"
+                  className="w-11 h-11 rounded-full overflow-hidden cursor-pointer flex-shrink-0 transition-transform duration-200 hover:scale-110"
                 >
                   <tool.Logo />
                 </div>
               ))}
             </div>
 
-            {/* CTA button */}
-            <MotionLink
-              href={active.slug}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              className="group relative flex items-center justify-center overflow-hidden rounded-xl px-9 py-3.5 text-[16px] font-semibold text-white shadow-md transition-all self-start bg-[#355ECE]"
+            {/* CTA button - FIXED ROUTING */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="self-start"
             >
-              <span className="relative z-10">{active.buttonLabel}</span>
-              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
-            </MotionLink>
+              <Link
+                href={active.slug}
+                className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl px-10 py-3.5 text-[17px] font-semibold text-white shadow-lg transition-all bg-gradient-to-br from-[#355ED1] to-[#073A53]"
+              >
+                <span className="relative z-10">{active.buttonLabel}</span>
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
+              </Link>
+            </motion.div>
 
           </div>
         </div>

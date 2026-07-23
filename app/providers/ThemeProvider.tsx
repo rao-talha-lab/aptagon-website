@@ -18,23 +18,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const applyTheme = (newTheme: Theme) => {
     const html = document.documentElement;
 
-    // View Transition API support check (Chrome/Edge/Safari)
-    // if (document.startViewTransition) {
-    //   document.startViewTransition(() => {
-    //     if (newTheme === "dark") {
-    //       html.classList.add("dark");
-    //     } else {
-    //       html.classList.remove("dark");
-    //     }
-    //   });
-    // } else {
-    //   // Fallback for other browsers
-    //   if (newTheme === "dark") {
-    //     html.classList.add("dark");
-    //   } else {
-    //     html.classList.remove("dark");
-    //   }
-    // }
     try {
       if ("startViewTransition" in document) {
         document.startViewTransition(() => {
@@ -55,10 +38,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       setTheme(savedTheme);
       applyTheme(savedTheme);
     } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const initialTheme = prefersDark ? "dark" : "light";
-      setTheme(initialTheme);
-      applyTheme(initialTheme);
+      // System dark mode preference hata di gayi hai — hamesha light default rahega
+      setTheme("light");
+      applyTheme("light");
     }
   }, []);
 

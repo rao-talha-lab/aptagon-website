@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import Image from "next/image";
 
 interface ImageCarouselProps {
@@ -25,7 +25,8 @@ export default function ImageCarousel({
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState(0); 
 
-  const slideVariants = {
+  // Added ": Variants" annotation here:
+  const slideVariants: Variants = {
     enter: (dir: number) => ({
       x: dir > 0 ? 60 : -60,
       opacity: 0,

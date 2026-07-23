@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -194,6 +194,9 @@ const SERVICES = [
   },
 ];
 
+// Create an animated motion component wrapping Next.js Link
+const MotionLink = motion.create(Link);
+
 // ─────────────────────────────────────────────
 //  COMPONENT
 // ─────────────────────────────────────────────
@@ -203,9 +206,7 @@ export default function ServicesSection() {
   const active = SERVICES.find((s) => s.id === activeId)!;
 
   return (
-
     <section className="w-full py-16 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: "#335ECE1A" }}>
-
       <div className="max-w-[1440px] mx-auto">
 
         {/* ── HEADER ─────────────────────────────────────── */}
@@ -225,7 +226,6 @@ export default function ServicesSection() {
         </p>
 
         {/* ── BODY ───────────────────────────────────────── */}
-        
         <div className="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-12">
 
           {/* LEFT — 3×2 card grid*/}
@@ -300,19 +300,15 @@ export default function ServicesSection() {
             </div>
 
             {/* CTA button */}
-            <motion.a
+            <MotionLink
               href={active.slug}
-              onClick={(e) => {
-                e.preventDefault();
-                window.parent ? window.location.href = active.slug : React.startTransition(() => {}); 
-              }}
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
               className="group relative flex items-center justify-center overflow-hidden rounded-xl px-9 py-3.5 text-[16px] font-semibold text-white shadow-md transition-all self-start bg-[#355ECE]"
             >
               <span className="relative z-10">{active.buttonLabel}</span>
               <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
-            </motion.a>
+            </MotionLink>
 
           </div>
         </div>

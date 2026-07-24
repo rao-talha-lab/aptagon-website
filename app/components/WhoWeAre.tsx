@@ -203,7 +203,7 @@ export default function WhoWeAre() {
             </div>
 
             <p className="text-md leading-relaxed text-[#666666]">
-              At <span className="font-bold text-[#666666]">Aptagon Technologies, </span>
+              At <span className=" text-[#666666]">Aptagon Technologies, </span>
               we transform ideas into <span className="font-bold text-[#666666]">intelligent digital experiences </span>
               that drive innovation and measurable success. Specializing in{" "}
               <span className="font-bold text-[#666666]">
@@ -236,7 +236,7 @@ export default function WhoWeAre() {
         </div>
 
         {/* ── BOTTOM SECTION (What Drives Us Forward) ── */}
-        <div className="space-y-12">
+        {/* <div className="space-y-12">
           <div className="text-center">
             <h2 className="text-3xl font-extrabold text-[#335ECE] lg:text-4xl">
               What Drives Us Forward
@@ -272,7 +272,7 @@ export default function WhoWeAre() {
               );
             })}
           </div>
-        </div>
+        </div> */}
 
       </div>
     </section>

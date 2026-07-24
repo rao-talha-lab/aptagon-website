@@ -10,6 +10,10 @@ const faqs = [
     answer: "Aptagon Technologies offers web development, mobile app development, custom software, UI/UX design, digital marketing, and IT consulting solutions.",
   },
   {
+    question: "Do you provide post-launch support and maintenance?",
+    answer: "Yes, we offer ongoing maintenance, updates, and technical support to ensure your application runs smoothly after deployment.",
+  },
+  {
     question: "Do you develop custom software?",
     answer: "Yes, we specialize in developing custom software solutions tailored to your business needs.",
   },
@@ -33,9 +37,9 @@ export default function FaqSection() {
   return (
     <section className="w-full bg-[#F8FAFC] py-16 overflow-hidden">
       <div className="mx-auto max-w-5xl px-6">
-        
+
         {/* Main Heading */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
@@ -54,15 +58,15 @@ export default function FaqSection() {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -50 }} 
-                whileInView={{ opacity: 1, x: 0 }} 
-                transition={{ 
-                  duration: 0.3, 
-                  delay: index * 0.06, 
-                  ease: "easeOut" 
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 0.3,
+                  delay: index * 0.06,
+                  ease: "easeOut"
                 }}
                 viewport={{ once: false, amount: 0.2 }}
-                
+
                 /* BOTTOM BORDER & SHADOW MATCHER */
                 className="rounded-sm bg-white border-t border-x border-gray-200 border-b-4 border-b-gray-300 shadow-md overflow-hidden transition-all duration-200"
               >
@@ -89,16 +93,16 @@ export default function FaqSection() {
                   {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
-                      animate={{ 
-                        height: "auto", 
+                      animate={{
+                        height: "auto",
                         opacity: 1,
                         transition: {
                           height: { duration: 0.25, ease: "easeOut" },
                           opacity: { duration: 0.2, delay: 0.05 }
                         }
                       }}
-                      exit={{ 
-                        height: 0, 
+                      exit={{
+                        height: 0,
                         opacity: 0,
                         transition: { duration: 0.2, ease: "easeInOut" }
                       }}

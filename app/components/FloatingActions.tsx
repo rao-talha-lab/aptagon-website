@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, ArrowUp, Mail } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa"; 
+import { FaWhatsapp } from "react-icons/fa";
 
 const FloatingActions = () => {
   const [showScroll, setShowScroll] = useState(false);
@@ -28,23 +28,23 @@ const FloatingActions = () => {
   const actions = [
     {
       icon: <Phone size={22} />,
-      href: "tel:+923704640036", 
+      href: "tel:+923704640036",
       baseColor: "#335ECE",
       hoverColor: "#2CB6E8",
       label: "Call us",
       type: "tel"
     },
     {
-      icon: <FaWhatsapp size={26} />, 
-      href: "https://wa.me/447882610679", 
-      baseColor: "#666666", 
-      hoverColor: "#25D366",
+      icon: <FaWhatsapp size={26} />,
+      href: "https://wa.me/447882610679",
+      baseColor: "#25D366", // Updated: Default color bhi WhatsApp Green kar diya
+      hoverColor: "#20BA5A", // Updated: Slightly darker green on hover
       label: "WhatsApp",
       type: "external"
     },
     {
       icon: <Mail size={22} />,
-      href: "mailto:hr@aptagon.com", 
+      href: "mailto:hr@aptagon.com",
       baseColor: "#335ECE",
       hoverColor: "#1a9ecf",
       label: "Email us",

@@ -166,7 +166,7 @@ export default function InfiniteMovingCards({
       
       <div style={{ 
         paddingTop: "2%",
-        paddingLeft: "2%", 
+        paddingLeft: "3%", 
         paddingRight: "6%", 
         textAlign: "left", 
         marginBottom: "40px" 

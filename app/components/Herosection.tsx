@@ -75,7 +75,7 @@ const TypewriterEffect = ({
   }
 
   return (
-<span className="inline-block text-[52px] font-bold md:text-[62px] lg:text-[68px] ...">
+<span className="inline-block text-[38px] font-bold md:text-[49px] lg:text-[55px] ... gap-3">
         <span className={firstWordColor}>{firstWordTyped}</span>
 
       <span className={restColor}>{restOfTextTyped}</span>
@@ -424,7 +424,7 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
   };
 
   return (
-    <section className={`relative flex items-center overflow-hidden bg-white ${height} `}>
+    <section className={`relative flex items-center overflow-hidden bg-white h-[800px] `}>
       <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-10 py-15">
@@ -439,14 +439,14 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
           <div className="w-full lg:w-[52%] flex flex-col items-start shrink-0">
             <motion.p
               variants={itemVariants}
-              className="font-['Poppins'] text-[18.91px] mb-3 text-[#666666] font-medium "
+              className="font-['Poppins'] text-[18px] mb-3 text-[#666666] font-medium "
             >
               {tagline}
             </motion.p>
 
             <motion.h1
               variants={itemVariants}
-              className="text-[36px] md:text-[48px] lg:text-[54px] font-['Poppins'] font-bold text-[#355ED1] mb-2 tracking-tighter leading-none"
+              className="text-[30px] md:text-[44px] lg:text-[50px] font-['Poppins'] font-bold text-[#355ED1] mb-2 tracking-tighter leading-none"
             >
               We Build Digital <br />
               <span className="lg:whitespace-nowrap">
@@ -460,7 +460,7 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
               </span>
             </motion.h1>
 
-            <motion.p variants={itemVariants} className="text-[18px] lg:text-[20px] font-['Poppins'] text-[#666666] font-medium mb-8 max-w-xl text-justify">
+            <motion.p variants={itemVariants} className="text-[18px] lg:text-[19px] font-['Poppins'] text-[#666666] font-medium mb-8 max-w-xl text-justify">
               {description}
             </motion.p>
 
@@ -488,7 +488,7 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
                     href={primaryCtaHref}
                     whileHover={{ scale: 1.05 }}
                   onClick={handleExploreClick}
-                    className="px-8 py-4 bg-[#355ED1] text-[21.05px] fonr-inter text-white font-medium rounded-[10px] shadow-lg"
+                    className="px-8 py-4 bg-[#355ED1] text-[21.05px] font-inter text-white font-medium rounded-[10px] shadow-lg"
                   >
                     {primaryCtaText} →
                   </motion.a>

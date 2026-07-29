@@ -79,7 +79,7 @@ const Contact = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="w-full max-w-7xl mx-auto bg-white rounded-xl shadow-xl p-3 md:p-5 lg:p-7 relative overflow-hidden"
+        className="w-full max-w-6xl mx-auto bg-white rounded-xl shadow-xl p-3 md:p-5 lg:p-7 relative overflow-hidden"
       >
         {/* Header - More Compact */}
         <div className="text-center mb-10">
@@ -129,7 +129,7 @@ const Contact = () => {
               <button
                 type="button"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className={`w-[710px] bg-white dark:bg-[#FFFFFF] px-6 py-5 rounded-full border border-gray-100 dark:border-transparent shadow-[0_3px_5px_rgba(0,0,0,0.30)] text-sm text-[#000000] dark:text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#335ECE]/20 transition-all placeholder-[#666666] text-left flex justify-between items-center`}
+                className={`w-[680px] bg-white dark:bg-[#FFFFFF] px-6 py-5 rounded-full border border-gray-100 dark:border-transparent shadow-[0_3px_5px_rgba(0,0,0,0.30)] text-sm text-[#000000] dark:text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#335ECE]/20 transition-all placeholder-[#666666] text-left flex justify-between items-center`}
               >
                 <span className={formData.subject ? "text-[#666565] dark:text-[#666565]" : "text-[#666565]"}>
                   {formData.subject || "Project Type"}
@@ -166,7 +166,7 @@ const Contact = () => {
               placeholder="Message" 
               rows={8} 
               required
-              className="w-[710px] bg-white dark:bg-[#FFFFFF] px-6 py-3 rounded-xl border border-gray-100 dark:border-transparent shadow-[0_3px_5px_rgba(0,0,0,0.30)] text-sm text-[#000000] dark:text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#335ECE]/20 transition-all placeholder-[#666666]"
+              className="w-[680px] bg-white dark:bg-[#FFFFFF] px-6 py-3 rounded-xl border border-gray-100 dark:border-transparent shadow-[0_3px_5px_rgba(0,0,0,0.30)] text-sm text-[#000000] dark:text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#335ECE]/20 transition-all placeholder-[#666666]"
             />
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">

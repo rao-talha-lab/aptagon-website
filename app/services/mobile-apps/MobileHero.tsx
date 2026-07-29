@@ -263,7 +263,7 @@ const MobileHero: React.FC<AnimatedHeroSectionProps> = ({
 
     <section className={`relative flex items-center overflow-hidden bg-[#FFFFFF] ${height}`}>
       <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none opacity-50" />
-      <div className="relative lg:mt-7 z-10 container mx-auto px-6 pt-20 pb-5 lg:pb-10">
+      <div className="relative lg:mt-7 z-10 container mx-auto px-6 pt-20 lg:pt-30 pb-5 lg:pb-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
 
           {/* LEFT SIDE — unchanged */}
@@ -271,7 +271,7 @@ const MobileHero: React.FC<AnimatedHeroSectionProps> = ({
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="mb-3 text-[#666666] font-['Poppins'] font-semibold tracking-wide text-[15px] px-4 py-2"
+              className="mb-3 text-[#666666] font-['Poppins'] font-semibold tracking-wide text-[15px] px-2 py-2"
             >
               Mobile App Development
             </motion.p>

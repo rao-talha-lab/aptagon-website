@@ -19,7 +19,7 @@ interface FeatureSectionProps {
 
 const FeatureCard = ({ card, index }: { card: Card; index: number }) => {
   return (
-    <Link href={`/services/${card.slug}`} className="block mt-8 h-[400px]">
+    <Link href={`/services/${card.slug}`} className="block mt-8 h-[350px]">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -67,7 +67,7 @@ const FeatureCard = ({ card, index }: { card: Card; index: number }) => {
             {card.title}
           </h3>
           <div className="w-18 h-[4px] bg-[#335ECE] group-hover:bg-white mb-5 rounded-full mx-auto transition-colors duration-300" />
-          <p className="text-[17px] text-center leading-relaxed text-[#666666] leading-relaxed group-hover:text-white/80 transition-colors">
+          <p className="text-[14px] text-center leading-relaxed text-[#666666] leading-relaxed group-hover:text-white/80 transition-colors">
             {card.description}
           </p>
         </div>
@@ -87,7 +87,7 @@ export default function FeatureSection({
   const visibleCards = showAll ? cards : cards.slice(0, 4);
 
   return (
-    <section className="relative py-15 px-8 md:px-10 bg-[#FFFFFF] overflow-hidden">
+    <section className="relative py-15 px-1 md:px-2 bg-[#FFFFFF] overflow-hidden">
       {/* Background Effects */}
       <div className="absolute top-0 right-0 w-[500px] h-[400px] bg-[#335ECE]/5 rounded-full blur-[120px]" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[400px] bg-[#335ECE]/5 rounded-full blur-[120px]" />
@@ -104,7 +104,7 @@ export default function FeatureSection({
 
         {/* Cards Grid */}
         <motion.div layout>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 pb-4">
             {visibleCards.map((card, index) => (
               <FeatureCard key={index} card={card} index={index} />
             ))}

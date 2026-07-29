@@ -265,11 +265,11 @@ const WebDevHero = () => {
           <div className="flex flex-col lg:flex-row items-center gap-16">
 
             {/* ── Left Content ── */}
-            <div className="flex-1 max-w-3xl text-left lg:mt-15 pt-30 lg:pt-10 pb-5 lg:pb-10">
+            <div className="flex-1 max-w-3xl text-left lg:mt-15 pt-30 lg:pt-20 pb-5 lg:pb-10">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="inline-block mb-5 px-4 py-1."
+                className="inline-block mb-5 px-3 py-1."
               >
                 <p className="text-[#666666] font-['Poppins'] font-semibold tracking-wider text-[15px]">
                   Web Development

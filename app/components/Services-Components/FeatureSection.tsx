@@ -95,11 +95,11 @@ export default function FeatureSection({
       <div className="container mx-auto relative z-10">
         {/* Header */}
         <div className="max-w-3xl mb-16 text-center md:text-left">
-          <h2 className="text-[25px] md:text-[33.5px] font-['Poppins'] font-bold text-[#335ECE] mb-6">
+          <h2 className="text-[25px] md:text-[32px] font-['Poppins'] font-bold text-[#335ECE] mb-6">
             {heading}
           </h2>
 
-          <p className="text-[18px] text-[#666666]">{description}</p>
+          <p className="text-[17px] text-[#666666]">{description}</p>
         </div>
 
         {/* Cards Grid */}

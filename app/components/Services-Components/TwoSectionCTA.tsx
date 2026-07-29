@@ -54,7 +54,7 @@ const TwoSectionCTA = ({
         >
           {tagline && (
             <motion.p 
-              className="text-[18px] font-semibold tracking-[0.05em] text-[#666666] mb-2"
+              className="text-[16px] font-['Poppins'] font-semibold tracking-wide text-[#666666] mb-2"
               custom={0}
               variants={textVariants}
             >
@@ -63,7 +63,7 @@ const TwoSectionCTA = ({
           )}
 
           <motion.h2
-            className="text-[30px] md:text-[35px] font-bold text-[#335ECE] dark:text-white leading-[1.25] tracking-tight mb-6"
+            className="text-[28px] md:text-[32px] font-bold text-[#335ECE] dark:text-white leading-[1.25] tracking-tight mb-6"
             custom={1}
             variants={textVariants}
           >
@@ -78,7 +78,7 @@ const TwoSectionCTA = ({
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 + (index * 0.1) }}
-                className="text-[19px] text-justify leading-relaxed  dark:text-gray-400 font-medium"
+                className="text-[17px] text-justify leading-relaxed  dark:text-gray-400 font-medium"
               >
                 {para}
               </motion.p>

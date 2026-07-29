@@ -37,9 +37,8 @@ const TypewriterEffect = ({ words }: { words: string[] }) => {
     <span className="text-[#335ECE]">
       {words[index].substring(0, subIndex)}
       <span
-        className={`inline-block w-1 h-10 md:h-14 ml-2 bg-[#335ECE] align-middle ${
-          blink ? "opacity-100" : "opacity-0"
-        }`}
+        className={`inline-block w-1 h-10 md:h-14 ml-2 bg-[#335ECE] align-middle ${blink ? "opacity-100" : "opacity-0"
+          }`}
       />
     </span>
   );
@@ -59,7 +58,7 @@ interface Particle {
 // ─── EvolutionCard ────────────────────────────────────────────────────────────
 const EvolutionCard = () => {
   return (
-    <div className="w-[450px] h-[410px] bg-[#FFFFFF] rounded-xl p-7 flex flex-col relative font-sans shadow-[0_10px_40px_rgba(51,94,206,0.25)]">
+    <div className="w-[450px] h-[410px] bg-[#FFFFFF]  rounded-xl p-7  flex flex-col relative font-sans shadow-[0_10px_40px_rgba(51,94,206,0.25)]">
 
       {/* Header */}
       <div className="mb-3">
@@ -222,101 +221,97 @@ const AboutHero = () => {
 
   return (
     <div className="relative z-10 shadow-[0_5px_10px_rgba(0,0,0,0.1)]">
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#ffffff] pt-14 pb-5 lg:pt-17 ">
-      {/* Particle Canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-0 pointer-events-none opacity-50"
-      />
+      <section className="relative w-full bg-[#FAFBFD] pt-28 lg:pt-36 pb-16 lg:pb-24 overflow-hidden">      {/* Particle Canvas */}
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 z-0 pointer-events-none opacity-50"
+        />
 
-      {/* Gradient Blobs */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#0EBAB0]/10 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[#073A53]/10 rounded-full blur-[120px] animate-pulse" />
+        {/* Gradient Blobs */}
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#0EBAB0]/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[#073A53]/10 rounded-full blur-[120px] animate-pulse" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-8">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-8">
 
-          {/* ── LEFT CONTENT ── */}
-          <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-1 lg:basis-1/2 text-center lg:text-left"
-          >
+            {/* ── LEFT CONTENT ── */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 mb-8"
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="flex-1 lg:basis-1/2 text-center lg:text-left"
             >
-              <span className="text-[#666666] font-['Poppins'] font-medium tracking-widest text-[18.91px] md:text-[15px] mt-4">
-                Who We Are
-              </span>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="inline-flex items-center gap-2 mb-8"
+              >
+                <span className="text-[#666666] font-['Poppins'] font-medium tracking-widest text-[18.91px] md:text-[15px]  -mb-3 mt-4 ml-1 ">
+                  Who We Are
+                </span>
+              </motion.div>
+
+              <motion.h1 className="text-[36px] sm:text-[46px] lg:text-[60px] font-['Poppins'] font-bold text-[#666666] leading-[1.1] tracking-tighter">
+                Driven by <br /> Innovation,
+                <br />
+                <TypewriterEffect
+                  words={[
+                    "Defined by Excellence",
+                    "Engineering the Future",
+                    "Built for Growth",
+                  ]}
+                />
+              </motion.h1>
+
+              <p className="text-[15px] md:text-[21px] font-['Poppins'] font-medium mb-10 leading-relaxed mx-auto lg:mx-0 max-w-2xl text-[#666666] mt-2">
+                Your trusted technology partner for innovative digital solutions that drive real business impact.
+              </p>
+
+              <div className="flex flex-wrap justify-center lg:justify-start gap-5">
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="inline-flex items-center justify-center px-8 h-14 bg-[#355ED1] text-white font-semibold rounded-xl shadow-[0_20px_40px_-10px_rgba(7,58,83,0.3)] transition-all uppercase tracking-wider text-s"
+                >
+                  <Link href="/schedule-call">
+                    <span>Get In Touch →</span>
+                  </Link>
+                </motion.button>
+
+                <motion.button
+                  whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() =>
+                    document
+                      .getElementById("team")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="inline-flex items-center justify-center px-8 h-14 border-2 border-[#666666] text-[#666666] font-semibold rounded-xl hover:text-[#335ECE] transition-all uppercase tracking-wider text-s"
+                >
+                  Meet Our Team
+                </motion.button>
+              </div>
             </motion.div>
 
-            <motion.h1 className="text-[50px] md:text-[60px] font-['Poppins'] font-bold text-[#666666] leading-[1.1] tracking-tighter">
-              Driven by <br /> Innovation,
-              <br />
-              <TypewriterEffect
-                words={[
-                  "Defined by Excellence",
-                  "Engineering the Future",
-                  "Built for Growth",
-                ]}
-              />
-            </motion.h1>
+            {/* ── RIGHT SIDE: EVOLUTION CARD ── */}
+            <motion.div
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="flex-1 lg:basis-1/2 hidden lg:flex items-center justify-center mt-12 lg:mt-0"
+            >
+              {/* ml-16 compensates for the badge's left-[-64px] offset so card appears centered */}
+              <div className="ml-12 mt-5 mb-8">
+                <EvolutionCard />
+              </div>
+            </motion.div>
 
-            <p className="text-[15px] md:text-[21px] font-['Poppins'] font-medium mb-10 leading-relaxed mx-auto lg:mx-0 max-w-2xl text-[#666666] mt-2">
-              Your trusted technology partner for innovative digital solutions that drive real business impact.
-            </p>
-
-            <div className="flex flex-wrap justify-center lg:justify-start gap-5">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -5 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-10 py-5 bg-[#355ED1] text-white font-semibold rounded-xl shadow-[0_20px_40px_-10px_rgba(7,58,83,0.3)] transition-all uppercase tracking-wider text-s"
-              >
-                <Link href="/schedule-call">
-                  <span>Get In Touch →</span>
-                </Link>
-              </motion.button>
-
-              <motion.button
-                whileHover={{
-                  scale: 1.05,
-                  backgroundColor: "rgba(51,94,206,0.1)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() =>
-                  document
-                    .getElementById("team")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="px-10 py-5 border-2 border-[#666666] text-[#666666] font-semibold rounded-xl transition-all uppercase tracking-wider text-s"
-              >
-                Meet Our Team
-              </motion.button>
-            </div>
-          </motion.div>
-
-          {/* ── RIGHT SIDE: EVOLUTION CARD ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-1 lg:basis-1/2 hidden lg:flex items-center justify-center mt-12 lg:mt-0"
-          >
-            {/* ml-16 compensates for the badge's left-[-64px] offset so card appears centered */}
-            <div className="ml-12 mt-5 mb-8">
-              <EvolutionCard />
-            </div>
-          </motion.div>
-
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
   );
 };

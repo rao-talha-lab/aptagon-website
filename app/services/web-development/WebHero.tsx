@@ -37,16 +37,22 @@ const TypewriterEffect = ({ words }: { words: string[] }) => {
     <span className="text-[#335ECE]">
       {`${words[index].substring(0, subIndex)}`}
       <span
-        className={`inline-block w-1 h-10 md:h-14 ml-2 bg-[#666666] align-middle ${blink ? "opacity-100" : "opacity-0"
-          }`}
+        className={`inline-block w-1 h-10 md:h-14 ml-2 bg-[#666666] align-middle ${
+          blink ? "opacity-100" : "opacity-0"
+        }`}
       />
     </span>
   );
 };
 
 interface Particle {
-  x: number; y: number; vx: number; vy: number;
-  size: number; opacity: number; glow: number;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  size: number;
+  opacity: number;
+  glow: number;
 }
 
 /* ── Counter Hook ── */
@@ -82,15 +88,14 @@ const WebDevelopmentDashboard = ({ inView }: { inView: boolean }) => {
               <Image src="/hero-right/bluedot.svg" alt="Blue" width={12} height={12} className="object-contain" />
               <Image src="/hero-right/graydot.svg" alt="Gray" width={12} height={12} className="object-contain" />
             </div>
-            <div className="flex-1 max-w-[260px] h-6 -ml-11 bg-[#FFFFFF] rounded-[5px] shadow-inner border border-[#6E6E6E]/50" />
-            <div className="text-[#335EC1] font-['Poppins'] -ml-20 text-[18.91px] tracking-wider flex-shrink-0">
+            <div className="flex-1 max-w-[220px] h-6 bg-[#FFFFFF] rounded-[5px] shadow-inner border border-[#6E6E6E]/50" />
+            <div className="text-[#335EC1] font-['Poppins'] text-[18px] font-bold flex-shrink-0">
               {"</>"}
             </div>
           </div>
 
           {/* Inner card area */}
           <div className="px-5 pt-5 pb-5 flex flex-col gap-4 bg-[#FFFFFF]">
-
             {/* 2. Hero Cards Row */}
             <div className="grid grid-cols-3 gap-3.5">
               <div className="col-span-2 bg-gradient-to-r from-[#355ED1] to-[#0b3cb8] rounded-[20px] p-5 flex flex-col justify-between text-[#FFFFFF] min-h-[130px] relative overflow-hidden">
@@ -102,9 +107,16 @@ const WebDevelopmentDashboard = ({ inView }: { inView: boolean }) => {
                 </div>
                 <button className="w-max bg-[#FFFFFF]/20 text-white font-semibold text-[12px] px-4 py-2 rounded-sm flex items-center gap-1.5 mt-2">
                   Live Preview
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" strokeWidth="2.5"
-                    strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <line x1="7" y1="17" x2="17" y2="7" />
                     <polyline points="7 7 17 7 17 17" />
                   </svg>
@@ -112,11 +124,12 @@ const WebDevelopmentDashboard = ({ inView }: { inView: boolean }) => {
               </div>
 
               <div className="bg-[#002892]/10 rounded-[24px] p-5 flex flex-col justify-between text-[#335ECE] min-h-[130px] overflow-hidden">
-                <div className="w-9 h-9 -ml-2 rounded-xl flex items-center justify-center p-1.5">
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center p-1.5">
                   <Image
                     src="/hero-right/modular.svg"
                     alt="Modular Layout"
-                    width={36} height={36}
+                    width={36}
+                    height={36}
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -141,16 +154,20 @@ const WebDevelopmentDashboard = ({ inView }: { inView: boolean }) => {
                   transition={{ duration: 0.6, delay: 0.5 + i * 0.12 }}
                   className="bg-[#FFFFFF] border border-[#666666]/70 rounded-[20px] p-4 shadow-sm flex flex-col justify-center min-h-[78px]"
                 >
-                  <div className="text-[20px] font-bold text-[#335ECE] tracking-tight leading-none">{m.value}</div>
-                  <div className="text-[12px] font-semibold text-[#666666] uppercase tracking-wider mt-2">{m.label}</div>
+                  <div className="text-[20px] font-bold text-[#335ECE] tracking-tight leading-none">
+                    {m.value}
+                  </div>
+                  <div className="text-[12px] font-semibold text-[#666666] uppercase tracking-wider mt-2">
+                    {m.label}
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
 
           {/* 4. Bottom Tech Stack Belt */}
-          <div className="w-full bg-[#335ED1] py-4 flex items-center justify-center gap-3 text-[#FFFFFF] text-[10px] tracking-wide mt-auto">
-            <div className="text-[#FFFFFF] -ml-40">{"</>"}</div>
+          <div className="w-full bg-[#335ED1] py-4 px-6 flex items-center justify-between text-[#FFFFFF] text-[11px] font-medium tracking-wide mt-auto">
+            <span className="font-bold">{"</>"}</span>
             <span>React</span>
             <span>•</span>
             <span>Next</span>
@@ -263,13 +280,12 @@ const WebDevHero = () => {
 
         <div className="relative z-10 container mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-16">
-
             {/* ── Left Content ── */}
             <div className="flex-1 max-w-3xl text-left lg:mt-15 pt-30 lg:pt-20 pb-5 lg:pb-10">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="inline-block mb-5 px-3 py-1."
+                className="inline-block mb-5 px-3 py-1"
               >
                 <p className="text-[#666666] font-['Poppins'] font-semibold tracking-wide text-[15px]">
                   Web Development
@@ -281,7 +297,8 @@ const WebDevHero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-3xl md:text-[55px] font-black text-[#666666] dark:text-white leading-[1.25] mb-2 tracking-tighter"
               >
-                Crafting Web <br />Experiences That <br />
+                Crafting Web <br />
+                Experiences That <br />
                 <TypewriterEffect
                   words={[
                     "Boost Performance",
@@ -296,17 +313,16 @@ const WebDevHero = () => {
                 animate={{ opacity: 1 }}
                 className="text-[20px] text-[#666666] dark:text-slate-400 mb-6 leading-relaxed font-medium"
               >
-                Crafting high-performance websites that deliver seamless experiences and drive business growth.
+                Crafting high-performance websites that deliver seamless
+                experiences and drive business growth.
               </motion.p>
 
               {/* ── Buttons ── */}
               <div className="flex flex-wrap gap-5">
                 <Link href="/schedule-call">
                   <motion.button
-                    whileHover={{
-                      scale: 1.05,
-                    }}
-                    className="px-10 py-5 bg-[#335ECE] text-white font-semibold rounded-[10px] shadow-lg lg:shadow-2xl text-s tracking-wide group cursor-pointer"
+                    whileHover={{ scale: 1.05 }}
+                    className="px-8 h-14 bg-[#335ECE] text-white font-semibold rounded-[10px] shadow-lg lg:shadow-2xl text-s tracking-wide group cursor-pointer"
                   >
                     Let&apos;s Collaborate
                     <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
@@ -315,9 +331,9 @@ const WebDevHero = () => {
                   </motion.button>
                 </Link>
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                 whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
                   onClick={handleExploreClick}
-                  className="px-10 py-5 border-1 border-[#666666] dark:border-white/10 text-[#666666] dark:text-white font-semibold rounded-[10px] text-s tracking-wide cursor-pointer"
+                  className="px-8 h-14 border-[1.5px] border-[#666666] dark:border-white/10 text-[#666666] dark:text-white font-semibold rounded-[10px] text-s tracking-wide hover:text-[#335ECE] cursor-pointer"
                 >
                   Explore Services
                 </motion.button>
@@ -328,7 +344,6 @@ const WebDevHero = () => {
             <div className="flex-1 flex items-center justify-center w-full lg:mt-20 hidden lg:flex">
               <WebDevelopmentDashboard inView={inView} />
             </div>
-
           </div>
         </div>
       </section>

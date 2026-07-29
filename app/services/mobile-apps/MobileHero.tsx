@@ -298,7 +298,7 @@ const MobileHero: React.FC<AnimatedHeroSectionProps> = ({
                     whileHover={{
                       scale: 1.05,
                     }}
-                    className="px-10 py-5 bg-[#335ECE] text-white font-semibold rounded-[10px] shadow-lg lg:shadow-2xl text-s tracking-wide group cursor-pointer"
+                    className="px-8 h-14 bg-[#335ECE] text-white font-semibold rounded-[10px] shadow-lg lg:shadow-2xl text-s tracking-wide group cursor-pointer"
                   >
                     Let&apos;s Collaborate
                     <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
@@ -307,9 +307,9 @@ const MobileHero: React.FC<AnimatedHeroSectionProps> = ({
                   </motion.button>
                 </Link>
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
                   onClick={handleExploreClick}
-                  className="px-10 py-5 border-1 border-[#666666] dark:border-white/10 text-[#666666] dark:text-white font-semibold rounded-[10px] text-s tracking-wide cursor-pointer"
+                    className="inline-flex items-center justify-center px-8 h-14 text-[#666666] text-[16px] border-[1.5px] border-[#666666] font-medium font-inter rounded-[10px] hover:text-[#335ECE] transition-all"
                 >
                   Explore Services
                 </motion.button>

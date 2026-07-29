@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,22 +13,28 @@ const PortfolioPage = () => {
 
   const allProjects = caseStudies;
 
-  const categories = [
-    "All",
-    ...Array.from(new Set(allProjects.map((p) => p.category))),
-  ];
+  const categories = useMemo(
+    () => ["All", ...Array.from(new Set(allProjects.map((p) => p.category)))],
+    [allProjects]
+  );
 
-  const filteredProjects =
-    activeCategory === "All"
-      ? allProjects
-      : allProjects.filter((p) => p.category === activeCategory);
+  const filteredProjects = useMemo(
+    () =>
+      activeCategory === "All"
+        ? allProjects
+        : allProjects.filter((p) => p.category === activeCategory),
+    [activeCategory, allProjects]
+  );
 
-  // Determine featured projects based on slug
-  const featuredProjects = [
-    allProjects.find((p) => p.slug === "northwave-commerce"),
-    allProjects.find((p) => p.slug === "finlight-personal-finance"),
-    allProjects.find((p) => p.slug === "savor-restaurant-booking"),
-  ].filter((p): p is (typeof allProjects)[0] => Boolean(p));
+  const featuredProjects = useMemo(
+    () =>
+      [
+        allProjects.find((p) => p.slug === "northwave-commerce"),
+        allProjects.find((p) => p.slug === "finlight-personal-finance"),
+        allProjects.find((p) => p.slug === "savor-restaurant-booking"),
+      ].filter((p): p is (typeof allProjects)[0] => Boolean(p)),
+    [allProjects]
+  );
 
   // Card images mapping
   const cardImages: Record<string, string> = {
@@ -62,7 +68,6 @@ const PortfolioPage = () => {
     "lumen-social-campaign": { fit: "object-contain", padding: "p-4" },
     "savor-restaurant-booking": { fit: "object-contain", padding: "p-4" },
   };
-
 
   const featuredImages: Record<number, string> = {
     0: "/portfolio-images/Card-images/card-img-1.png",
@@ -111,7 +116,7 @@ const PortfolioPage = () => {
               >
                 <motion.p
                   variants={itemVariants}
-                  className="inline-block px-5 py-1.5 bg-[#002892]/10 border-1 border-[#335ECE] text-[#335ECE] font-semibold text-sm md:text-base rounded-full mb-4"
+                  className="inline-block px-5 py-1.5 bg-[#002892]/10 border border-[#335ECE] text-[#335ECE] font-semibold text-sm md:text-base rounded-full mb-4"
                 >
                   Portfolio
                 </motion.p>
@@ -214,33 +219,34 @@ const PortfolioPage = () => {
               viewport={{ once: true, margin: "-100px" }}
               className="mb-12"
             >
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-                <div>
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#335ECE] dark:text-white mb-2">
-                    All Case Studies
-                  </h2>
-                  <p className="text-[#666666] dark:text-gray-400 text-sm md:text-base">
-                    Filter by what you're curious about.
-                  </p>
-                </div>
+<div className="flex flex-col xl:flex-row xl:items-center justify-between gap-26 mb-8">
+  {/* Title & Subtitle */}
+  <div className="shrink-0">
+    <h2 className="text-2xl md:text-3xl lg:text-2xl font-bold text-[#335ECE] dark:text-white mb-2">
+      All Case Studies
+    </h2>
+    <p className="text-[#666666] dark:text-gray-400 text-sm md:text-base">
+      Filter by what you're curious about.
+    </p>
+  </div>
 
-                {/* Filter Buttons */}
-                <div className="flex flex-wrap gap-2 md:gap-3 justify-start md:justify-end">
-                  {categories.map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => setActiveCategory(category)}
-                      className={`px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
-                        activeCategory === category
-                          ? "bg-[#335ECE] text-white"
-                          : "border border-[#335ECE] text-[#335ECE] hover:bg-[#335ECE] hover:text-white"
-                      }`}
-                    >
-                      {category}
-                    </button>
-                  ))}
-                </div>
-              </div>
+  {/* Filter Buttons - Single Line (No Wrap) */}
+  <div className="flex items-center gap-2 md:gap-3 overflow-x-auto scrollbar-none py-1 pr-16 min-w-0">
+    {categories.map((category) => (
+      <button
+        key={category}
+        onClick={() => setActiveCategory(category)}
+        className={`whitespace-nowrap shrink-0 px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
+          activeCategory === category
+            ? "bg-[#335ECE] text-white"
+            : "border border-[#335ECE] text-[#335ECE] hover:bg-[#335ECE] hover:text-white"
+        }`}
+      >
+        {category}
+      </button>
+    ))}
+  </div>
+</div>
 
               {/* Grid of Projects */}
               <motion.div
@@ -499,10 +505,10 @@ const PortfolioPage = () => {
                     <p className="text-[#000000]/40 dark:text-gray-400 text-[18px] mb-6 leading-relaxed">
                       "{testimonial.quote}"
                     </p>
-                    <p className="font-semibold text-[#335ECE] dark:text-white text-s">
+                    <p className="font-semibold text-[#335ECE] dark:text-white text-sm">
                       {testimonial.name}
                     </p>
-                    <p className="text-[#000000]/40 dark:text-gray-400 text-s">
+                    <p className="text-[#000000]/40 dark:text-gray-400 text-sm">
                       {testimonial.title}
                     </p>
                   </motion.div>

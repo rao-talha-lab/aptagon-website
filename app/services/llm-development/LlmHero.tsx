@@ -461,66 +461,66 @@ const LlmHero: React.FC<AnimatedHeroSectionProps> = ({
     <div className="relative z-30 shadow-[0_5px_15px_rgba(0,0,0,0.05)]">
 
 
-    <section className={`relative flex items-center overflow-hidden bg-[#FFFFFF] ${height}`}>
-      <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
-      <div className="relative lg:mt-10 z-10 container mx-auto px-6 pt-20 lg:pt-10">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          className={`flex flex-col lg:flex-row items-center gap-12`}
-        >
-          <div className="max-w-3xl flex flex-col items-start">
-            <motion.p variants={itemVariants} className="mb-3 text-[15px] text-[#666666] font-['Poppins'] font-semibold tracking-wide">
-              {tagline}
-            </motion.p>
+      <section className={`relative flex items-center overflow-hidden bg-[#FFFFFF] ${height}`}>
+        <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
+        <div className="relative lg:mt-10 z-10 container mx-auto px-6 pt-20 lg:pt-10">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            className={`flex flex-col lg:flex-row items-center gap-12`}
+          >
+            <div className="max-w-3xl flex flex-col items-start">
+              <motion.p variants={itemVariants} className="mb-3 text-[15px] text-[#666666] font-['Poppins'] font-semibold tracking-wide">
+                {tagline}
+              </motion.p>
 
-            <motion.h1
-              variants={itemVariants}
-              className="text-4xl md:text-[50px] font-black text-[#666666] leading-[1.2] mb-6 tracking-tighter"
-            >
-              Smart Business, <br /> Powered{" "}
-              <TypewriterEffect
-                words={[
-                  "by LLMs",
-                  "by AI Agents",
-                  "by Automations"
-                ]}
-              />
-            </motion.h1>
+              <motion.h1
+                variants={itemVariants}
+                className="text-4xl md:text-[50px] font-black text-[#666666] leading-[1.2] mb-6 tracking-tighter"
+              >
+                Smart Business, <br /> Powered{" "}
+                <TypewriterEffect
+                  words={[
+                    "by LLMs",
+                    "by AI Agents",
+                    "by Automations"
+                  ]}
+                />
+              </motion.h1>
 
-            <motion.p variants={itemVariants} className="text-[20px] text-[#666666] mb-10 leading-wide">
-              {description}
-            </motion.p>
+              <motion.p variants={itemVariants} className="text-[20px] text-[#666666] mb-10 leading-wide">
+                {description}
+              </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-5">
-              <Link href="/schedule-call">
-                <motion.button
-                  whileHover={{
-                    scale: 1.05,
-                  }}
-                  className="px-10 py-5 bg-[#335ECE] text-white font-semibold rounded-[10px] shadow-lg lg:shadow-2xl text-s tracking-wide group cursor-pointer"
+              <motion.div variants={itemVariants} className="flex flex-wrap gap-5">
+                <Link href="/schedule-call">
+                  <motion.button
+                    whileHover={{
+                      scale: 1.05,
+                    }}
+                    className="px-8 h-14 bg-[#335ECE] text-white font-semibold rounded-[10px] shadow-lg lg:shadow-2xl text-s tracking-wide group cursor-pointer"
                   >
-                  Let&apos;s Collaborate
-                  <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </motion.button>
-              </Link>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                onClick={handleExploreClick}
-                className="px-10 py-5 border-1 border-[#666666] dark:border-white/10 text-[#666666] dark:text-white font-semibold rounded-[10px] text-s tracking-wide cursor-pointer"
+                    Let&apos;s Collaborate
+                    <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
+                      →
+                    </span>
+                  </motion.button>
+                </Link>
+                <motion.button
+                  whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
+                  onClick={handleExploreClick}
+                    className="inline-flex items-center justify-center px-8 h-14 text-[#666666] text-[16px] border-[1.5px] border-[#666666] font-medium font-inter rounded-[10px] hover:text-[#335ECE] transition-all"
                 >
-                Explore Services
-              </motion.button>
-            </motion.div>
-          </div>
+                  Explore Services
+                </motion.button>
+              </motion.div>
+            </div>
 
-          {alignment === "left" && <LLMEngineCardSection />}
-        </motion.div>
-      </div>
-    </section>
+            {alignment === "left" && <LLMEngineCardSection />}
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 };

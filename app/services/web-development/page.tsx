@@ -1,12 +1,11 @@
+import React from "react";
 import Footer from "@/app/components/Footer";
-import AnimatedHeroSection from "@/app/components/Herosection";
 import WebHero from "./WebHero";
 import TransparentNavbar from "@/app/components/Navbar";
 import FeatureSection from "@/app/components/Services-Components/FeatureSection";
 import InfiniteMovingCards from "@/app/components/Services-Components/InfiniteServiceCards";
 import CoreTechnologies from "@/app/components/CoreTechnologies";
 import TwoSectionCTA from "@/app/components/Services-Components/TwoSectionCTA";
-import React from "react";
 
 const cardsData = [
   {
@@ -93,7 +92,7 @@ const Infintecards = [
   },
 ];
 
-function page() {
+export default function Page() {
   return (
     <>
       <TransparentNavbar />
@@ -103,7 +102,7 @@ function page() {
       <TwoSectionCTA
         tagline="Custom Web Development"
         heading="Build Dynamic, Scalable, and High-Performance Web Applications"
-        description= "At Aptagon Technologies, we create custom web solutions that go beyond aesthetics — built to perform seamlessly across all devices and platforms. From responsive websites to enterprise-grade applications, our team delivers clean, efficient code, intuitive interfaces, and future-ready architectures. Whether you’re building from scratch or upgrading an existing system, we ensure your web solution enhances engagement, streamlines operations, and scales effortlessly with your business growth."
+        description="At Aptagon Technologies, we create custom web solutions that go beyond aesthetics — built to perform seamlessly across all devices and platforms. From responsive websites to enterprise-grade applications, our team delivers clean, efficient code, intuitive interfaces, and future-ready architectures. Whether you’re building from scratch or upgrading an existing system, we ensure your web solution enhances engagement, streamlines operations, and scales effortlessly with your business growth."
         imageSrc="/services-images/web.jpg"
         buttonLink="/reach-us"
       />
@@ -127,5 +126,3 @@ function page() {
     </>
   );
 }
-
-export default page;

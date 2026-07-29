@@ -40,17 +40,17 @@ export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="w-full bg-[#FAFAFA] dark:bg-[#121212] py-16 px-4 sm:px-6 transition-colors duration-300">
-      <div className="mx-auto max-w-7xl">
+    <section className="w-full bg-[#FAFAFA] dark:bg-[#121212] py-16 px-6 sm:px-12 transition-colors duration-300">
+      <div className="mx-auto max-w-5xl">
         
         {/* HEADING */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
-          className="text-center mb-10"
+          className="text-center mb-12"
         >
-          <h2 className="text-[30px] sm:text-[36px] lg:text-[46px] font-inter font-bold text-[#355ECE] tracking-tight">
+          <h2 className="text-[32px] sm:text-[42px] lg:text-[46px] font-inter font-bold text-[#355ECE] tracking-tight">
             Frequently Asked Questions
           </h2>
         </motion.div>
@@ -63,28 +63,36 @@ export default function FaqSection() {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{
                   duration: 0.3,
-                  delay: index * 0.05,
+                  delay: index * 0.04,
                   ease: "easeOut",
                 }}
                 viewport={{ once: false, amount: 0.2 }}
-                className="bg-white dark:bg-[#1E1E1E] rounded-lg border border-gray-100 dark:border-[#2D2D2D] shadow-[0_16px_20px_-8px_rgba(0,0,0,0.15)] overflow-hidden transition-shadow duration-200 hover:shadow-[0_18px_24px_-6px_rgba(0,0,0,0.2)]"
+                className="bg-white dark:bg-[#1E1E1E] rounded-md border border-gray-100/80 dark:border-[#2D2D2D] shadow-[0_4px_16px_rgba(0,0,0,0.06)] overflow-hidden transition-shadow duration-200 hover:shadow-[0_6px_20px_rgba(0,0,0,0.09)]"
               >
                 {/* QUESTION BUTTON */}
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between px-6 sm:px-8 py-5 text-left focus:outline-none cursor-pointer"
+                  className="flex w-full items-center justify-between px-8 py-5 text-left focus:outline-none cursor-pointer"
                 >
-                  <span className="text-[16px] sm:text-[18px] font-inter font-bold text-[#355ECE] leading-snug">
+                  <span className="text-[16px] sm:text-[17px] font-inter font-semibold text-[#355ECE] leading-snug pr-4">
                     {faq.question}
                   </span>
 
-                  {/* TOGGLE ICON (+ / ✕) */}
-                  <span className="text-[#355ED1] text-2xl font-bold shrink-0 ml-4 transition-transform duration-200">
-                    {isOpen ? "✕" : "+"}
+                  {/* TOGGLE ICON (+ / ✕) WITH EXACT EQUAL SVG SIZE */}
+                  <span className="shrink-0 ml-2 w-6 h-6 flex items-center justify-center text-[#335ECE] transition-transform duration-200">
+                    {isOpen ? (
+                      <svg className="w-5 h-5 stroke-current" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M18 6L6 18M6 6l12 12" />
+                      </svg>
+                    ) : (
+                      <svg className="w-5 h-5 stroke-current" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 5v14M5 12h14" />
+                      </svg>
+                    )}
                   </span>
                 </button>
 
@@ -108,8 +116,8 @@ export default function FaqSection() {
                       }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 sm:px-8 pb-6 pt-1">
-                        <p className="text-[16px] sm:text-[16px] font-inter leading-relaxed text-[#666666] dark:text-gray-300 font-regular">
+                      <div className="px-8 pb-5 pt-0">
+                        <p className="text-[14px] sm:text-[15px] font-inter leading-relaxed text-[#666666] dark:text-gray-300 font-normal">
                           {faq.answer}
                         </p>
                       </div>

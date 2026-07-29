@@ -17,13 +17,13 @@ const star = "/hero-right/star.svg";
 interface TypewriterEffectProps {
   words: string[];
   firstWordColor?: string;
-  restColor?: string; 
+  restColor?: string;
 }
 
-const TypewriterEffect = ({ 
-  words, 
-  firstWordColor = "text-[#666666]", 
-  restColor = "text-[#335ECE]"     
+const TypewriterEffect = ({
+  words,
+  firstWordColor = "text-[#666666]",
+  restColor = "text-[#335ECE]"
 }: TypewriterEffectProps) => {
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
@@ -54,16 +54,15 @@ const TypewriterEffect = ({
 
   const currentFullText = words[index];
   const typedText = currentFullText.substring(0, subIndex);
-  
+
   const firstSpaceIndex = currentFullText.indexOf(" ");
-  
+
   let firstWordTyped = "";
   let restOfTextTyped = "";
 
   if (firstSpaceIndex === -1) {
     firstWordTyped = typedText;
   } else {
-
     const firstWordTotalLength = firstSpaceIndex + 1;
 
     if (subIndex <= firstWordTotalLength) {
@@ -75,15 +74,12 @@ const TypewriterEffect = ({
   }
 
   return (
-<span className="inline-block text-[38px] font-bold md:text-[49px] lg:text-[55px] ... gap-3">
-        <span className={firstWordColor}>{firstWordTyped}</span>
-
+    <span className="inline-block whitespace-nowrap text-[36px] md:text-[48px] lg:text-[54px] font-bold">
+      <span className={firstWordColor}>{firstWordTyped}</span>
       <span className={restColor}>{restOfTextTyped}</span>
-
       <span
-        className={`inline-block w-1 h-10 md:h-14 ml-1 bg-[#666666] align-middle ${
-          blink ? "opacity-100" : "opacity-0"
-        }`}
+        className={`inline-block w-1 h-8 md:h-12 ml-1 bg-[#666666] align-middle ${blink ? "opacity-100" : "opacity-0"
+          }`}
       />
     </span>
   );
@@ -150,33 +146,28 @@ const DeliveryItem = ({
 
 const AboutSection = () => {
   return (
-    <div className="relative w-full max-w-[440px] xl:max-w-[460px] bg-[#FAFAFA] rounded-[28px] border border-gray-200/60 p-6 shadow-[0_10px_35px_rgba(1,164,154,0.12)]">
-
-      {/* TECH TAGS */}
-      <div className="absolute -right-5 top-[230px] flex flex-col gap-1.5 z-30">
+    <div className="relative w-full max-w-[440px] xl:max-w-[460px] bg-[#FAFAFA] rounded-[28px] border border-gray-200/60 p-6 shadow-[0_10px_35px_rgba(1,164,154,0.12)] -translate-x-6 lg:-translate-x-10">      {/* TECH TAGS */}
+      <div className="absolute -right-4 top-[242px] flex flex-col gap-1.5 z-30">
         <TechTag label="React" />
         <TechTag label="Node" />
         <TechTag label="AI" />
       </div>
 
-      {/* CARD */}
-      {/* <div className="relative w-[340px] flex-col items-center justify-center bg-[#FAFAFA] h-auto p-2"> */}
-
-        {/* TOP BADGE */}
-        <div className="absolute -top-4 -left-6 flex items-center gap-2 px-3.5 py-2 bg-[#FAFAFA] border-[0.9px] border-[#073A53]/20 shadow-[0_4px_16px_rgba(1,164,154,0.18)] rounded-[11.5px] z-20">
-          <Image src={star} alt="Star rating" width={28} height={28} className="w-7 h-7" />
-          <div className="flex flex-col leading-tight">
-            <span className="font-inter text-[11.5px] font-extrabold text-[#335ECE]">4.9 / 5.0</span>
-            <span className="text-[10px] font-medium font-inter text-[#666666]">200+ Reviews</span>
-          </div>
+      {/* TOP BADGE */}
+      <div className="absolute -top-4 -left-6 flex items-center gap-2 px-3.5 py-2 bg-[#FAFAFA] border-[0.9px] border-[#073A53]/20 shadow-[0_4px_16px_rgba(1,164,154,0.18)] rounded-[11.5px] z-20">
+        <Image src={star} alt="Star rating" width={28} height={28} className="w-7 h-7" />
+        <div className="flex flex-col leading-tight">
+          <span className="font-inter text-[11.5px] font-extrabold text-[#335ECE]">4.9 / 5.0</span>
+          <span className="text-[10px] font-medium font-inter text-[#666666]">200+ Reviews</span>
         </div>
+      </div>
       <div className="w-full flex flex-col gap-2">
         {/* HEADER */}
-        <div className="pt-2">
-          <p className="font-['Poppins'] text-[12.7px] font-bold text-[#666666] uppercase tracking-wider">
+        <div className="pt-4">
+          <p className="font-['Poppins'] text-[10px] font-bold text-[#666666] uppercase tracking-wider">
             Aptagon Studio
           </p>
-          <h2 className="font-['Poppins'] text-[17.26px] font-bold mt-0.5 text-[#335ECE]">
+          <h2 className="font-['Poppins'] text-[16px] font-bold  text-[#335ECE]">
             Engineering Digital Impact
           </h2>
         </div>
@@ -207,7 +198,7 @@ const AboutSection = () => {
               </p>
             </div>
             <div className="flex items-center gap-1 text-[10px] font-semibold text-[#002892]">
-              <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 fill-none stroke-[#002892] stroke-2" strokeLinecap="round" strokeLinejoin="round">
+              <svg viewBox="0 0 24 24" className="w-3 h-3 fill-none stroke-[#002892] stroke-2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
                 <polyline points="17 6 23 6 23 12" />
               </svg>
@@ -241,13 +232,12 @@ const AboutSection = () => {
           <DeliveryItem icon={shipped} status="Shipped" title="AI Support Bot" time="1h ago" />
           <DeliveryItem icon={launched} status="Launched" title="E-commerce App" time="Today" />
         </div>
-        </div>
-      {/* </div> */}
+      </div>
 
       {/* BOTTOM BANNER */}
-      <div className="absolute -bottom-5 -right-6 px-4 py-2 bg-[#FAFAFA] border border-[#073A53]/20 rounded-xl flex items-center gap-2.5 z-30 shadow-[0_4px_16px_rgba(1,164,154,0.18)]">
+      <div className="absolute -bottom-1 -right-14 px-4 py-2 bg-[#FAFAFA] border border-[#073A53]/20 rounded-xl flex items-center gap-2.5 z-30 shadow-[0_4px_16px_rgba(1,164,154,0.18)]">
         <Image src={star} alt="Support" width={24} height={24} className="w-6 h-6" />
-        <div className="flex flex-col leading-tight">
+        <div className="flex flex-col leading-tight ">
           <span className="font-['Inter'] text-[11.5px] font-extrabold text-[#002892]">Systems Online</span>
           <span className="font-['Poppins'] text-[8px] font-medium text-[#666666] mt-1">24/7 Global Support</span>
         </div>
@@ -300,8 +290,8 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
   showSearchBar = false,
   searchPlaceholder = "Search...",
   searchValue = "",
-  onSearchChange = () => {},
-  onSearchSubmit = () => {},
+  onSearchChange = () => { },
+  onSearchSubmit = () => { },
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
@@ -309,7 +299,6 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
   const handleExploreClick = () => {
     window.dispatchEvent(new CustomEvent("openNavbarDropdown"));
   };
-
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -424,7 +413,7 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
   };
 
   return (
-    <section className={`relative flex items-center overflow-hidden bg-white h-[800px] `}>
+    <section className={`relative flex items-center overflow-hidden bg-white ${height} `}>
       <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-10 py-15">
@@ -435,33 +424,39 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
           className="flex flex-col lg:flex-row items-center justify-center gap-6 xl:gap-10"
         >
 
-          {/* ── LEFT SIDE (unchanged) ── */}
-          <div className="w-full lg:w-[52%] flex flex-col items-start shrink-0">
+          {/* ── LEFT SIDE ── */}
+          {/* ── LEFT SIDE ── */}
+          <div className="w-full lg:w-[56%] flex flex-col items-start shrink-0 pr-4 -mt-14 lg:-mt-22">
             <motion.p
               variants={itemVariants}
-              className="font-['Poppins'] text-[18px] mb-3 text-[#666666] font-medium "
+              className="font-['Poppins'] text-[16px] mb-6 text-[#666666] font-medium"
             >
               {tagline}
             </motion.p>
 
             <motion.h1
               variants={itemVariants}
-              className="text-[30px] md:text-[44px] lg:text-[50px] font-['Poppins'] font-bold text-[#355ED1] mb-2 tracking-tighter leading-none"
+              className="text-[34px] md:text-[44px] lg:text-[50px] font-['Poppins'] font-bold text-[#355ED1] mb-3 tracking-tighter leading-tight"
             >
               We Build Digital <br />
-              <span className="lg:whitespace-nowrap">
-              <TypewriterEffect
-                words={[
-                  "Solutions That Matter",
-                  "Ecosystems That Scale",
-                  "Experiences That Inspire",
-                ]}
-              />
+              <span className="block overflow-visible">
+                <TypewriterEffect
+                  words={[
+                    "Solutions That Matter",
+                    "Ecosystems That Scale",
+                    "Experiences That Inspire",
+                  ]}
+                />
               </span>
             </motion.h1>
 
-            <motion.p variants={itemVariants} className="text-[18px] lg:text-[19px] font-['Poppins'] text-[#666666] font-medium mb-8 max-w-xl text-justify">
-              {description}
+            {/* FIXED PARAGRAPH BREAK */}
+            <motion.p
+              variants={itemVariants}
+              className="text-[17px] lg:text-[19px] font-['Poppins'] text-[#666666] font-medium mb-8 text-left leading-relaxed max-w-full"
+            >
+              Transforming businesses with innovative technology solutions, strategic <br className="hidden lg:block" />
+              consulting, and world-class digital experiences.
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
@@ -487,15 +482,16 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
                   <motion.a
                     href={primaryCtaHref}
                     whileHover={{ scale: 1.05 }}
-                  onClick={handleExploreClick}
-                    className="px-8 py-4 bg-[#355ED1] text-[21.05px] font-inter text-white font-medium rounded-[10px] shadow-lg"
+                    onClick={handleExploreClick}
+                    className="inline-flex items-center justify-center px-8 h-14 bg-[#355ED1] text-[16px] font-inter text-white font-medium rounded-[10px] shadow-md hover:shadow-lg transition-all"
                   >
                     {primaryCtaText} →
                   </motion.a>
+
                   <motion.a
                     href={secondaryCtaHref}
-                    whileHover={{ borderColor: "#335ECE"}}
-                    className="text-[#666666] text-[21.05px] px-8 py-4 border-[1.5px] border-[#666666] font-medium font-inter rounded-[10px]"
+                    whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
+                    className="inline-flex items-center justify-center px-8 h-14 text-[#666666] text-[16px] border-[1.5px] border-[#666666] font-medium font-inter rounded-[10px] hover:text-[#335ECE] transition-all"
                   >
                     {secondaryCtaText}
                   </motion.a>

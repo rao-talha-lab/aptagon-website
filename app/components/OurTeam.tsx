@@ -24,11 +24,11 @@ const founders: TeamMember[] = [
 ];
 
 const rowTwo: TeamMember[] = [
-  { name: "Usman Nazir", role: "Full Stack Developer", image: "/usmanimg1.jpeg", dept: "Engineering",
+  { name: "Usman Azeem", role: "Mern Stack Developer", image: "/team/members/usman-azeem.jpeg", dept: "Engineering",
     social: { li: "https://www.linkedin.com/company/aptagon", tw: "#", ig: "https://www.instagram.com/aptagon/", fb: "https://www.facebook.com/aptagon/" } },
   { name: "Talha Ahmad", role: "Web Developer", image: "/team/members/talha1.jpeg",  dept: "Engineering",
     social: { li: "https://www.linkedin.com/company/aptagon", tw: "#", ig: "https://www.instagram.com/aptagon/#", fb: "https://www.facebook.com/aptagon/#" } },
-  { name: "Laiba Asif", role: "Ai Automation Engineer", image: "/team/members/female2.jpg", dept: "Strategy",
+  { name: "Laiba Asif", role: "Ai Automation Engineer", image: "/team/members/female2.jpg", dept: "Engineering",
     social: { li: "https://www.linkedin.com/company/aptagon#", tw: "#", ig: "https://www.instagram.com/aptagon/", fb: "https://www.facebook.com/aptagon/#" } },
   { name: "Warda Ibrar", role: "UI/UX Designer", image: "/team/members/female2.jpg", dept: "Design",
     social: { li: "https://www.linkedin.com/company/aptagon", tw: "#", ig: "https://www.instagram.com/aptagon/", fb: "https://www.facebook.com/aptagon/" } },
@@ -395,7 +395,7 @@ export default function OurTeam() {
               <motion.span animate={{ scale: [1, 2.2, 1], opacity: [0.6, 0, 0.6] }}
                 transition={{ duration: 2.4, repeat: Infinity }}
                 style={{ position: "absolute", inset: 0, borderRadius: "50%", background: "#335ECE" }} />
-              <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#0EBAB0", position: "relative" }} />
+              <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#335ECE", position: "relative" }} />
             </span>
             <span style={{ color: "#335ECE", fontSize: "0.63rem", fontWeight: 800, letterSpacing: "0.24em", textTransform: "uppercase", fontFamily: "system-ui,sans-serif" }}>
               The People Behind The Vision

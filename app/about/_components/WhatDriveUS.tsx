@@ -67,9 +67,9 @@ const DriveCard = ({ item, index }: { item: Item; index: number }) => {
           position: "relative",
           zIndex: 1,
           height: "100%",
-          borderRadius: "10px",
+          borderRadius: "18px",
           background: "#FFFFFF",
-          border: hovered ? "1px solid #335ECE" : "none",
+          
           boxShadow: hovered
             ? "0 20px 40px rgba(51, 94, 206, 0.2)"
             : "10px 10px 28px rgba(0, 0, 0, 0.3)",

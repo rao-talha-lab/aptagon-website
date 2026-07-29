@@ -8,7 +8,7 @@ import Image from "next/image";
 const Counter = ({ value }: { value: string }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
-  
+
   const count = useMotionValue(0);
   const rounded = useSpring(count, { stiffness: 50, damping: 20 });
   const [display, setDisplay] = useState(0);
@@ -33,12 +33,11 @@ const stats = [
   { value: "107", label: "Successful Projects", icon: "/home/ProjectsCompleted/project.png" },
   { value: "52", label: "Global Clients", icon: "/home/ProjectsCompleted/client.png" },
   { value: "71", label: "Multi Service", icon: "/home/ProjectsCompleted/service.png" },
-  { value: "19", label: "Winning Awards", icon: "/home/ProjectsCompleted/award.png" },
+  { value: "19", label: "Winning Awards", icon: "/home/ProjectsCompleted/awards.png" },
 ];
 
 export default function WeHaveCompleted() {
   const [mounted, setMounted] = useState(false);
-  const themeGradient = "linear-gradient(135deg, #335ECE 0%, #06544F 100%)";
 
   useEffect(() => {
     setMounted(true);
@@ -49,16 +48,16 @@ export default function WeHaveCompleted() {
   return (
     <section className="bg-white py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        
-        <motion.h2 
+
+        <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="text-center font-extrabold text-4xl md:text-4xl text-[#335ECE] mb-16"
         >
-         We Have Completed <span className="text-[#666666]">100+</span> Projects <span className="text-[#666666]">Successfully</span>
+          We Have Completed <span className="text-[#666666]">100+</span> Projects <span className="text-[#666666]">Successfully</span>
         </motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((item, index) => (
             <motion.div
               key={index}
@@ -66,10 +65,10 @@ export default function WeHaveCompleted() {
               whileInView={{ opacity: 1, y: 0 }}
               whileHover="hover"
               transition={{ delay: index * 0.1 }}
-              className="relative group bg-white p-10 text-center border border-gray-100 dark:border-none shadow-[15px_15px_35px_rgba(0,0,0,0.2)] hover:shadow-[0_25px_60px_rgba(51,94,206,0.3)] transition-all duration-500 overflow-hidden rounded-sm"
+              className="relative group bg-white py-8 px-4 text-center border border-gray-100 dark:border-none shadow-[15px_15px_35px_rgba(0,0,0,0.2)] hover:shadow-[0_25px_60px_rgba(51,94,206,0.3)] transition-all duration-500 overflow-hidden rounded-sm"
             >
               {/* GRADIENT OVERLAY */}
-              <motion.div 
+              <motion.div
                 variants={{ hover: { y: 0 } }}
                 initial={{ y: "100%" }}
                 transition={{ duration: 0.6, ease: "circOut" }}
@@ -80,23 +79,24 @@ export default function WeHaveCompleted() {
               <div className="relative z-10 flex flex-col items-center">
                 {/* 🌟 CONTINUOUS ROTATION */}
                 <motion.div variants={{ hover: { y: -10, scale: 1.1 } }} className="mb-6">
-                  <motion.div 
+                  <motion.div
                     animate={{ rotate: 360 }}
-                    transition={{ 
-                        duration: 6,
-                        repeat: Infinity,
-                        ease: "linear",
-                        repeatType: "loop"
+                    transition={{
+                      duration: 6,
+                      repeat: Infinity,
+                      ease: "linear",
+                      repeatType: "loop"
                     }}
-                    className="h-24 w-24 rounded-full border-[3px] border-[#335ECE] flex items-center justify-center transition-all group-hover:border-white group-hover:bg-white/10"
+                    className="h-20 w-20 rounded-full border-[3px] bg-[#335ECE]/15 border-[#335ECE] flex items-center justify-center transition-all group-hover:border-white group-hover:bg-white/10"
                   >
                     <div className="relative h-12 w-12">
-                        <Image
-                          src={item.icon}
-                          alt={item.label}
-                          fill
-                          className="object-contain transition-all duration-300 group-hover:brightness-0 group-hover:invert"
-                        />
+                      <Image
+                        src={item.icon}
+                        alt={item.label}
+                        fill
+                        className={`object-contain transition-all duration-300 group-hover:brightness-0 group-hover:invert ${item.label === "Winning Awards" ? "scale-125 m-auto" : ""
+                          }`}
+                      />
                     </div>
                   </motion.div>
                 </motion.div>

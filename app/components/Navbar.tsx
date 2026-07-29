@@ -146,17 +146,43 @@ const TransparentNavbar = () => {
     <header className="fixed top-0 left-0 right-0 z-50 flex flex-col w-full bg-white shadow-sm">
 
       {/* TOP MINI NAVBAR */}
-      <div className="hidden xl:block w-full h-9 bg-[#355ED1]">
-        <div className="w-full max-w-[1440px] mx-auto px-6 lg:px-10 h-full flex items-center justify-center gap-8 text-[12px] text-white">          <div className="flex items-center gap-2">
-          <Phone size={14} /><span className="font-medium">+44 7882 610679</span>
-          <Phone size={14} className="ml-2" /><span className="font-medium">+92 370 4640036</span>
-        </div>
-          <div className="h-4 w-[1px] bg-white/30" />
-          <div className="flex items-center gap-2"><MapPin size={14} /><span className="font-medium">Benazir road Dolphin mall building number 25 okara</span></div>
-          <div className="h-4 w-[1px] bg-white/30" />
-          <div className="flex items-center gap-2"><Mail size={14} /><span className="font-medium">hr@aptagon.com</span></div>
-        </div>
+  {/* TOP MINI NAVBAR */}
+{/* TOP MINI NAVBAR */}
+<div className="hidden xl:block w-full h-9 bg-[#355ED1]">
+  <div className="w-full max-w-[1440px] mx-auto px-6 lg:px-10 h-full flex items-center justify-center text-[12px] text-white">
+    
+    {/* Contact Numbers */}
+    <div className="flex items-center gap-3">
+      <div className="flex items-center gap-1.5">
+        <Phone size={14} />
+        <span className="font-medium">+44 7882 610679</span>
       </div>
+      <div className="flex items-center gap-1.5">
+        <Phone size={14} />
+        <span className="font-medium">+92 370 4640036</span>
+      </div>
+    </div>
+
+    {/* Divider 1 */}
+    <div className="h-3 w-[1px] bg-white/40 ml-2.5 mr-2" />
+
+    {/* Address (Normal Sentence Case) */}
+    <div className="flex items-center gap-1.5">
+      <MapPin size={14} />
+      <span className="font-medium">Benazir Road, Dolphin Mall, Building No. 25, Okara</span>
+    </div>
+
+    {/* Divider 2 */}
+    <div className="h-3 w-[1px] bg-white/40 ml-2.5 mr-2" />
+
+    {/* Email */}
+    <div className="flex items-center gap-1.5">
+      <Mail size={14} />
+      <span className="font-medium">hr@aptagon.com</span>
+    </div>
+
+  </div>
+</div>
 
       {/* MAIN NAVBAR */}
       <nav
@@ -164,36 +190,32 @@ const TransparentNavbar = () => {
         onMouseLeave={() => setOpenDropdown(null)}
       >
         <div className="w-full max-w-[1440px] mx-auto px-6 lg:px-10 flex items-center justify-between relative">
-          {/* LEFT GROUP: Logo + Navigation Links */}
-          <div className="flex items-center gap-12 lg:gap-16">
+          
+          {/* LOGO (LEFT) */}
+          <Link href="/" className="relative h-11 w-48 shrink-0">
+            <Image src="/logos/aptagon-tech-new-logo.png" alt="Aptagon Technologies Logo" fill className="object-contain" priority />
+          </Link>
 
-            {/* Logo */}
-            <Link href="/" className="relative h-11 w-48 shrink-0">
-              <Image src="/logos/aptagon-tech-new-logo.png" alt="Aptagon Technologies Logo" fill className="object-contain" priority />
-            </Link>
+          {/* DESKTOP MENU (CENTERED) */}
+          <div className="hidden xl:flex flex-1 items-center justify-center space-x-7">
+            <NavLink href="/" isActive={pathname === "/"}>Home</NavLink>
+            <NavLink href="/about" isActive={pathname === "/about"}>Who We Are</NavLink>
 
-            {/* DESKTOP MENU */}
-            <div className="hidden xl:flex items-center space-x-7">
-              <NavLink href="/" isActive={pathname === "/"}>Home</NavLink>
-              <NavLink href="/about" isActive={pathname === "/about"}>Who We Are</NavLink>
-
-              {/* WHAT WE DO TRIGGER */}
-              <div
-                className="py-6 cursor-pointer"
-                onMouseEnter={() => setOpenDropdown("services")}
-              >
-                <button className={`flex items-center gap-1.5 text-[15px] font-semibold transition-colors ${pathname.includes("/services") || openDropdown === "services" ? "text-[#355ED1]" : "text-[#585858] hover:text-[#355ED1]"}`}>
-                  What We Do
-                  <ChevronDown size={15} className={`transition-transform duration-300 ${openDropdown === "services" ? "rotate-180" : ""}`} />
-                </button>
-              </div>
-
-              {/* PORTFOLIO LINK (Updated to check subroutes) */}
-              <NavLink href="/portfolio" isActive={pathname.startsWith("/portfolio")}>Portfolio</NavLink>
-              <NavLink href="/blogs" isActive={pathname.startsWith("/blogs")}>Blogs</NavLink>
-              <NavLink href="/reach-us" isActive={pathname === "/reach-us"}>Reach Us</NavLink>
+            {/* WHAT WE DO TRIGGER */}
+            <div
+              className="py-6 cursor-pointer"
+              onMouseEnter={() => setOpenDropdown("services")}
+            >
+              <button className={`flex items-center gap-1.5 text-[15px] font-semibold transition-colors ${pathname.includes("/services") || openDropdown === "services" ? "text-[#355ED1]" : "text-[#585858] hover:text-[#355ED1]"}`}>
+                What We Do
+                <ChevronDown size={15} className={`transition-transform duration-300 ${openDropdown === "services" ? "rotate-180" : ""}`} />
+              </button>
             </div>
 
+            {/* PORTFOLIO LINK */}
+            <NavLink href="/portfolio" isActive={pathname.startsWith("/portfolio")}>Portfolio</NavLink>
+            <NavLink href="/blogs" isActive={pathname.startsWith("/blogs")}>Blogs</NavLink>
+            <NavLink href="/reach-us" isActive={pathname === "/reach-us"}>Reach Us</NavLink>
           </div>
 
           {/* RIGHT CTA BUTTON */}

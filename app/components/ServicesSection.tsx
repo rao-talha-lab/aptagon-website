@@ -203,7 +203,7 @@ export default function ServicesSection() {
   const active = SERVICES.find((s) => s.id === activeId)!;
 
   return (
-    <section className="w-full py-14 px-4 sm:px-8 lg:pl-12 lg:pr-20" style={{ backgroundColor: "#335ECE1A" }}>
+    <section className="w-full py-10 px-4 sm:px-8 lg:pl-12 lg:pr-20" style={{ backgroundColor: "#335ECE1A" }}>
       <div className="max-w-[1440px] mx-auto">
 
         {/* ── HEADER ─────────────────────────────────────── */}

@@ -77,6 +77,8 @@ const TestimonialCard = ({ t }: { t: Testimonial }) => {
         borderRadius: 32,
         overflow: "hidden",
         background: "#ffffff",
+        display: "flex",
+        flexDirection: "column",
         boxShadow: hovered
           ? "0 0 0 1.5px rgba(51,94,206,0.35), 0 32px 80px rgba(7,58,83,0.2), 0 8px 24px rgba(51,94,206,0.15)"
           : "0 0 0 1px rgba(51,94,206,0.12), 0 8px 32px rgba(7,58,83,0.1)",
@@ -88,6 +90,9 @@ const TestimonialCard = ({ t }: { t: Testimonial }) => {
       <div style={{
         background: "linear-gradient(135deg, #1E3A8A 0%, #335ECE 100%)",
         padding: "22px 24px 20px", position: "relative", overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        flex: 1, // Ensures all top sections stretch equally to match container heights
       }}>
         <div style={{ position: "absolute", top: -30, right: -30, width: 120, height: 120, borderRadius: "50%", background: "rgba(255,255,255,0.05)" }} />
         <div style={{ position: "absolute", bottom: -20, left: -10, width: 80, height: 80, borderRadius: "50%", background: "rgba(51,94,206,0.15)" }} />
@@ -102,6 +107,7 @@ const TestimonialCard = ({ t }: { t: Testimonial }) => {
             background: "rgba(255,255,255,0.12)", backdropFilter: "blur(8px)",
             border: "1px solid rgba(255,255,255,0.2)",
             borderRadius: 16, padding: "8px 18px", marginBottom: 14,
+            alignSelf: "flex-start",
           }}>
             <span style={{ fontSize: 22, fontWeight: 900, color: "#fff", lineHeight: 1, fontFamily: "'Montserrat',sans-serif" }}>
               {t.metric}
@@ -113,7 +119,7 @@ const TestimonialCard = ({ t }: { t: Testimonial }) => {
         )}
 
         <p className="text-justify"
-          style={{ margin: 0, fontSize: 13, lineHeight: 1.85, color: "rgba(255,255,255,0.9)", fontWeight: 400, position: "relative" }}>
+          style={{ margin: 0, fontSize: 13, lineHeight: 1.85, color: "rgba(255,255,255,0.9)", fontWeight: 400, position: "relative", flex: 1 }}>
           "{t.quote}"
         </p>
 
@@ -132,7 +138,7 @@ const TestimonialCard = ({ t }: { t: Testimonial }) => {
       </div>
 
       {/* BOTTOM WHITE SECTION */}
-      <div style={{ padding: "18px 24px 22px", background: "#fff" }}>
+      <div style={{ padding: "18px 24px 22px", background: "#fff", marginTop: "auto" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
           <Stars />
           <span style={{
@@ -280,11 +286,9 @@ export default function TestimonialCarousel() {
         onMouseEnter={() => (isPaused.current = true)}
         onMouseLeave={() => (isPaused.current = false)}
       >
-        {/* ← No fade overlays → */}
-
         <motion.div
           ref={containerRef}
-          style={{ x, display: "flex", gap: CARD_GAP, width: "max-content" }}
+          style={{ x, display: "flex", gap: CARD_GAP, width: "max-content", alignItems: "stretch" }}
         >
           {[...testimonials, ...testimonials, ...testimonials].map((t, i) => (
             <TestimonialCard key={`${t.id}-${i}`} t={t} />

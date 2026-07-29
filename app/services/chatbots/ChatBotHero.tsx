@@ -314,78 +314,78 @@ const BusinessHero: React.FC = () => {
     <div className="relative z-30 shadow-[0_5px_15px_rgba(0,0,0,0.05)]">
 
 
-    <section className="relative flex items-center overflow-hidden bg-[#FFFFFF] dark:bg-[#0a0a0a] min-h-screen">
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-0 pointer-events-none opacity-40"
-      />
-      <div className="relative z-10 container mx-auto px-6 ">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+      <section className="relative flex items-center overflow-hidden bg-[#FFFFFF] dark:bg-[#0a0a0a] min-h-screen">
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 z-0 pointer-events-none opacity-40"
+        />
+        <div className="relative z-10 container mx-auto px-6 ">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
 
-          {/* Left Content */}
-          <div className="flex-1 max-w-3xl text-left lg:mt-10 pt-20 lg:pt-30 pb-5 lg:pb-10">
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="mb-3 text-[#666666] font-['Poppins'] font-semibold tracking-wide text-[15px]"
-            >
-              Chatbot Development
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-5xl md:text-[54px] font-black text-[#666666] dark:text-white leading-[1.25] mb-6 tracking-tighter"
-            >
-              Enhancing <br /> Engagement <br />
-              <TypewriterEffect
-                words={[
-                  "Powered by AI",
-                  "Streamline Operation",
-                  "Enterprise Integration",
-                ]}
-              />
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-[20px] text-[#666666] dark:text-slate-400 mb-10 leading-wide font-medium"
-            >
-              Designing intelligent chatbots that improve customer interactions, support, and operational efficiency.
-            </motion.p>
+            {/* Left Content */}
+            <div className="flex-1 max-w-3xl text-left lg:mt-10 pt-20 lg:pt-30 pb-5 lg:pb-10">
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="mb-3 text-[#666666] font-['Poppins'] font-semibold tracking-wide text-[15px]"
+              >
+                Chatbot Development
+              </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-5xl md:text-[54px] font-black text-[#666666] dark:text-white leading-[1.25] mb-6 tracking-tighter"
+              >
+                Enhancing <br /> Engagement <br />
+                <TypewriterEffect
+                  words={[
+                    "Powered by AI",
+                    "Streamline Operation",
+                    "Enterprise Integration",
+                  ]}
+                />
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-[20px] text-[#666666] dark:text-slate-400 mb-10 leading-wide font-medium"
+              >
+                Designing intelligent chatbots that improve customer interactions, support, and operational efficiency.
+              </motion.p>
 
-            {/* Buttons */}
-            <div className="flex flex-wrap gap-5">
-              <Link href="/schedule-call">
-                <motion.button
-                  whileHover={{
-                    scale: 1.05,
-                  }}
-                  className="px-10 py-5 bg-[#335ECE] text-white font-semibold rounded-[10px] shadow-lg lg:shadow-2xl text-s tracking-wide group cursor-pointer"
+              {/* Buttons */}
+              <div className="flex flex-wrap gap-5">
+                <Link href="/schedule-call">
+                  <motion.button
+                    whileHover={{
+                      scale: 1.05,
+                    }}
+                    className="px-8 h-14 bg-[#335ECE] text-white font-semibold rounded-[10px] shadow-lg lg:shadow-2xl text-s tracking-wide group cursor-pointer"
                   >
-                  Let&apos;s Collaborate
-                  <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </motion.button>
-              </Link>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                onClick={handleExploreClick}
-                className="px-10 py-5 border-1 border-[#666666] dark:border-white/10 text-[#666666] dark:text-white font-semibold rounded-[10px] text-s tracking-wide cursor-pointer"
+                    Let&apos;s Collaborate
+                    <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
+                      →
+                    </span>
+                  </motion.button>
+                </Link>
+                <motion.button
+                  whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
+                  onClick={handleExploreClick}
+                  className="inline-flex items-center justify-center px-8 h-14 text-[#666666] text-[16px] border-[1.5px] border-[#666666] font-medium font-inter rounded-[10px] hover:text-[#335ECE] transition-all"
                 >
-                Explore Services
-              </motion.button>
+                  Explore Services
+                </motion.button>
+              </div>
             </div>
-          </div>
 
-          {/* Right — Aptagon Chatbot */}
-          <div className="flex-1 flex items-center justify-center w-full lg:mt-20 hidden lg:flex">
-            <AptagonChatbot />
-          </div>
+            {/* Right — Aptagon Chatbot */}
+            <div className="flex-1 flex items-center justify-center w-full lg:mt-20 hidden lg:flex">
+              <AptagonChatbot />
+            </div>
 
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
   );
 };

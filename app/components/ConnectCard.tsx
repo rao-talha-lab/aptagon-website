@@ -31,7 +31,7 @@ export default function ConnectCard() {
               transform: isHovered ? "translateY(-55px)" : "translateY(0)",
             }}
           >
-            <h1 className="text-white text-4xl font-black tracking-tight drop-shadow-md">
+            <h1 className="text-white text-3xl font-black tracking-tight drop-shadow-md">
               Connect
             </h1>
           </div>
@@ -42,7 +42,7 @@ export default function ConnectCard() {
           <div
             className="absolute transition-all"
             style={{
-              width: "150px", height: "135px",
+              width: "160px", height: "130px",
               bottom: "0", left: "0",
               backgroundColor: "#335ECE",
               borderTop: "1.5px solid rgba(255,255,255,0.4)",

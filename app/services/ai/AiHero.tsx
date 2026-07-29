@@ -427,9 +427,9 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
               <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
                 <Link href="/schedule-call">
                   <motion.button
-                    whileHover={{ scale: 1.03 }}
+                    whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
-                    className="px-8 py-3.5 bg-[#335ECE] text-white font-semibold rounded-[12px] shadow-md text-base tracking-wide group cursor-pointer flex items-center"
+                    className="px-8 h-14 bg-[#335ECE] text-white font-semibold rounded-[12px] shadow-md text-base tracking-wide group cursor-pointer flex items-center"
                   >
                     Let&apos;s Collaborate
                     <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
@@ -439,10 +439,10 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
                 </Link>
 
                 <motion.button
-                  whileHover={{ scale: 1.03 }}
+                   whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={handleExploreClick}
-                  className="px-8 py-3.5 border border-[#666666]/40 text-[#666666] font-semibold rounded-[12px] text-base tracking-wide cursor-pointer bg-transparent"
+                  className="px-8 h-14 border-[1.5px] border-[#666666] text-[#666666] hover:text-[#335ECE] font-semibold rounded-[12px] text-base tracking-wide cursor-pointer bg-transparent"
                 >
                   Explore Services
                 </motion.button>

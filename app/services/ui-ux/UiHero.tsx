@@ -222,53 +222,53 @@ const AnimatedHeroSection: React.FC = () => {
 
   return (
     <div className="relative z-30 shadow-[0_5px_15px_rgba(0,0,0,0.05)]">
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#FFFFFF] pt-10 lg:pt-15 pb-5 lg:pb-10">
-      {/* Canvas background */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-0 pointer-events-none"
-      />
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-[#FFFFFF] pt-10 lg:pt-15 pb-5 lg:pb-10">
+        {/* Canvas background */}
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 z-0 pointer-events-none"
+        />
 
-      <div className="absolute top-[-5%] right-[-5%] w-[500px] h-[500px] bg-[#335ECE]/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-[-5%] right-[-5%] w-[500px] h-[500px] bg-[#335ECE]/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col mt-20 lg:flex-row items-center gap-16 lg:gap-14">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="flex flex-col mt-20 lg:flex-row items-center gap-16 lg:gap-14">
 
-          {/* ── Left: Text Content (unchanged) ── */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex-1 text-left"
-          >
-            <span className="inline-block py-1 text-[#666666] text-[17px] font-black tracking-wider mb-7">
-              UI/UX Design
-            </span>
+            {/* ── Left: Text Content (unchanged) ── */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="flex-1 text-left"
+            >
+              <h1 className="itext-[#666666] font-['Poppins'] font-semibold tracking-wide text-[15px] mb-6 ml-1">
+                UI/UX Design
+              </h1>
 
-            <h1 className="text-[30px] lg:text-[50px] font-black text-[#666666] leading-[1.25] mb-8 tracking-tighter">
-              Designing <br />
-               Impactful
-              <TypewriterEffect
-                words={[
-                  " User Experience Flow",
-                  " Interface Innovation",
-                  " Creative Strategy",
-                ]}
-              />
-            </h1>
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-[50px] font-black text-[#666666] dark:text-white mb-6 leading-[1.25] tracking-tighter">
+                Designing <br />
+                Impactful{" "}
+                <TypewriterEffect
+                  words={[
+                    "Interface Innovation",
+                    "Digital Experiences",
+                    "User Experience Flow",
+                  ]}
+                />
+              </motion.h1>
 
-            <p className="text-[#666666] text-[18px] font-['Poppins'] mb-12 max-w-xl leading-relaxed font-medium">
-            Creating visually stunning, user-centered designs that deliver seamless and engaging digital experiences.
-            </p>
+              <p className="text-[#666666] text-[18px] font-['Poppins'] mb-12 max-w-xl leading-relaxed font-medium">
+                Creating visually stunning, user-centered designs that deliver seamless and engaging digital experiences.
+              </p>
 
-            <div className="flex flex-wrap gap-5">
-            <Link href="/schedule-call">
+              <div className="flex flex-wrap gap-5">
+                <Link href="/schedule-call">
                   <motion.button
                     whileHover={{
                       scale: 1.05,
                     }}
-                    className="px-10 py-5 bg-[#335ECE] text-white font-semibold rounded-[10px] shadow-lg lg:shadow-2xl text-s tracking-wide group cursor-pointer"
+                    className="px-8 h-14 bg-[#335ECE] text-white font-semibold rounded-[10px] shadow-lg lg:shadow-2xl text-s tracking-wide group cursor-pointer"
                   >
                     Let&apos;s Collaborate
                     <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
@@ -277,20 +277,20 @@ const AnimatedHeroSection: React.FC = () => {
                   </motion.button>
                 </Link>
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
                   onClick={handleExploreClick}
-                  className="px-10 py-5 border-1 border-[#666666] dark:border-white/10 text-[#666666] dark:text-white font-semibold rounded-[10px] text-s tracking-wide cursor-pointer"
+                  className="px-8 h-14 border-[1.5px] border-[#666666] hover:text-[#335ECE] dark:border-white/10 text-[#666666] dark:text-white font-semibold rounded-[10px] text-s tracking-wide cursor-pointer"
                 >
                   Explore Services
                 </motion.button>
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
 
-          {/* ── Right: Component Library Card (hidden below lg) ── */}
-          <DigitalExperienceCard />
+            {/* ── Right: Component Library Card (hidden below lg) ── */}
+            <DigitalExperienceCard />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
   );
 };

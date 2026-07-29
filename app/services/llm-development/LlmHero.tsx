@@ -471,7 +471,7 @@ const LlmHero: React.FC<AnimatedHeroSectionProps> = ({
           className={`flex flex-col lg:flex-row items-center gap-12`}
         >
           <div className="max-w-3xl flex flex-col items-start">
-            <motion.p variants={itemVariants} className="mb-3 text-[22px] text-[#666666] font-semibold tracking-wide">
+            <motion.p variants={itemVariants} className="mb-3 text-[15px] text-[#666666] font-['Poppins'] font-semibold tracking-wide">
               {tagline}
             </motion.p>
 

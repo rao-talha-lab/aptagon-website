@@ -278,7 +278,7 @@ const BusinessHero: React.FC<AnimatedHeroSectionProps> = ({
       <div className="relative lg:mt-20 z-10 container mx-auto px-2 pt-20 lg:pt-10 pb-3 lg:pb-10">
         <div className="flex flex-col lg:flex-row items-center gap-6">
           <div className="px-1 flex-1 max-w-3xl text-left">
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-3 text-[#666666] font-medium font-['Poppins'] tracking-tight text-[18.91px]">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-3 text-[#666666] font-semibold font-['Poppins'] tracking-wide text-[15px]">
               Business Process Automation
             </motion.p>
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-[50px] font-black text-[#666666] dark:text-white mb-6 leading-[1.25] tracking-tighter">

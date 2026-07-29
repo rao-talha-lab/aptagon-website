@@ -285,7 +285,7 @@ const SqaHero: React.FC<AnimatedHeroSectionProps> = ({
         >
           {/* LEFT — text content (unchanged) */}
           <div className="max-w-3xl flex flex-col items-start">
-            <motion.p variants={itemVariants} className="mb-3 text-[18px] text-[#666666] font-semibold tracking-wider">
+            <motion.p variants={itemVariants} className="mb-3 text-[15px] text-[#666666] font-['Poppins'] font-semibold tracking-wide">
               {tagline}
             </motion.p>
 

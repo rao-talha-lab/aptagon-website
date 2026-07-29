@@ -271,7 +271,7 @@ const WebDevHero = () => {
                 animate={{ opacity: 1 }}
                 className="inline-block mb-5 px-3 py-1."
               >
-                <p className="text-[#666666] font-['Poppins'] font-semibold tracking-wider text-[15px]">
+                <p className="text-[#666666] font-['Poppins'] font-semibold tracking-wide text-[15px]">
                   Web Development
                 </p>
               </motion.div>

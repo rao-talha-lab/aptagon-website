@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+
 // --- Internal Typewriter Component for the Heading ---
 const TypewriterEffect = ({ words }: { words: string[] }) => {
   const [index, setIndex] = useState(0);
@@ -36,10 +37,23 @@ const TypewriterEffect = ({ words }: { words: string[] }) => {
   return (
     <span className="text-[#335ECE]">
       {`${words[index].substring(0, subIndex)}`}
-      <span className={`inline-block w-1 h-10 md:h-14 ml-2 bg-[#666666] align-middle ${blink ? 'opacity-100' : 'opacity-0'}`} />
+      <span
+        className={`inline-block w-1 h-10 md:h-12 ml-2 bg-[#666666] align-middle ${
+          blink ? "opacity-100" : "opacity-0"
+        }`}
+      />
     </span>
   );
 };
+
+// --- Floating Tag Sub-Component ---
+const FloatingTag = ({ label }: { label: string }) => (
+  <div className="relative flex items-center justify-center rounded-full border border-[#335ECE] bg-[#002892]/10 px-3.5 py-1 shadow-sm">
+    <span className="text-[9px] font-semibold text-[#335ECE] whitespace-nowrap">
+      {label}
+    </span>
+  </div>
+);
 
 interface Particle {
   x: number;
@@ -71,22 +85,10 @@ interface AnimatedHeroSectionProps {
 
 const AiHero: React.FC<AnimatedHeroSectionProps> = ({
   tagline = "AI & Generative Solutions",
-  heading = "AI & Generative Solutions",
   description = "Implementing AI-powered solutions to transform business processes and create intelligent digital experiences.",
-  primaryCtaText = "Explore Services",
-  secondaryCtaText = "Let's Collaborate",
-  primaryCtaHref = "#",
-  secondaryCtaHref = "/schedual-call",
   height = "min-h-screen",
   alignment = "left",
-  contentAlignment = "left",
-  showSearchBar = false,
-  searchPlaceholder = "Search...",
-  searchValue = "",
-  onSearchChange = () => { },
-  onSearchSubmit = () => { },
 }) => {
-
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
 
@@ -106,9 +108,7 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
     let animationFrameId: number;
     let particles: Particle[] = [];
     const particleCount = 100;
-    const connectionDistance = 200;
     const mouseRadius = 300;
-    const themeColors = { primary: "#0EBAB0" };
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -172,89 +172,82 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
     };
   }, []);
 
-  // --- RIGHT SIDE: TECHNOLOGIES CARD (replaces the old 3D AI animation) ---
-  // Hidden below 1024px (lg breakpoint), vertically centered, scaled down to fit the hero.
+  // --- RIGHT SIDE: TECHNOLOGIES CARD ---
   const TechnologiesCard = () => (
     <motion.div
-      initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
-      animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-      transition={{ duration: 1.2 }}
-      className="hidden lg:flex flex-1 items-center justify-center self-center"
+      initial={{ opacity: 0, scale: 0.95, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      className="hidden lg:flex items-center justify-center relative w-full max-w-[460px] mx-auto mt-20 lg:mt-10"
     >
-      {/* MAIN CARD */}
-      <div className="relative w-full max-w-[480px] bg-[#FFFFFF] rounded-[16px] shadow-[0_10px_40px_rgba(0,0,0,0.08)] p-5">
+      {/* ── SEPARATE FLOATING TAGS CONTAINER (Right Side Stack) ── */}
+      <div className="absolute -right-5 top-[170px] flex flex-col gap-2.5 z-30 pointer-events-none">
+        <FloatingTag label="RAG" />
+        <FloatingTag label="Fine-Tune" />
+        <FloatingTag label="Agents" />
+      </div>
 
+      {/* ── MAIN CARD CONTAINER ── */}
+      <div className="relative w-full bg-[#FFFFFF] rounded-[24px] border border-gray-200/60 p-6 shadow-[0_10px_35px_rgba(0,0,0,0.06)]">
         {/* TOP FLOATING BANNER */}
-        <div className="absolute -top-4 left-[-40px] bg-[#FFFFFF] border border-[#073A53]/20 rounded-[10px] px-3.5 py-2.5 w-[190px] shadow-lg flex items-center gap-2.5">
-
-          <div className="w-9 h-7 rounded-lg bg-[#002892]/10 flex items-center justify-center">
+        <div className="absolute -top-5 left-4 bg-[#FFFFFF] border border-[#073A53]/20 rounded-[12px] px-3.5 py-2 w-[190px] shadow-md flex items-center gap-2.5 z-20">
+          <div className="w-9 h-7 rounded-lg bg-[#002892]/10 flex items-center justify-center shrink-0">
             <Image
               src="/hero-right/design.svg"
               alt="sparkles"
               width={22}
               height={14}
-              className="w-[22px] h-[14px] object-contain"
+              className="w-[20px] h-[14px] object-contain"
             />
           </div>
-
           <div>
-            <h3 className="text-[#335ECE] text-[13px] font-bold leading-none">
+            <h3 className="text-[#335ECE] text-[12px] font-bold leading-tight">
               Multi-Modal
             </h3>
-
-            <p className="text-[#666666] text-[9px] mt-1">
+            <p className="text-[#666666] text-[9px] mt-0.5">
               Text • Image • Code
             </p>
           </div>
         </div>
 
         {/* HEADING */}
-        <div className="mt-6">
-          <p className="text-[#666666] tracking-[2px] font-extrabold text-[12px] uppercase">
+        <div className="mt-4">
+          <p className="text-[#666666] tracking-[2px] font-extrabold text-[11px] uppercase">
             Smart AI Systems
           </p>
-
-          <h1 className="text-[19px] font-bold text-[#335ECE] leading-[20px] mt-1.5">
+          <h2 className="text-[19px] font-bold text-[#335ECE] leading-snug mt-1">
             Create • Automate • Innovate
-          </h1>
+          </h2>
         </div>
 
         {/* STATS */}
-        <div className="grid grid-cols-3 gap-2.5 mt-5 shadow-[0_4px_20px_rgba(51,94,206,0.2)]">
-
-          <div className="bg-[#FFFFFF] rounded-[12px] py-4 shadow-sm text-center">
-            <h2 className="text-[20px] font-['Poppins'] font-bold text-[#335ECE] leading-none">
+        <div className="grid grid-cols-3 gap-2.5 mt-5">
+          <div className="bg-[#FFFFFF] rounded-[12px] py-3.5 border border-[#EAEAEA] shadow-sm text-center">
+            <h3 className="text-[20px] font-['Poppins'] font-bold text-[#335ECE] leading-none">
               40+
-            </h2>
-            <p className="text-[#666666] text-[12px] mt-2">
-              Models
-            </p>
+            </h3>
+            <p className="text-[#666666] text-[11px] mt-1 font-medium">Models</p>
           </div>
 
-          <div className="bg-white rounded-[12px] py-4 shadow-sm border border-[#EAEAEA] text-center">
-            <h2 className="text-[20px] font-['Poppins'] font-bold text-[#335ECE] leading-none">
+          <div className="bg-[#FFFFFF] rounded-[12px] py-3.5 border border-[#EAEAEA] shadow-sm text-center">
+            <h3 className="text-[20px] font-['Poppins'] font-bold text-[#335ECE] leading-none">
               6.2s
-            </h2>
-            <p className="text-[#666666] text-[12px] mt-2">
-              Avg. Render
-            </p>
+            </h3>
+            <p className="text-[#666666] text-[11px] mt-1 font-medium">Avg. Render</p>
           </div>
 
-          <div className="bg-white rounded-[12px] py-4 shadow-sm border border-[#EAEAEA] text-center">
-            <h2 className="text-[20px] font-['Poppins'] font-bold text-[#335ECE] leading-none">
+          <div className="bg-[#FFFFFF] rounded-[12px] py-3.5 border border-[#EAEAEA] shadow-sm text-center">
+            <h3 className="text-[20px] font-['Poppins'] font-bold text-[#335ECE] leading-none">
               99.4%
-            </h2>
-            <p className="text-[#666666] text-[12px] mt-2">
-              Uptime
-            </p>
+            </h3>
+            <p className="text-[#666666] text-[11px] mt-1 font-medium">Uptime</p>
           </div>
         </div>
 
         {/* FEATURE CARDS */}
         <div className="grid grid-cols-2 gap-2.5 mt-4">
-
           {/* CARD 1 */}
-          <div className="relative bg-[#FFFFFF] border border-[#073A53]/20 rounded-[12px] p-2.5 flex gap-2.5 items-start shadow-sm h-[52px]">
+          <div className="bg-[#FFFFFF] border border-[#073A53]/20 rounded-[12px] p-2.5 flex gap-2.5 items-center shadow-sm h-[52px]">
             <div className="w-8 h-8 rounded-lg bg-[#002892]/10 flex items-center justify-center shrink-0">
               <Image
                 src="/hero-right/page.svg"
@@ -275,7 +268,7 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
           </div>
 
           {/* CARD 2 */}
-          <div className="relative bg-[#FFFFFF] border border-[#073A53]/20 rounded-[12px] p-2.5 flex gap-2.5 items-start shadow-sm h-[52px]">
+          <div className="bg-[#FFFFFF] border border-[#073A53]/20 rounded-[12px] p-2.5 flex gap-2.5 items-center shadow-sm h-[52px]">
             <div className="w-8 h-8 rounded-lg bg-[#002892]/10 flex items-center justify-center shrink-0">
               <Image
                 src="/hero-right/painting.svg"
@@ -289,19 +282,12 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
               <h3 className="text-[#335ECE] text-[10.5px] font-bold leading-tight">
                 Image Synthesis
               </h3>
-              <p className="text-[#666666] text-[8px] mt-0.5">
-                Tool-using
-              </p>
-            </div>
-
-            {/* SIDE TAG */}
-            <div className="absolute -right-7 top-4 border border-[#335ECE] text-[#335ECE] rounded-full px-4 py-1 text-[9px] bg-[#002892]/10 whitespace-nowrap">
-              RAG
+              <p className="text-[#666666] text-[8px] mt-0.5">Tool-using</p>
             </div>
           </div>
 
           {/* CARD 3 */}
-          <div className="relative bg-[#FFFFFF] border border-[#073A53]/20 rounded-[12px] p-2.5 flex gap-2.5 items-start shadow-sm h-[52px]">
+          <div className="bg-[#FFFFFF] border border-[#073A53]/20 rounded-[12px] p-2.5 flex gap-2.5 items-center shadow-sm h-[52px]">
             <div className="w-8 h-8 rounded-lg bg-[#002892]/10 flex items-center justify-center shrink-0">
               <Image
                 src="/hero-right/arrow.svg"
@@ -315,14 +301,12 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
               <h3 className="text-[#335ECE] text-[10.5px] font-bold leading-tight">
                 Code Copilot
               </h3>
-              <p className="text-[#666666] text-[8px] mt-0.5">
-                Autocompletion
-              </p>
+              <p className="text-[#666666] text-[8px] mt-0.5">Autocompletion</p>
             </div>
           </div>
 
           {/* CARD 4 */}
-          <div className="relative bg-[#FFFFFF] border border-[#073A53]/20 rounded-[12px] p-2.5 flex gap-2.5 items-start shadow-sm h-[52px]">
+          <div className="bg-[#FFFFFF] border border-[#073A53]/20 rounded-[12px] p-2.5 flex gap-2.5 items-center shadow-sm h-[52px]">
             <div className="w-8 h-8 rounded-lg bg-[#002892]/10 flex items-center justify-center shrink-0">
               <Image
                 src="/hero-right/computer.svg"
@@ -336,27 +320,13 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
               <h3 className="text-[#335ECE] text-[10.5px] font-bold leading-tight">
                 AI Agents
               </h3>
-              <p className="text-[#666666] text-[8px] mt-0.5">
-                Tool-using
-              </p>
-            </div>
-
-            {/* TAG */}
-            <div className="absolute -right-10 -top-3 border border-[#335ECE] text-[#335ECE] rounded-full px-3.5 py-[2px] text-[9px] bg-[#002892]/10 whitespace-nowrap">
-              Fine-Tune
-            </div>
-
-            {/* TAG */}
-            <div className="absolute -right-7 bottom-1.5 border border-[#335ECE] text-[#335ECE] rounded-full px-3 py-[2px] text-[9px] bg-[#002892]/10 whitespace-nowrap">
-              Agents
+              <p className="text-[#666666] text-[8px] mt-0.5">Tool-using</p>
             </div>
           </div>
         </div>
 
         {/* BOTTOM TERMINAL */}
-        <div className="mt-5 bg-[#335ECE] rounded-[14px] p-4 text-[#FFFFFF] shadow-lg">
-
-          {/* PROMPT */}
+        <div className="mt-4 bg-[#335ECE] rounded-[14px] p-3.5 text-[#FFFFFF] shadow-md">
           <div className="flex items-center gap-1.5 text-[10px]">
             <Image
               src="/hero-right/right.svg"
@@ -365,13 +335,13 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
               height={11}
               className="w-[11px] h-[11px] object-contain"
             />
-            <span className="text-[#FFFFFF] font-medium">Prompt:</span>
-            <span className="text-[#FFFFFF] truncate">
+            <span className="font-semibold">Prompt:</span>
+            <span className="truncate opacity-90">
               Generate a marketing image for a new EV launch
             </span>
           </div>
 
-          <div className="flex items-center gap-1.5 text-[10px]">
+          <div className="flex items-center gap-1.5 text-[10px] mt-1">
             <Image
               src="/hero-right/left.svg"
               alt="output"
@@ -379,13 +349,11 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
               height={11}
               className="w-[11px] h-[11px] object-contain"
             />
-            <span className="text-[#FFFFFF] font-medium">Output:</span>
-            <span className="text-[#FFFFFF]">
-              4 hero variants generated in 6.2s
-            </span>
+            <span className="font-semibold">Output:</span>
+            <span className="opacity-90">4 hero variants generated in 6.2s</span>
           </div>
 
-          <div className="h-[1px] bg-[#FFFFFF] my-2.5"></div>
+          <div className="h-[1px] bg-white/20 my-2"></div>
 
           <div className="flex items-center gap-1.5 text-[10px]">
             <Image
@@ -395,12 +363,9 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
               height={11}
               className="w-[11px] h-[11px] object-contain"
             />
-            <span className="text-[#FFFFFF] font-medium">Inference:</span>
-            <span className="text-[#FFFFFF]">
-              12.4 tok/s • 2.1GB VRAM
-            </span>
+            <span className="font-semibold">Inference:</span>
+            <span className="opacity-90">12.4 tok/s • 2.1GB VRAM</span>
           </div>
-
         </div>
       </div>
     </motion.div>
@@ -418,66 +383,77 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
 
   return (
     <div className="relative z-30 shadow-[0_5px_15px_rgba(0,0,0,0.05)]">
-    <section className={`relative flex items-center overflow-hidden bg-[#FFFFFF] ${height}`}>
-      <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
-      <div className="relative lg:mt-10 z-10 container mx-auto px-6 pt-20 lg:pt-10 pb-5 lg:pb-10">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          className={`flex flex-col lg:flex-row items-center gap-12`}
-        >
-          <div className="max-w-3xl flex flex-col items-start">
-            <motion.p variants={itemVariants} className="mb-3 text-[18px] text-[#666666] font-semibold tracking-wider">
-              {tagline}
-            </motion.p>
+      <section className={`relative flex items-center overflow-hidden bg-[#FFFFFF] h-[650px]`}>
+        <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
 
-            <motion.h1
-              variants={itemVariants}
-              className="text-4xl md:text-[50px] font-black text-[#666666] leading-[1.25] mb-6 tracking-tighter"
-            >
-              Driving Innovation <br /> With AI &
-              <TypewriterEffect
-                words={[
-                  " Generative Technologies",
-                  " Intelligent Automation",
-                  " Machine Learning",
-                ]}
-              />
-            </motion.h1>
+        <div className="relative z-10 container mx-auto px-6 mt-20 lg:mt-20">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+          >
+            {/* LEFT SIDE CONTENT */}
+            <div className="flex flex-col items-start w-full">
+              <motion.p
+                variants={itemVariants}
+                className="mb-3 text-[15px] text-[#666666] font-semibold font-['Poppins'] tracking-wide"
+              >
+                {tagline}
+              </motion.p>
 
-            <motion.p variants={itemVariants} className="text-[21px] text-[#666666] mb-8 leading-widest font-medium">
-              {description}
-            </motion.p>
+              <motion.h1
+                variants={itemVariants}
+                className="text-4xl md:text-[52px] font-black text-[#666666] leading-[1.15] mb-6 tracking-tight"
+              >
+                Driving Innovation <br /> With AI &amp;{" "}
+                <TypewriterEffect
+                  words={[
+                    "Generative",
+                    "Technologies",
+                    "Intelligent Automation",
+                    "Machine Learning",
+                  ]}
+                />
+              </motion.h1>
 
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-5">
-              <Link href="/schedule-call">
-                <motion.button
-                  whileHover={{
-                    scale: 1.05,
-                  }}
-                  className="px-10 py-5 bg-[#335ECE] text-white font-semibold rounded-[10px] shadow-lg lg:shadow-2xl text-s tracking-wide group cursor-pointer"
+              <motion.p
+                variants={itemVariants}
+                className="text-[17px] md:text-[19px] text-[#666666] mb-8 leading-relaxed font-normal max-w-xl"
+              >
+                {description}
+              </motion.p>
+
+              <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+                <Link href="/schedule-call">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="px-8 py-3.5 bg-[#335ECE] text-white font-semibold rounded-[12px] shadow-md text-base tracking-wide group cursor-pointer flex items-center"
                   >
-                  Let&apos;s Collaborate
-                  <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </motion.button>
-              </Link>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                onClick={handleExploreClick}
-                className="px-10 py-5 border-1 border-[#666666] dark:border-white/10 text-[#666666] dark:text-white font-semibold rounded-[10px] text-s tracking-wide cursor-pointer"
-                >
-                Explore Services
-              </motion.button>
-            </motion.div>
-          </div>
+                    Let&apos;s Collaborate
+                    <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
+                      →
+                    </span>
+                  </motion.button>
+                </Link>
 
-          {alignment === "left" && <TechnologiesCard />}
-        </motion.div>
-      </div>
-    </section>
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={handleExploreClick}
+                  className="px-8 py-3.5 border border-[#666666]/40 text-[#666666] font-semibold rounded-[12px] text-base tracking-wide cursor-pointer bg-transparent"
+                >
+                  Explore Services
+                </motion.button>
+              </motion.div>
+            </div>
+
+            {/* RIGHT SIDE CONTENT */}
+            {alignment === "left" && <TechnologiesCard />}
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 };

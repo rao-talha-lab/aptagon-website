@@ -327,7 +327,7 @@ const BusinessHero: React.FC = () => {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="mb-3 text-[#666666] font-bold tracking-wider text-[18px]"
+              className="mb-3 text-[#666666] font-['Poppins'] font-semibold tracking-wide text-[15px]"
             >
               Chatbot Development
             </motion.p>

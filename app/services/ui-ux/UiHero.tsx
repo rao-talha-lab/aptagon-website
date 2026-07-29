@@ -65,7 +65,7 @@ const DigitalExperienceCard = () => {
         <div className="w-[500px] xl:w-[540px] bg-[#FFFFFF] rounded-[18px] p-6 shadow-[0_4px_40px_rgba(51,94,206,0.3)]">
 
           {/* Heading */}
-          <p className="text-[#666666] text-[16px] font-['Poppins'] font-semibold mb-1 mt-5">
+          <p className="text-[#666666] text-[15px] font-['Poppins'] tracking-wide font-semibold mb-1 mt-5">
             UI/UX Design
           </p>
           <h2 className="text-[#335ECE] text-[23px] font-bold leading-tight mb-5">

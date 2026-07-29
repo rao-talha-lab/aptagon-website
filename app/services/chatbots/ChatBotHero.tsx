@@ -323,7 +323,7 @@ const BusinessHero: React.FC = () => {
         <div className="flex flex-col lg:flex-row items-center gap-16">
 
           {/* Left Content */}
-          <div className="flex-1 max-w-3xl text-left lg:mt-10 pt-20 lg:pt-10 pb-5 lg:pb-10">
+          <div className="flex-1 max-w-3xl text-left lg:mt-10 pt-20 lg:pt-30 pb-5 lg:pb-10">
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -379,7 +379,7 @@ const BusinessHero: React.FC = () => {
           </div>
 
           {/* Right — Aptagon Chatbot */}
-          <div className="flex-1 flex items-center justify-center w-full lg:mt-10 hidden lg:flex">
+          <div className="flex-1 flex items-center justify-center w-full lg:mt-20 hidden lg:flex">
             <AptagonChatbot />
           </div>
 

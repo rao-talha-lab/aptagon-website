@@ -190,7 +190,7 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
       {/* ── MAIN CARD CONTAINER ── */}
       <div className="relative w-full bg-[#FFFFFF] rounded-[24px] border border-gray-200/60 p-6 shadow-[0_10px_35px_rgba(0,0,0,0.06)]">
         {/* TOP FLOATING BANNER */}
-        <div className="absolute -top-5 left-4 bg-[#FFFFFF] border border-[#073A53]/20 rounded-[12px] px-3.5 py-2 w-[190px] shadow-md flex items-center gap-2.5 z-20">
+        <div className="absolute -top-5 -left-1/5 bg-[#FFFFFF] border border-[#073A53]/20 rounded-[12px] px-3.5 py-2 w-[190px] shadow-md flex items-center gap-2.5 z-20">
           <div className="w-9 h-7 rounded-lg bg-[#002892]/10 flex items-center justify-center shrink-0">
             <Image
               src="/hero-right/design.svg"

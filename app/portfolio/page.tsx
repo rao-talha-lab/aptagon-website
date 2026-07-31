@@ -219,34 +219,33 @@ const PortfolioPage = () => {
               viewport={{ once: true, margin: "-100px" }}
               className="mb-12"
             >
-<div className="flex flex-col xl:flex-row xl:items-center justify-between gap-26 mb-8">
-  {/* Title & Subtitle */}
-  <div className="shrink-0">
-    <h2 className="text-2xl md:text-3xl lg:text-2xl font-bold text-[#335ECE] dark:text-white mb-2">
-      All Case Studies
-    </h2>
-    <p className="text-[#666666] dark:text-gray-400 text-sm md:text-base">
-      Filter by what you're curious about.
-    </p>
-  </div>
+              <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-26 mb-8">
+                {/* Title & Subtitle */}
+                <div className="shrink-0">
+                  <h2 className="text-2xl md:text-3xl lg:text-2xl font-bold text-[#335ECE] dark:text-white mb-2">
+                    All Case Studies
+                  </h2>
+                  <p className="text-[#666666] dark:text-gray-400 text-sm md:text-base">
+                    Filter by what you're curious about.
+                  </p>
+                </div>
 
-  {/* Filter Buttons - Single Line (No Wrap) */}
-  <div className="flex items-center gap-2 md:gap-3 overflow-x-auto scrollbar-none py-1 pr-16 min-w-0">
-    {categories.map((category) => (
-      <button
-        key={category}
-        onClick={() => setActiveCategory(category)}
-        className={`whitespace-nowrap shrink-0 px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
-          activeCategory === category
-            ? "bg-[#335ECE] text-white"
-            : "border border-[#335ECE] text-[#335ECE] hover:bg-[#335ECE] hover:text-white"
-        }`}
-      >
-        {category}
-      </button>
-    ))}
-  </div>
-</div>
+                {/* Filter Buttons - Single Line (No Wrap) */}
+                <div className="flex items-center gap-2 md:gap-3 overflow-x-auto scrollbar-none py-1 pr-16 min-w-0">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setActiveCategory(category)}
+                      className={`whitespace-nowrap shrink-0 px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${activeCategory === category
+                          ? "bg-[#335ECE] text-white"
+                          : "border border-[#335ECE] text-[#335ECE] hover:bg-[#335ECE] hover:text-white"
+                        }`}
+                    >
+                      {category}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
               {/* Grid of Projects */}
               <motion.div
@@ -272,9 +271,8 @@ const PortfolioPage = () => {
                       <Link href={`/portfolio/${project.slug}`}>
                         <div className="relative overflow-hidden rounded-2xl bg-[#FFFFFF] dark:bg-[#1a1a1a] border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-lg transition-all duration-300 h-full w-full flex flex-col">
                           <div
-                            className={`relative w-full aspect-[4/3] overflow-hidden flex items-center justify-center ${
-                              cardBgColors[project.slug] || "bg-[#5182FF]"
-                            }`}
+                            className={`relative w-full aspect-[4/3] overflow-hidden flex items-center justify-center ${cardBgColors[project.slug] || "bg-[#5182FF]"
+                              }`}
                           >
                             <Image
                               src={
@@ -350,9 +348,8 @@ const PortfolioPage = () => {
                   >
                     <Link href={`/portfolio/${project.slug}`}>
                       <div
-                        className={`rounded-2xl mx-10 overflow-hidden transition-all duration-300 flex flex-col ${
-                          index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
-                        }`}
+                        className={`rounded-2xl mx-10 overflow-hidden transition-all duration-300 flex flex-col ${index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row"
+                          }`}
                         style={{
                           boxShadow:
                             "4px 4px 4px rgba(0, 0, 0, 0.1), 0 4px 4px 4px rgba(0, 0, 0, 0.1)",
@@ -360,9 +357,8 @@ const PortfolioPage = () => {
                       >
                         <motion.div
                           whileHover={{ scale: 1.05 }}
-                          className={`relative w-full lg:w-1/2 h-64 md:h-80 lg:h-auto min-h-120 overflow-hidden flex items-center justify-center ${
-                            cardBgColors[project.slug] || "bg-[#5383FF]"
-                          }`}
+                          className={`relative w-full lg:w-1/2 h-64 md:h-80 lg:h-auto min-h-120 overflow-hidden flex items-center justify-center ${cardBgColors[project.slug] || "bg-[#5383FF]"
+                            }`}
                         >
                           <Image
                             src={
@@ -479,7 +475,7 @@ const PortfolioPage = () => {
                     title: "Head of Product, Finlight",
                   },
                   {
-                    quote: "Best agency partner we've worked with. Period.",
+                    quote: "Let's build something great together — on time, on budget, and beyond expectations.",
                     name: "James K.",
                     title: "CEO, Northwave Co.",
                   },
@@ -541,22 +537,42 @@ const PortfolioPage = () => {
                 </motion.h2>
                 <motion.p
                   variants={itemVariants}
-                  className="text-[#FFFFFF] text-lg md:text-xl mb-10 max-w-2xl mx-auto"
+                  className="text-[#FFFFFF] text-base sm:text-lg md:text-xl mb-10 max-w-none w-full text-center md:whitespace-nowrap"
                 >
-                  "Best agency partner we've worked with. Period."
+                  "Let's build something great together — on time, on budget, and beyond expectations."
                 </motion.p>
-                <motion.div
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link
-                    href="/reach-us"
-                    className="inline-block px-8 md:px-10 py-3 md:py-4 bg-[#FFFFFF] text-[#335ECE] font-bold rounded-lg hover:bg-[#335ECE]/10 transition-all duration-300 shadow-lg hover:shadow-xl"
-                  >
-                    Let's Work Together →
-                  </Link>
-                </motion.div>
+              <motion.div
+  variants={itemVariants}
+  whileHover={{ scale: 1.06 }}
+  whileTap={{ scale: 0.95 }}
+  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+  className="inline-block"
+>
+  <Link
+    href="/reach-us"
+    className="
+      /* Layout & Spacing */
+      inline-flex items-center justify-center gap-2.5
+      px-8 md:px-10 py-3.5 md:py-4
+      rounded-xl font-bold text-sm md:text-base
+
+      /* Solid White Background & Blue Text (Static) */
+      bg-white text-[#335ECE]
+      shadow-md hover:shadow-xl
+
+      /* Smooth Transitions */
+      transition-shadow duration-300 ease-out
+    "
+  >
+    {/* Text */}
+    <span>Let's Work Together</span>
+
+    {/* Arrow Icon */}
+    <span className="transition-transform duration-300 group-hover:translate-x-1">
+      →
+    </span>
+  </Link>
+</motion.div>
               </motion.div>
             </div>
           </div>

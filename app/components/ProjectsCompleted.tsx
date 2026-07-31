@@ -30,10 +30,10 @@ const Counter = ({ value }: { value: string }) => {
 
 /* ================= STATS DATA ================= */
 const stats = [
-  { value: "107", label: "Successful Projects", icon: "/home/ProjectsCompleted/project.png" },
-  { value: "52", label: "Global Clients", icon: "/home/ProjectsCompleted/client.png" },
-  { value: "71", label: "Multi Service", icon: "/home/ProjectsCompleted/service.png" },
-  { value: "19", label: "Winning Awards", icon: "/home/ProjectsCompleted/awards.png" },
+  { value: "107", label: "Successful Projects", icon: "/home/ProjectsCompleted/successful-project.png" },
+  { value: "52", label: "Global Clients", icon: "/home/ProjectsCompleted/happy-clients.png" },
+  { value: "71", label: "Multi Service", icon: "/home/ProjectsCompleted/multi-service.png" },
+  { value: "19", label: "Winning Awards", icon: "/home/ProjectsCompleted/awards-wins.png" },
 ];
 
 export default function WeHaveCompleted() {
@@ -89,13 +89,15 @@ export default function WeHaveCompleted() {
                     }}
                     className="h-20 w-20 rounded-full border-[3px] bg-[#335ECE]/15 border-[#335ECE] flex items-center justify-center transition-all group-hover:border-white group-hover:bg-white/10"
                   >
-                    <div className="relative h-12 w-12">
+                    <div className="relative h-12 w-12 flex items-center justify-center">
                       <Image
                         src={item.icon}
                         alt={item.label}
                         fill
-                        className={`object-contain transition-all duration-300 group-hover:brightness-0 group-hover:invert ${item.label === "Winning Awards" ? "scale-125 m-auto" : ""
-                          }`}
+                        sizes="48px"
+                        className={`object-contain transition-all duration-300 group-hover:brightness-0 group-hover:invert ${
+                          item.label === "Winning Awards" ? "scale-125" : ""
+                        }`}
                       />
                     </div>
                   </motion.div>
@@ -106,7 +108,7 @@ export default function WeHaveCompleted() {
                   <Counter value={item.value} />+
                 </h3>
 
-                <h3 className="text-[16px] md:text-[18px] font-bold text-[#666666]  group-hover:text-white/90 transition-colors uppercase">
+                <h3 className="text-[16px] md:text-[18px] font-bold text-[#666666] group-hover:text-white/90 transition-colors uppercase">
                   {item.label}
                 </h3>
               </div>

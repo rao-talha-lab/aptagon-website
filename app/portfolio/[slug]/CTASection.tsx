@@ -40,9 +40,9 @@ export default function CTASection() {
             </motion.h2>
             <motion.p
               variants={itemVariants}
-              className="text-[#FFFFFF] text-lg md:text-xl mb-10 max-w-2xl mx-auto"
+              className="text-[#FFFFFF] text-base sm:text-lg md:text-xl mb-10 max-w-none w-full text-center md:whitespace-nowrap"
             >
-              "Best agency partner we've worked with. Period."
+              "Let's build something great together — on time, on budget, and beyond expectations."
             </motion.p>
             <motion.div
               variants={itemVariants}

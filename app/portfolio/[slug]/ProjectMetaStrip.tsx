@@ -29,7 +29,7 @@ export default function ProjectMetaStrip({
     >
       <div className="container mx-auto">
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 "
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -42,8 +42,11 @@ export default function ProjectMetaStrip({
           }}
         >
           {/* Client */}
-          <motion.div variants={itemVariants} className="p-3 text-center md:text-left border-2 border-[#002892]/10 rounded-xl hover:border-[#335ECE] hover:scale-102">
-            <p className="text-[15px] md:text-[17px] font-semibold text-[#666666] dark:text-gray-500 tracking-wider mb-2">
+          <motion.div
+            variants={itemVariants}
+            className="p-4 text-center md:text-left border-2 border-[#002892]/10 rounded-xl bg-[#335ECE]/[0.06] dark:bg-[#335ECE]/15 hover:border-[#335ECE] hover:scale-102 transition-all duration-300"
+          >
+            <p className="text-[15px] md:text-[17px] font-semibold text-[#666666] dark:text-gray-400 tracking-wider mb-2">
               Client
             </p>
             <p className="text-[15px] md:text-[18px] font-bold text-[#335ECE] dark:text-white">
@@ -52,8 +55,11 @@ export default function ProjectMetaStrip({
           </motion.div>
 
           {/* Industry */}
-          <motion.div variants={itemVariants} className="p-3 text-center md:text-left border-2 border-[#002892]/10 rounded-xl hover:border-[#335ECE] hover:scale-102">
-            <p className="text-[15px] md:text-[17px] font-semibold text-[#666666] dark:text-gray-500 tracking-wider mb-2">
+          <motion.div
+            variants={itemVariants}
+            className="p-4 text-center md:text-left border-2 border-[#002892]/10 rounded-xl bg-[#335ECE]/[0.06] dark:bg-[#335ECE]/15 hover:border-[#335ECE] hover:scale-102 transition-all duration-300"
+          >
+            <p className="text-[15px] md:text-[17px] font-semibold text-[#666666] dark:text-gray-400 tracking-wider mb-2">
               Industry
             </p>
             <p className="text-[15px] md:text-[18px] font-bold text-[#335ECE] dark:text-white">
@@ -62,8 +68,11 @@ export default function ProjectMetaStrip({
           </motion.div>
 
           {/* Timeline */}
-          <motion.div variants={itemVariants} className="p-3 text-center md:text-left border-2 border-[#002892]/10 rounded-xl hover:border-[#335ECE] hover:scale-102">
-            <p className="text-[15px] md:text-[17px] font-semibold text-[#666666] dark:text-gray-500 tracking-wider mb-2">
+          <motion.div
+            variants={itemVariants}
+            className="p-4 text-center md:text-left border-2 border-[#002892]/10 rounded-xl bg-[#335ECE]/[0.06] dark:bg-[#335ECE]/15 hover:border-[#335ECE] hover:scale-102 transition-all duration-300"
+          >
+            <p className="text-[15px] md:text-[17px] font-semibold text-[#666666] dark:text-gray-400 tracking-wider mb-2">
               Timeline
             </p>
             <p className="text-[15px] md:text-[18px] font-bold text-[#335ECE] dark:text-white">
@@ -74,9 +83,9 @@ export default function ProjectMetaStrip({
           {/* Tools */}
           <motion.div
             variants={itemVariants}
-            className="p-3 text-center md:text-left col-span-2 md:col-span-1 border-2 border-[#002892]/10 rounded-xl hover:border-[#335ECE] hover:scale-102" 
+            className="p-4 text-center md:text-left col-span-2 md:col-span-1 border-2 border-[#002892]/10 rounded-xl bg-[#335ECE]/[0.06] dark:bg-[#335ECE]/15 hover:border-[#335ECE] hover:scale-102 transition-all duration-300"
           >
-            <p className="text-s md:text-sm font-semibold text-[#666666] dark:text-gray-500 tracking-wider mb-2">
+            <p className="text-s md:text-sm font-semibold text-[#666666] dark:text-gray-400 tracking-wider mb-2">
               Tools
             </p>
             <p className="text-sm md:text-lg font-bold text-[#335ECE] dark:text-white line-clamp-2">

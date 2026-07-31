@@ -38,20 +38,22 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           category={caseStudy.category}
         />
 
-        {/* Carousel Container */}
-        <section className="relative pb-12 px-4 md:pb-16 md:px-6 lg:px-8 overflow-hidden pt-0">
+        {/* Carousel Container - Reduced pb-4 (pehle pb-12/pb-16 tha) */}
+        <section className="relative pb-2 md:pb-4 px-4 md:px-6 lg:px-8 overflow-hidden pt-0">
           <div className="shadow-[#335ECE]/10 container mx-auto">
             <ImageCarousel images={caseStudy.heroImages} title={caseStudy.title} bgColor={caseStudy.bgColor} />
           </div>
         </section>
 
-        {/* Project Meta Strip */}
-        <ProjectMetaStrip
-          client={caseStudy.client}
-          industry={caseStudy.industry}
-          timeline={caseStudy.timeline}
-          tools={caseStudy.tools}
-        />
+        {/* Project Meta Strip - Added -mt-2 / -mt-4 to pull cards closer */}
+        <div className="-mt-2 md:-mt-4">
+          <ProjectMetaStrip
+            client={caseStudy.client}
+            industry={caseStudy.industry}
+            timeline={caseStudy.timeline}
+            tools={caseStudy.tools}
+          />
+        </div>
 
         {/* Problem/Solution Section */}
         <ProblemSolutionSection

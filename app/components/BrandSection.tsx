@@ -9,7 +9,7 @@ const clients = [
   { name: "Sadsan", url: "www.sadsantechnologies.com", desc: "Provided modern digital solutions to support efficient business operations and platform performance.", img: "/logos/sadsan.png", color: "#335ECE" },
   { name: "PVP.com", url: "www.pvp.com", desc: "Delivered reliable digital solutions to enhance platform performance and user experience.", img: "/logos/PVP.png", color: "#335ECE" },
   { name: "PSG (Proximus)", url: "www.psg.com", desc: "Worked with PSG to deliver reliable technology solutions that support their digital growth.", img: "/logos/PSG.png", color: "#335ECE" },
-  { name: "Infinex", url: "www.zetastudy.com", desc: "Worked with Zeta Study to deliver reliable digital solutions for their education consultancy platform.", img: "/logos/ZZETA.png", color: "#335ECE" },
+  { name: "Infinex", url: "www.zetastudy.com", desc: "Worked with Zeta Study to deliver reliable digital solutions for their education consultancy platform.", img: "/logos/ZETAStudy.png", color: "#335ECE" },
   { name: "DataCore", url: "www.datacore.com", desc: "Managing massive data ecosystems with enterprise-grade cloud storage and security protocols.", img: "/logos/Word.png", color: "#335ECE" },
 ];
 

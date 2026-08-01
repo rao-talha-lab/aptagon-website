@@ -9,50 +9,43 @@ const ContactSection = () => {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">(
     "idle"
   );
-
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
-  
-    if (!formRef.current) return;
-  
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID2;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID3;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY2;
-  
-    if (!serviceId || !templateId || !publicKey) {
-      console.error("Missing EmailJS environment variables configuration.");
-      setStatus("error");
-      
-      // Auto-clear error after 3 seconds
-      setTimeout(() => setStatus("idle"), 3000);
-      return;
-    }
-  
-    emailjs
-      .sendForm(serviceId, templateId, formRef.current, publicKey)
-      .then(
-        () => {
-          setStatus("success");
-          formRef.current?.reset();
-  
-          // Auto-clear success message after 3 seconds
-          setTimeout(() => {
-            setStatus("idle");
-          }, 3000);
-        },
-        (error) => {
-          console.error("EmailJS Submission Error:", error);
-          setStatus("error");
-  
-          // Auto-clear error message after 3 seconds
-          setTimeout(() => {
-            setStatus("idle");
-          }, 3000);
-        }
-      );
-  };
 
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      user_first_name: formData.get("user_first_name"),
+      user_last_name: formData.get("user_last_name"),
+      user_email: formData.get("user_email"),
+      user_phone: formData.get("user_phone"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const res = await fetch("/api/reach-us", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+
+      if(res.ok && data.success){
+        setStatus("success");
+        formRef.current?.reset();
+      } else {
+        console.error("Server Error:", data);
+        setStatus("error");
+      }
+    } catch (err) {
+      console.error("Network Error:", err);
+      setStatus("error");
+    } finally {
+      setTimeout(() => setStatus("idle"), 3000)
+    }
+  };
+  
   return (
     <section className="w-full min-h-screen bg-white flex justify-center items-center py-15 px-6">
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">

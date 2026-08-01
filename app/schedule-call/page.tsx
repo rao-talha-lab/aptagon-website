@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import TransparentNavbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import { Calendar, Clock, CheckCircle } from "lucide-react";
-import emailjs from "@emailjs/browser";
 import SchedualHero from "./SchedualHero";
+import { email } from "zod";
 
 interface TimeSlot {
   time: string;
@@ -30,21 +30,6 @@ const ScheduleCallPage = () => {
     time: "",
   });
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
-
-  // Initialize EmailJS on mount safely
-  useEffect(() => {
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY2;
-    if (publicKey) {
-      emailjs.init({
-        publicKey: publicKey,
-      });
-      console.log("EmailJS initialized successfully.");
-    } else {
-      console.error(
-        "EmailJS Initialization Error: NEXT_PUBLIC_EMAILJS_PUBLIC_KEY2 is undefined. Check your .env.local file."
-      );
-    }
-  }, []);
 
   // Available time slots
   const timeSlots: TimeSlot[] = [
@@ -98,53 +83,40 @@ const ScheduleCallPage = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID2;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID2;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY2;
-
-    if (!serviceId || !templateId || !publicKey) {
-      console.error("Missing EmailJS environment variables:", { serviceId, templateId, publicKey });
-      alert("Configuration error: Missing email service credentials.");
+    if (!formData.name || !formData.email || !formData.date || !formData.time) {
       return;
     }
+    try{
+      const res = await fetch("api/schedule-call", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          date: formData.date,
+          time: formData.time,
+        }),
+      });
+      const data = await res.json();
 
-    if (formData.name && formData.email && formData.date && formData.time) {
-      emailjs
-        .send(
-          serviceId,
-          templateId,
-          {
-            from_name: formData.name,
-            from_email: formData.email,
-            booking_date: formData.date,
-            booking_time: formData.time,
-          },
-          {
-            publicKey: publicKey,
-          }
-        )
-        .then(
-          (result) => {
-            console.log("Email sent successfully:", result.text);
-            setBookingConfirmed(true);
-            setTimeout(() => {
-              setBookingConfirmed(false);
-              setFormData({ name: "", email: "", date: "", time: "" });
-              setSelectedDate("");
-              setSelectedTime("");
-            }, 3000);
-          },
-          (error) => {
-            console.error("Email sending error:", error);
-            alert(`Failed to send email: ${error.text || "Please try again."}`);
-          }
-        );
+      if (res.ok && data.success) {
+        setBookingConfirmed(true);
+        setTimeout(() => {
+          setBookingConfirmed(false);
+          setFormData({name: "", email: "", date: "", time: ""});
+          setSelectedDate("");
+          setSelectedTime("");
+        }, 3000);
+      } else {
+        alert(data.message || "Booking failed. Please try again.");
+      }
+    } catch (err) {
+      console.error("Network Error:", err);
+      alert("Network error. Please try again.");
     }
   };
-
   const formatDateDisplay = (dateStr: string) => {
     if (!dateStr) return "";
     const date = new Date(dateStr);
@@ -274,11 +246,10 @@ const ScheduleCallPage = () => {
                     <button
                       key={dateStr}
                       onClick={() => handleDateSelect(date)}
-                      className={`p-3 rounded-lg text-sm font-medium transition-all ${
-                        isSelected
-                          ? "bg-[#335ECE] dark:bg-[#335ECE] text-white dark:text-[#1a1a1a] shadow-lg"
-                          : "bg-gray-100 dark:bg-[#1a1a1a] text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-[#3a3a3a]"
-                      }`}
+                      className={`p-3 rounded-lg text-sm font-medium transition-all ${isSelected
+                        ? "bg-[#335ECE] dark:bg-[#335ECE] text-white dark:text-[#1a1a1a] shadow-lg"
+                        : "bg-gray-100 dark:bg-[#1a1a1a] text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-[#3a3a3a]"
+                        }`}
                     >
                       <div className="text-xs">
                         {date.toLocaleDateString("en-US", {
@@ -310,13 +281,12 @@ const ScheduleCallPage = () => {
                         slot.available && handleTimeSelect(slot.time)
                       }
                       disabled={!slot.available}
-                      className={`p-2 rounded-lg text-sm font-medium transition-all ${
-                        selectedTime === slot.time
-                          ? "bg-[#335ECE] dark:bg-[#0EBAB0] text-white dark:text-[#1a1a1a] shadow-lg"
-                          : slot.available
+                      className={`p-2 rounded-lg text-sm font-medium transition-all ${selectedTime === slot.time
+                        ? "bg-[#335ECE] dark:bg-[#0EBAB0] text-white dark:text-[#1a1a1a] shadow-lg"
+                        : slot.available
                           ? "bg-gray-100 dark:bg-[#1a1a1a] text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-[#3a3a3a] cursor-pointer"
                           : "bg-gray-50 dark:bg-[#0f0f0f] text-gray-400 dark:text-gray-600 cursor-not-allowed"
-                      }`}
+                        }`}
                     >
                       {slot.time}
                     </button>

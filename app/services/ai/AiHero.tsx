@@ -290,7 +290,7 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
           <div className="bg-[#FFFFFF] border border-[#073A53]/20 rounded-[12px] p-2.5 flex gap-2.5 items-center shadow-sm h-[52px]">
             <div className="w-8 h-8 rounded-lg bg-[#002892]/10 flex items-center justify-center shrink-0">
               <Image
-                src="/hero-right/arrow.svg"
+                src="/hero-right/arrow1.svg"
                 alt="code"
                 width={16}
                 height={16}

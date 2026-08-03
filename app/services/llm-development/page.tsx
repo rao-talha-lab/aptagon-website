@@ -10,56 +10,56 @@ import LlmHero from "./LlmHero";
 
 const cardsData = [
   {
-    image: "/logos/web-development.png",
+    image: "/logos/web.svg",
     title: "Web Development",
     slug: "web-development",
     description:
       "We build responsive, high-performance websites that blend creativity and technology — enhancing user experience and driving consistent business growth.",
   },
   {
-    image: "/logos/mobile-app-development.png",
+    image: "/logos/mobile.svg",
     title: "Mobile App Development",
     slug: "mobile-apps",
     description:
       "Crafting high-performance, intuitive mobile applications that deliver seamless experiences and drive user engagement across all devices. Our apps are designed to scale with your business needs.",
   },
   {
-    image: "/logos/ui-ux-designing.png",
+    image: "/logos/uiux.svg",
     title: "UI/UX Designing",
     slug: "ui-ux",
     description:
       "We design intuitive, visually engaging interfaces that combine creativity and strategy — enhancing user satisfaction and ensuring seamless interaction across every digital touchpoint.",
   },
   {
-    image: "/logos/business-process-automation.png",
+    image: "/logos/bpa.svg",
     title: "Business Process Automation",
     slug: "business-process-automation",
     description:
       "Streamline operations with intelligent automation solutions. We simplify workflows, cut manual tasks, and boost overall business efficiency and speed.",
   },
   {
-    image: "/logos/software-quality-assurance.png",
+    image: "/logos/sqa.svg",
     title: "Software Quality Assurance",
     slug: "sqa",
     description:
       "Ensure reliability through advanced QA testing services. We deliver secure, high-quality software that performs efficiently and flawlessly.",
   },
   {
-    image: "/logos/LLM-development & training.png",
+    image: "/logos/llm.svg",
     title: "LLM Development & Training",
     slug: "llm-development",
     description:
       "Develop tailored Large Language Models that enhance automation, communication, and intelligent business decision-making.",
   },
   {
-    image: "/logos/chatbot-development.png",
+    image: "/logos/chatbot.svg",
     title: "Chatbot Development",
     slug: "chatbots",
     description:
       "Engage customers 24/7 through advanced AI-powered chatbots that manage support, queries, and lead generation with smart precision.",
   },
   {
-    image: "/logos/AI & generative-solutions.png",
+    image: "/logos/ai.svg",
     title: "AI & Generative Solutions",
     slug: "ai",
     description:
@@ -69,25 +69,25 @@ const cardsData = [
 
 const Infintecards = [
   {
-    image: "/services-images/llm-infinite/image-1.png",
+    image: "/services-images/llm-infinite/image-1.svg",
     title: "Custom Model Development",
     description:
       "Build LLMs tailored to your specific business data and needs.",
   },
   {
-    image: "/services-images/llm-infinite/image-2.png",
+    image: "/services-images/llm-infinite/image-2.svg",
     title: "Model Fine-Tuning",
     description:
       "Optimize existing models like GPT, LLaMA, or Falcon for industry-specific use cases",
   },
   {
-    image: "/services-images/llm-infinite/image-3.png",
+    image: "/services-images/llm-infinite/image-3.svg",
     title: "Prompt Engineering",
     description:
       "Design effective prompt structures for accurate, contextual responses.",
   },
   {
-    image: "/services-images/llm-infinite/image-4.png",
+    image: "/services-images/llm-infinite/image-4.svg",
     title: "Data Preparation & Training",
     description:
       "Curate and preprocess high-quality datasets for efficient model training.",

@@ -153,7 +153,7 @@ export default function StatementSection({
           className="absolute left-6 md:left-15 top-8 md:top-25 select-none pointer-events-none"
         >
           <img
-            src="/about-us/left.png" 
+            src="/about-us/left.svg" 
             alt="Quote Start"
             className="w-10 h-10 md:w-16 md:h-16 object-contain"
           />
@@ -186,7 +186,7 @@ export default function StatementSection({
           className="absolute right-6 md:right-10 bottom-8 md:bottom-12 select-none pointer-events-none"
         >
           <img
-            src="/about-us/right.png"
+            src="/about-us/right.svg"
             alt="Quote End"
             className="w-10 h-10 md:w-16 md:h-16 object-contain"
           />

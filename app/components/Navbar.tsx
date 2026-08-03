@@ -12,14 +12,14 @@ import {
 type DropdownType = "services" | null;
 
 const services = [
-  { title: "Web Development", desc: "Scalable, high-performing websites built to support your business growth.", href: "/services/web-development", icon: "/what-we-do/icons/web.png" },
-  { title: "Mobile App Development", desc: "Innovative and seamless mobile apps.", href: "/services/mobile-apps", icon: "/what-we-do/icons/mobile.png" },
-  { title: "UI/UX Designing", desc: "Creative and user-focused designs.", href: "/services/ui-ux", icon: "/what-we-do/icons/uiux.png" },
-  { title: "Business Process Automation", desc: "Smart automation for efficiency.", href: "/services/business-process-automation", icon: "/what-we-do/icons/business.png" },
-  { title: "Software Quality Assurance", desc: "Reliable and error-free software.", href: "/services/sqa", icon: "/what-we-do/icons/sqa.png" },
-  { title: "LLM Development & Training", desc: "Custom-trained language models.", href: "/services/llm-development", icon: "/what-we-do/icons/llm.png" },
-  { title: "Chatbot Development", desc: "Intelligent bots for engagement.", href: "/services/chatbots", icon: "/what-we-do/icons/chatbot.png" },
-  { title: "AI & Generative Solutions", desc: "Transformative AI-driven innovations.", href: "/services/ai", icon: "/what-we-do/icons/ai.png" },
+  { title: "Web Development", desc: "Scalable, high-performing websites built to support your business growth.", href: "/services/web-development", icon: "/what-we-do/icons/web.svg" },
+  { title: "Mobile App Development", desc: "Innovative and seamless mobile apps.", href: "/services/mobile-apps", icon: "/what-we-do/icons/mobile.svg" },
+  { title: "UI/UX Designing", desc: "Creative and user-focused designs.", href: "/services/ui-ux", icon: "/what-we-do/icons/uiux.svg" },
+  { title: "Business Process Automation", desc: "Smart automation for efficiency.", href: "/services/business-process-automation", icon: "/what-we-do/icons/business.svg" },
+  { title: "Software Quality Assurance", desc: "Reliable and error-free software.", href: "/services/sqa", icon: "/what-we-do/icons/sqa.svg" },
+  { title: "LLM Development & Training", desc: "Custom-trained language models.", href: "/services/llm-development", icon: "/what-we-do/icons/llm.svg" },
+  { title: "Chatbot Development", desc: "Intelligent bots for engagement.", href: "/services/chatbots", icon: "/what-we-do/icons/chatbot.svg" },
+  { title: "AI & Generative Solutions", desc: "Transformative AI-driven innovations.", href: "/services/ai", icon: "/what-we-do/icons/ai.svg" },
 ];
 
 /* ================= SERVICE CARD ================= */

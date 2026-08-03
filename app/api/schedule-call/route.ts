@@ -40,7 +40,6 @@ export async function POST(request: Request) {
         email: data.email,
         firstname: firstname,
         lastname: lastname,
-        message: `[Consultation Scheduled] Date: ${data.date} | Time: ${data.time}${data.message ? ` | Notes: ${data.message}`: "" }`,
       }),
     ]);
 

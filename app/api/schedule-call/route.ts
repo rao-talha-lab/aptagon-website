@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { scheduleCallSchema } from "@/lib/validation";
 import { sendEmail } from "@/lib/email";
 import { scheduleCallHrTemplate, scheduleCallUserAckTemplate } from "@/emails/templates";
+import { syncToHubSpot } from "@/lib/hubspot";
 
 export async function POST(request: Request) {
   try {
@@ -19,7 +20,11 @@ export async function POST(request: Request) {
     const data = validation.data;
     const hrEmail = process.env.EMAIL_TO || process.env.SMTP_USER!;
 
-    await Promise.all([
+    const nameParts = (data.name || "").trim().split("");
+    const firstname = nameParts[0] || "";
+    const lastname = nameParts.slice(1).join("") || "";
+
+    await Promise.allSettled([
       sendEmail({
         to: hrEmail,
         subject: `[Consultation Scheduled] ${data.name} - ${data.date} @ ${data.time}`,
@@ -30,6 +35,12 @@ export async function POST(request: Request) {
         to: data.email,
         subject: "Consultation Booking Confirmed - Aptagon Technologies",
         html: scheduleCallUserAckTemplate(data),
+      }),
+      syncToHubSpot({
+        email: data.email,
+        firstname: firstname,
+        lastname: lastname,
+        message: `[Consultation Scheduled] Date: ${data.date} | Time: ${data.time}${data.message ? ` | Notes: ${data.message}`: "" }`,
       }),
     ]);
 

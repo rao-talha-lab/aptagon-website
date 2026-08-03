@@ -18,25 +18,25 @@ const items: Item[] = [
     id: "01",
     title: "Curiosity",
     desc: "We explore new ideas and challenge assumptions to find better solutions.",
-    icon: "/about-us/curiosity.png",
+    icon: "/about-us/curiosity.svg",
   },
   {
     id: "02",
     title: "Craft",
     desc: "We dedicate ourselves to delivering high-quality, thoughtful work.",
-    icon: "/about-us/craft.png",
+    icon: "/about-us/craft.svg",
   },
   {
     id: "03",
     title: "Collaboration",
     desc: "We believe in the power of working together to achieve common goals.",
-    icon: "/about-us/collab.png",
+    icon: "/about-us/collab.svg",
   },
   {
     id: "04",
     title: "Impact",
     desc: "We strive to make a meaningful difference in everything we do.",
-    icon: "/about-us/impact.png",
+    icon: "/about-us/impact.svg",
   },
 ];
 

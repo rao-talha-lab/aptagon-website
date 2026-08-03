@@ -11,37 +11,37 @@ import Link from "next/link";
 
 function BPAIcon({ active }: { active: boolean }) {
   return (
-    <Image src="/services-images/services-icons/bpa.png" alt="Business Process Automation" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+    <Image src="/services-images/services-icons/bpa.svg" alt="Business Process Automation" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
   );
 }
 
 function UIUXIcon({ active }: { active: boolean }) {
   return (
-    <Image src="/services-images/services-icons/uiux.png" alt="UI/UX Designing" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+    <Image src="/services-images/services-icons/uiux.svg" alt="UI/UX Designing" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
   );
 }
 
 function ChatbotIcon({ active }: { active: boolean }) {
   return (
-    <Image src="/services-images/services-icons/chatbot.png" alt="Chatbot Development" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+    <Image src="/services-images/services-icons/chatbot.svg" alt="Chatbot Development" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
   );
 }
 
 function SQAIcon({ active }: { active: boolean }) {
   return (
-    <Image src="/services-images/services-icons/sqa.png" alt="Software Quality Assurance" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+    <Image src="/services-images/services-icons/sqa.svg" alt="Software Quality Assurance" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
   );
 }
 
 function WebDevIcon({ active }: { active: boolean }) {
   return (
-    <Image src="/services-images/services-icons/webdev.png" alt="Web Development" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+    <Image src="/services-images/services-icons/webdev.svg" alt="Web Development" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
   );
 }
 
 function AIGenIcon({ active }: { active: boolean }) {
   return (
-    <Image src="/services-images/services-icons/aigen.png" alt="AI & Generative Solutions" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+    <Image src="/services-images/services-icons/aigen.svg" alt="AI & Generative Solutions" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
   );
 }
 

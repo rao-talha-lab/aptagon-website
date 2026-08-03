@@ -30,10 +30,10 @@ const Counter = ({ value }: { value: string }) => {
 
 /* ================= STATS DATA ================= */
 const stats = [
-  { value: "107", label: "Successful Projects", icon: "/home/ProjectsCompleted/successful-project.png" },
-  { value: "52", label: "Global Clients", icon: "/home/ProjectsCompleted/happy-clients.png" },
-  { value: "71", label: "Multi Service", icon: "/home/ProjectsCompleted/multi-service.png" },
-  { value: "19", label: "Winning Awards", icon: "/home/ProjectsCompleted/awards-wins.png" },
+  { value: "107", label: "Successful Projects", icon: "/home/ProjectsCompleted/successful-project.svg" },
+  { value: "52", label: "Global Clients", icon: "/home/ProjectsCompleted/happy-clients.svg" },
+  { value: "71", label: "Multi Service", icon: "/home/ProjectsCompleted/multi-service.svg" },
+  { value: "19", label: "Winning Awards", icon: "/home/ProjectsCompleted/awards-wins.svg" },
 ];
 
 export default function WeHaveCompleted() {

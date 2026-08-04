@@ -23,7 +23,7 @@ export default function ReachUsPage() {
       <ReachUs />
 
       {/* FULL WIDTH MAP CONTAINER */}
-      <div className="relative w-full h-[350px] sm:h-[450px] md:h-[550px] overflow-hidden">
+      <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] overflow-hidden">
         <Image
           src="/reach-us/map.png"
           alt="Location Map"

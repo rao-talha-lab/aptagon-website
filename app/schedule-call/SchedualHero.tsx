@@ -172,78 +172,76 @@ const SchedualHero = () => {
 
   return (
     <div className="relative z-30 shadow-[0_5px_15px_rgba(0,0,0,0.05)]">
-    <section className="relative flex items-center justify-start overflow-hidden bg-[#FFFFFF] min-h-[85vh] py-16">
-      {/* Particle Canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-0 pointer-events-none opacity-60"
-      />
+      <section className="relative flex items-center justify-start overflow-hidden bg-[#FFFFFF] min-h-[85vh] py-16">
+        {/* Particle Canvas */}
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 z-0 pointer-events-none opacity-60"
+        />
 
-      <div className="relative z-10 container mx-auto px-6 sm:px-12 lg:px-10 flex flex-col items-start text-left">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="max-w-4xl w-full flex flex-col items-start"
-        >
-          {/* Tagline */}
-          <motion.div variants={itemVariants} className="flex mt-20 mb-4">
-            <span className="text-[#666666] font-bold uppercase tracking-widest text-[15px] md:text-[15px]">Let's Start a Conversation</span>
-          </motion.div>
-
-          {/* Main Heading */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-[30px] md:text-[45px] lg:text-[50px] font-black text-[#666666] leading-[1.1] mb-4 tracking-tighter"
-          >
-            Book a Strategy Session <br />
-            <TypewriterEffect
-              words={["With Our Tech Experts", "With Our Strategists", "With Our Team"]}
-            />
-          </motion.h1>
-
-          {/* Description */}
-          <motion.p
-            variants={itemVariants}
-            className="text-[20px] md:text-[18px] text-[#666666] mb-8 max-w-2xl leading-relaxed font-medium "
-          >
-            Pick a time that works for you to discuss your project requirements and explore
-            how our digital solutions can scale your business.
-          </motion.p>
-
-          {/* CTA Buttons */}
+        <div className="relative z-10 container mx-auto px-6 sm:px-12 lg:px-10 flex flex-col items-start text-left">
           <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-5 w-full justify-start items-center"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="max-w-4xl w-full flex flex-col items-start"
           >
-            <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(51, 94, 206, 0.25)",
-              }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() =>
-                document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="w-full sm:w-auto px-12 py-5 bg-[#355ED1] text-white font-black rounded-2xl shadow-xl transition-all"
+            {/* Tagline */}
+            <motion.div variants={itemVariants} className="flex mt-20 mb-4">
+              <span className="text-[#666666] font-bold uppercase tracking-widest text-[15px] md:text-[15px]">Let's Start a Conversation</span>
+            </motion.div>
+
+            {/* Main Heading */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-[30px] md:text-[45px] lg:text-[50px] font-black text-[#666666] leading-[1.1] mb-4 tracking-tighter"
             >
-              Check Availability 
-            </motion.button>
-            <motion.button
-              whileHover={{ backgroundColor: "rgba(51, 94, 206, 0.2)", borderColor: "#335ECE" }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => window.open("https://wa.me/923704640036", "_blank")}
-              className="w-full sm:w-auto px-12 py-5 border-2 border-[#666666] text-[#666666] font-black rounded-2xl transition-all"
+              Book a Strategy Session <br />
+              <TypewriterEffect
+                words={["With Our Tech Experts", "With Our Strategists", "With Our Team"]}
+              />
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              variants={itemVariants}
+              className="text-[20px] md:text-[18px] text-[#666666] mb-8 max-w-2xl leading-relaxed font-medium "
             >
-              Contact Support
-            </motion.button>
+              Pick a time that works for you to discuss your project requirements and explore
+              how our digital solutions can scale your business.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row gap-5 w-full justify-start items-center"
+            >
+              <motion.button
+              whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() =>
+                  document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="w-full sm:w-auto px-8 h-14 bg-[#355ED1] text-white font-black rounded-[10px] shadow-xl transition-all"
+              >
+                Check Availability
+              </motion.button>
+              <motion.button
+                whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
+
+                whileTap={{ scale: 0.95 }}
+                onClick={() => window.open("https://wa.me/923704640036", "_blank")}
+                className="w-full sm:w-auto px-8 h-14 border-2 border-[#666666] text-[#666666] font-black rounded-[10px] hover:text-[#335ECE] transition-all"
+              >
+                Contact Support
+              </motion.button>
+            </motion.div>
+
+            {/* Badge */}
+
           </motion.div>
-
-          {/* Badge */}
-
-        </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
     </div>
   );
 };

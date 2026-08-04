@@ -1,150 +1,105 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, Variants } from "framer-motion";
 
 interface SpotlightItem {
   id: string;
+  type: string;
   titleFirstPart: string;
   titleSecondPart: string;
   description: string;
+  author?: string;
   image: string;
-  type?: string;
-  href?: string;
+  href: string;
 }
 
 interface SpotlightSectionProps {
-  HeadingFirstPart?: string;
-  HeadingSecondPart?: string;
-  items: SpotlightItem[];
+  HeadingFirstPart: string;
+  HeadingSecondPart: string;
+  items?: SpotlightItem[];
+  columns?: 3 | 4;
 }
 
-/* ---------------- Professional Animations ---------------- */
+const SpotlightSection: React.FC<SpotlightSectionProps> = ({
+  HeadingFirstPart,
+  HeadingSecondPart,
+  items = [],
+  columns,
+}) => {
+  const activeCols = columns || (items.length === 3 ? 3 : 4);
 
-const sectionVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
+  const gridColsClass =
+    activeCols === 3
+      ? "grid-cols-1 md:grid-cols-3"
+      : "grid-cols-1 md:grid-cols-2 lg:grid-cols-4";
+
+  return (
+    <section className="py-10 px-4 md:px-8 max-w-7xl mx-auto w-full border-gray-200">
+      {/* Heading Container */}
+      <div className="mb-8 -mx-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-[#335ECE] mb-2">
+          {HeadingFirstPart}
+          <span className="text-[#666666] dark:text-white">
+            {HeadingSecondPart}
+          </span>
+        </h2>
+      </div>
+
+      {/* Grid Layout */}
+      <div className={`grid ${gridColsClass} gap-4 md:gap-5 w-full`}>
+        {items.map((item) => (
+          <Link key={item.id} href={item.href} className="group block w-full">
+            {/* Card Container with Enhanced Hover & Glow */}
+            <div className="bg-white dark:bg-[#1a1a1a] rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm transition-all duration-300 ease-out transform group-hover:-translate-y-2 group-hover:shadow-3xl group-hover:shadow-blue-500/10 group-hover:border-blue-200 dark:group-hover:border-blue-900/40 h-full flex flex-col relative">
+              
+              {/* Image Container with Smooth Zoom */}
+              <div className="relative w-full h-40 md:h-44 overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.titleFirstPart + item.titleSecondPart}
+                  fill
+                  className="object-cover group-hover:scale-108 transition-transform duration-500 ease-out"
+                />
+              </div>
+
+              {/* Card Content Body */}
+              <div className="p-5 flex flex-col flex-grow justify-between">
+                <div>
+                  <span className="text-xs font-semibold text-gray-500 capitalize tracking-normal block mb-2">
+                    {item.type}
+                  </span>
+
+                  <h3 className="text-base md:text-lg font-bold mb-2.5 leading-snug">
+                    <span className="text-[#666666] dark:text-white group-hover:text-[#335ECE] transition-colors duration-200">
+                      {item.titleFirstPart}{" "}
+                    </span>
+                    <span className="text-[#335ECE] group-hover:text-[#666666] dark:group-hover:text-white transition-colors duration-200">
+                      {item.titleSecondPart}
+                    </span>
+                  </h3>
+
+                  <p className="text-gray-500 dark:text-gray-400 text-xs md:text-sm leading-relaxed mb-3">
+                    {item.description}
+                  </p>
+                </div>
+
+                {item.author && (
+                  <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-2">
+                    {item.author}
+                  </p>
+                )}
+              </div>
+
+              {/* Animated Bottom Line Accent */}
+              <div className="h-1 w-0 group-hover:w-full bg-[#335ECE] transition-all duration-300 ease-in-out absolute bottom-0 left-0"></div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
 };
 
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.25, 1, 0.5, 1], // Premium Cubic Bezier
-    },
-  },
-};
-
-/* ---------------- Main Component ---------------- */
-
-export default function SpotlightSection({
-  HeadingFirstPart = "Today’s",
-  HeadingSecondPart = "Spotlight",
-  items,
-}: SpotlightSectionProps) {
-  return (
-    <motion.section
-      className="w-full py-24 px-6 md:px-12 bg-[#FFFFFF]"
-      variants={sectionVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-    >
-      <div className="container mx-auto">
-        <motion.h2
-          variants={cardVariants}
-          className="text-3xl md:text-4xl font-black mb-16 tracking-tight"
-        >
-          <span className="text-[#335ECE]">{HeadingFirstPart} </span>
-          <span className="text-[#666666]">{HeadingSecondPart}</span>
-        </motion.h2>
-
-        {/* Grid Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {items.map((item) => (
-            <motion.div
-              key={item.id}
-              variants={cardVariants}
-              whileHover={{ 
-                y: -12,
-                transition: { duration: 0.4, ease: "easeOut" }
-              }}
-              className="
-                group
-                relative
-                w-full
-                rounded-[0.5rem]
-                bg-white
-                shadow-[0_10px_30px_rgba(0,0,0,0.1)]
-                hover:shadow-[0_20px_50px_rgba(51,94,206,0.15)]
-                border border-transparent
-                hover:border-[#002892]/20
-                transition-all
-                duration-500
-                overflow-hidden
-              "
-            >
-              {item.href ? (
-                <Link href={item.href} className="block h-full">
-                  <CardInner item={item} />
-                </Link>
-              ) : (
-                <CardInner item={item} />
-              )}
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </motion.section>
-  );
-}
-
-/* ---------------- Inner Card Content ---------------- */
-
-function CardInner({ item }: { item: SpotlightItem }) {
-  return (
-    <>
-      {/* Image Container with Zoom Effect */}
-      <div className="relative h-56 w-full overflow-hidden">
-        <Image
-          src={item.image}
-          alt={`${item.titleFirstPart} ${item.titleSecondPart}`}
-          fill
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-        />
-        {/* Subtle Overlay on Hover */}
-        <div className="absolute inset-0 bg-[#073A53]/0 group-hover:bg-[#073A53]/5 transition-colors duration-500" />
-      </div>
-
-      {/* Content Section */}
-      <div className="p-6 md:p-8">
-        {item.type && (
-          <p className="text-s font-semibold text-[#666666] tracking-wide mb-3">
-            {item.type}
-          </p>
-        )}
-
-        <h3 className="text-[15px] md:text-[19px] font-semibold leading-[1.2] mb-4 group-hover:text-[#214F65] transition-colors">
-          <span className="text-[#666666]">{item.titleFirstPart}</span>
-          <span className="text-[#335ECE]"> {item.titleSecondPart}</span>
-        </h3>
-
-        <p className="text-[#666666] leading-relaxed text-[16px] md:text-[18px] line-clamp-4 group-hover:text-gray-600 text-justify">
-          {item.description}
-        </p>
-        
-        {/* Animated Bottom Line */}
-        <div className="mt-6 h-[2px] w-0 bg-[#335ECE] group-hover:w-full transition-all duration-500 rounded-full" />
-      </div>
-    </>
-  );
-}
+export default SpotlightSection;

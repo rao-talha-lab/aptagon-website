@@ -24,7 +24,7 @@ const articles: Article[] = [
     id: 3,
     title: "Smarter Documentation for Agile Teams",
     date: "8 July 2025",
-    image: "/blogs/popular/image-3.jpg",
+    image: "/blogs/popular/image-3.png",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const articles: Article[] = [
 export default function PopularArticles() {
   return (
     // Background set to white, padding-left set to 39px
-    <section className="w-full bg-[#FFFFFF] pb-20 pr-6" style={{ paddingLeft: '39px' }}>
+    <section className="w-full bg-[#FFFFFF] pb-20 pr-6 pt-10" style={{ paddingLeft: '39px' }}>
       <h2 className="mb-8 text-xl sm:text-2xl md:text-4xl font-bold text-[#335ECE]">
         Popular
       </h2>
@@ -46,7 +46,7 @@ export default function PopularArticles() {
         className="
           grid
           grid-cols-1
-          lg:grid-cols-1
+          lg:grid-cols-1a
           gap-x-10
           gap-y-6
           max-w-7xl

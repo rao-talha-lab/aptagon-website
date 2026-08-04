@@ -38,14 +38,18 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           category={caseStudy.category}
         />
 
-        {/* Carousel Container - Reduced pb-4 (pehle pb-12/pb-16 tha) */}
+        {/* Carousel Container */}
         <section className="relative pb-2 md:pb-4 px-4 md:px-6 lg:px-8 overflow-hidden pt-0">
           <div className="shadow-[#335ECE]/10 container mx-auto">
-            <ImageCarousel images={caseStudy.heroImages} title={caseStudy.title} bgColor={caseStudy.bgColor} />
+            <ImageCarousel
+              images={caseStudy.heroImages}
+              title={caseStudy.title}
+              bgColor={caseStudy.bgColor}
+            />
           </div>
         </section>
 
-        {/* Project Meta Strip - Added -mt-2 / -mt-4 to pull cards closer */}
+        {/* Project Meta Strip */}
         <div className="-mt-2 md:-mt-4">
           <ProjectMetaStrip
             client={caseStudy.client}
@@ -70,8 +74,9 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
           development={caseStudy.development}
         />
 
+        {/* Outcome Section with Fallback handling for Stats */}
         <OutcomeSection
-          stats={caseStudy.metrics}
+          stats={caseStudy.stats || caseStudy.stats}
           features={caseStudy.features}
           image={caseStudy.heroImages?.[0] || "/portfolio-images/laptop-mockup.png"}
           bgColor={caseStudy.bgColor}

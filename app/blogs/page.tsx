@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import TransparentNavbar from "../components/Navbar";
 import BlogHero from "./BlogHero";
 import SpotlightSection from "./_components/SpotlightSection";
@@ -40,7 +40,8 @@ const spotlightItems = [
     type: "Article",
     titleFirstPart: "Redefining",
     titleSecondPart: " UX with Micro-interactions",
-    description: "Micro interactions bring life to digital products. Explore how subtle animations and responses shape user satisfaction and brand perception.",
+    description:
+      "Micro interactions bring life to digital products. Explore how subtle animations and responses shape user satisfaction and brand perception.",
     image: "/blogs/spotlight-cards/image-1.jpg",
     href: "#",
   },
@@ -49,7 +50,8 @@ const spotlightItems = [
     type: "Article",
     titleFirstPart: "From Code to Cloud: ",
     titleSecondPart: "A Modern Workflow",
-    description: "Uncover how cloud-native environments empower development teams to simplify and scale deployment using containerization and automation.",
+    description:
+      "Uncover how cloud-native environments empower development teams to simplify and scale deployment using containerization and automation.",
     image: "/blogs/spotlight-cards/image-2.jpg",
     href: "#",
   },
@@ -58,7 +60,8 @@ const spotlightItems = [
     type: "Article",
     titleFirstPart: "The Rise of Design Systems in ",
     titleSecondPart: "Agencies",
-    description: "Learn how standardized design systems boost collaboration and consistency across UI/UX teams, while saving time in real-world projects.",
+    description:
+      "Learn how standardized design systems boost collaboration and consistency across UI/UX teams, while saving time in real-world projects.",
     image: "/blogs/spotlight-cards/image.jpg",
     href: "#",
   },
@@ -67,50 +70,45 @@ const spotlightItems = [
     type: "Article",
     titleFirstPart: "Smart Hiring in Tech: ",
     titleSecondPart: "Data-Driven Decisions",
-    description: "Tech recruitment is evolving. This article dives into how data and behavioral metrics are transforming the hiring landscape.",
+    description:
+      "Tech recruitment is evolving. This article dives into how data and behavioral metrics are transforming the hiring landscape.",
     image: "/blogs/spotlight-cards/image-4.jpg",
     href: "#",
   },
 ];
 
+// UPDATED: Image ke mutabiq 3 cards aur authors ke sath
 const spotlightItems2 = [
   {
     id: "1",
     type: "Article",
-    titleFirstPart: "Editor's Pick: ",
-    titleSecondPart: "UX Innovations 2026",
+    titleFirstPart: "Redefining ",
+    titleSecondPart: "UX with Micro interactions",
     description:
-      "Explore cutting-edge UX trends handpicked by our editors. Learn how innovative interactions shape modern digital experiences.",
-    image: "/blogs/spotlight-cards/image-1.jpg",
+      "Modern UX must serve real emotions and needs, not just clean layouts. This article explores human-centered design in action.",
+    author: "By Maham Khalid",
+    image: "/blogs/spotlight-cards-2/image-1.jpg",
     href: "#",
   },
   {
     id: "2",
     type: "Article",
-    titleFirstPart: "Cloud Insights: ",
-    titleSecondPart: "Future-Proofing Dev Teams",
+    titleFirstPart: "Why Brand Consistency ",
+    titleSecondPart: "Begins in UI",
     description:
-      "Dive into the world of cloud-native strategies. See how teams are accelerating deployment, efficiency, and scalability.",
+      "No-code platforms are revolutionizing development for startups and enterprises. Learn how to build smarter, faster, without deep coding knowledge.",
+    author: "Ali Hassan",
     image: "/blogs/spotlight-cards-2/image-2.jpg",
     href: "#",
   },
   {
     id: "3",
     type: "Article",
-    titleFirstPart: "Design Evolution: ",
-    titleSecondPart: "Scaling Creative Systems",
+    titleFirstPart: "How Smart ",
+    titleSecondPart: "Web Development Drives Business Growth",
     description:
-      "Learn how design systems empower teams to work smarter, not harder, maintaining consistent and impactful user interfaces.",
-    image: "/blogs/spotlight-cards-2/image.jpg",
-    href: "#",
-  },
-  {
-    id: "4",
-    type: "Article",
-    titleFirstPart: "Tech Hiring: ",
-    titleSecondPart: "Analytics-Driven Recruitment",
-    description:
-      "Leverage behavioral insights and metrics for strategic hiring decisions, ensuring high-quality tech talent acquisition.",
+      "Modern web development helps businesses build fast, secure platforms. With the right technology and strategy, companies create powerful online experiences that perform efficiently.",
+    author: "Ali Ahmed",
     image: "/blogs/spotlight-cards-2/image.jpg",
     href: "#",
   },
@@ -121,7 +119,6 @@ const featuredPosts = [
   { id: 1, title: "Smart UI for Businesses" },
   { id: 2, title: "Powering Insights with Data" },
   { id: 3, title: "Future of Business Automation" },
-  { id: 4, title: "Smarter, Data-Driven Decisions" },
 ];
 
 // Popular articles data
@@ -129,7 +126,6 @@ const popularArticles = [
   { id: 1, title: "Building Trust Through Consistent UI" },
   { id: 2, title: "AI-Driven Product Design Revolution" },
   { id: 3, title: "Smarter Documentation for Agile Teams" },
-  { id: 4, title: "Mastering Visual Hierarchy in UX" },
 ];
 
 function Page() {
@@ -140,15 +136,11 @@ function Page() {
   const editorsPickRef = useRef<HTMLDivElement>(null);
   const popularRef = useRef<HTMLDivElement>(null);
 
-  // Debug effect to check refs
-
-
   const handleSearchChange = (value: string) => {
     setSearchQuery(value);
   };
 
   const handleSearch = (query: string) => {
-  
     setSearchQuery(query);
 
     if (!query.trim()) {
@@ -158,7 +150,7 @@ function Page() {
     const searchTerm = query.toLowerCase().trim();
     let found = false;
 
-    // Create searchable content index with section headings
+    // Search index configuration
     const searchIndex = [
       {
         section: "Today's Spotlight",
@@ -166,7 +158,13 @@ function Page() {
         items: spotlightItems.map((item) => ({
           title: item.titleFirstPart + item.titleSecondPart,
           description: item.description,
-          fullContent: (item.titleFirstPart + " " + item.titleSecondPart + " " + item.description).toLowerCase(),
+          fullContent: (
+            item.titleFirstPart +
+            " " +
+            item.titleSecondPart +
+            " " +
+            item.description
+          ).toLowerCase(),
         })),
       },
       {
@@ -175,7 +173,13 @@ function Page() {
         items: spotlightItems2.map((item) => ({
           title: item.titleFirstPart + item.titleSecondPart,
           description: item.description,
-          fullContent: (item.titleFirstPart + " " + item.titleSecondPart + " " + item.description).toLowerCase(),
+          fullContent: (
+            item.titleFirstPart +
+            " " +
+            item.titleSecondPart +
+            " " +
+            item.description
+          ).toLowerCase(),
         })),
       },
       {
@@ -184,7 +188,12 @@ function Page() {
         items: customPosts.map((item) => ({
           title: item.title1 + item.title2,
           description: item.date,
-          fullContent: (item.title1 + " " + item.title2 + " Software License Management").toLowerCase(),
+          fullContent: (
+            item.title1 +
+            " " +
+            item.title2 +
+            " Software License Management"
+          ).toLowerCase(),
         })),
       },
       {
@@ -196,61 +205,51 @@ function Page() {
           fullContent: item.title.toLowerCase(),
         })),
       },
-      {
-        section: "Popular Articles",
-        ref: popularRef,
-        items: popularArticles.map((item) => ({
-          title: item.title,
-          description: "",
-          fullContent: item.title.toLowerCase(),
-        })),
-      },
     ];
 
-    // Search through all sections
     for (const section of searchIndex) {
-   
-
-      // Check if section heading matches
       if (section.section.toLowerCase().includes(searchTerm)) {
-      
-        section.ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        section.ref.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
         found = true;
         break;
       }
 
-      // Check items in section
       for (const item of section.items) {
-
-        // Check title
         if (item.title.toLowerCase().includes(searchTerm)) {
-       
-          section.ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+          section.ref.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
           found = true;
           break;
         }
 
-        // Check description/content
-        if (item.description && item.description.toLowerCase().includes(searchTerm)) {
-      
-          section.ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (
+          item.description &&
+          item.description.toLowerCase().includes(searchTerm)
+        ) {
+          section.ref.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
           found = true;
           break;
         }
 
-        // Check full content
         if (item.fullContent.includes(searchTerm)) {
-      
-          section.ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+          section.ref.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
           found = true;
           break;
         }
       }
 
       if (found) break;
-    }
-
-    if (!found) {
     }
   };
 
@@ -265,7 +264,7 @@ function Page() {
         onSearchSubmit={handleSearch}
       />
 
-      {/* Spotlight Section */}
+      {/* 1. Today's Spotlight Section (Default 4 Cards) */}
       <div ref={spotlightRef}>
         <SpotlightSection
           HeadingFirstPart="Today's "
@@ -289,12 +288,13 @@ function Page() {
         <FeaturedPosts />
       </div>
 
-      {/* Editors' Pick */}
+      {/* 2. Editors' Pick Section (Width increased with columns={3}) */}
       <div ref={editorsPickRef}>
         <SpotlightSection
-          HeadingFirstPart="Editor's "
+          HeadingFirstPart="Editors "
           HeadingSecondPart="Pick"
           items={spotlightItems2}
+          columns={3} // <-- Yeh prop width aur grid layout 3 columns kar raha hai
         />
       </div>
 

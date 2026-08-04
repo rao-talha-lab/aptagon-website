@@ -243,7 +243,7 @@ const ReachUsHero = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-1 rounded-full  mb-4"
+              className="inline-flex items-center gap-2 px-1 py-1 rounded-full  mb-4"
             >
               <p className="text-[#666666] font-semibold uppercase tracking-wide text-[16px]">
                 Lets Connect For Innovation
@@ -267,31 +267,28 @@ const ReachUsHero = () => {
             Turn your visionary ideas into scalable reality with our expert team of tech strategists and engineers.</p>
 
             {/* Buttons */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-5">
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(7,58,83,0.2)" }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-7 py-5 bg-[#335ECE] text-white font-bold rounded-2xl overflow-hidden transition-all"
-              >
-                <Link href="/schedule-call">
-                  <span className="relative z-10 flex items-center gap-2">
-                    Get a Free Consultation
-                    <HiArrowRight className="group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </Link>
-                <div className="absolute inset-0 bg-[#335ECE] translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              </motion.button>
+       <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+  {/* Primary CTA Button */}
+  <motion.a
+    href="/schedule-call"
+    whileHover={{ scale: 1.05 }}
+    className="inline-flex items-center justify-center px-8 h-14 bg-[#355ED1] text-[16px] font-inter text-white font-medium rounded-[10px] shadow-md hover:shadow-lg transition-all"
+  >
+    <span className="flex items-center gap-2">
+      Get a Free Consultation
+      <HiArrowRight />
+    </span>
+  </motion.a>
 
-              <motion.button
-                whileHover={{ backgroundColor: "rgba(14,186,176,0.05)", borderColor: "#073A53" }}
-                whileTap={{ scale: 0.95 }}
-                className="px-12 py-5 border-2 border-[#666666] text-[#666666] hover:text-[#002892]/10 font-bold rounded-xl transition-all"
-              >
-                <Link href="/schedule-call">
-                  <span>Start a Project</span>
-                </Link>
-              </motion.button>
-            </div>
+  {/* Secondary CTA Button */}
+  <motion.a
+    href="/schedule-call"
+    whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
+    className="inline-flex items-center justify-center px-14 h-14 text-[#666666] text-[16px] border-[1.5px] border-[#666666] font-medium font-inter rounded-[10px] hover:text-[#335ECE] transition-all"
+  >
+    Start a Project
+  </motion.a>
+</div>
 
             {/* Social Proof */}
             {/* <motion.div

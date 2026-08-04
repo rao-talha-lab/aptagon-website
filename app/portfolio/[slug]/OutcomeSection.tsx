@@ -24,8 +24,8 @@ export default function OutcomeSection({
     'Real-time squad finding and voice chat',
     'Twitch Extension for creator monetization',
   ],
-  image = '/portfolio-images/Card-images/card-img-1.png',
-  bgColor = '#4C75EE', 
+  image = '/portfolio-images/Card-images/card-image-1.png',
+  bgColor = '#4C75EE',
 }: OutcomeSectionProps) {
   return (
     <section className="w-full py-12 px-4 md:px-8 lg:px-12 font-sans">

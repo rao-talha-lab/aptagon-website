@@ -93,7 +93,7 @@ export const caseStudies: CaseStudy[] = [
     f_title: "ZetaStudy",
     category: "Web Development & Dashboard",
     description: "A global education platform connecting 50K+ students with 500+ universities across 20+ countries.",
-    bgColor: "#F2F4F7",
+    bgColor: "#C7D9FF",
     client: "ZetaStudy",
     industry: "Education / EdTech",
     timeline: "Ongoing",
@@ -107,7 +107,7 @@ export const caseStudies: CaseStudy[] = [
     uiDesign: "Designed clean, professional interface for students and universities",
     development: "Built full-stack platform with dashboard and admin panel",
     heroImages: [
-      "/portfolio-images/Card-images/card-image-3.png",
+      "/portfolio-images/Card-images/card-images-3.png",
     ],
     stats: [
       { value: "50K+", label: "Students Placed" },
@@ -126,7 +126,7 @@ export const caseStudies: CaseStudy[] = [
     f_title: "SyncOk AI",
     category: "AI & Generative Solutions",
     description: "An AI-powered tool that turns text into viral faceless videos for YouTube and TikTok creators.",
-    bgColor: "#F8F9FA",
+    bgColor: "#A5B4FC",
     client: "SyncOk",
     industry: "AI / Content Creation",
     timeline: "16 weeks",
@@ -140,7 +140,7 @@ export const caseStudies: CaseStudy[] = [
     uiDesign: "Designed clean purple-themed interface for creators",
     development: "Built AI video generation engine with Python and React.js",
     heroImages: [
-      "/portfolio-images/Card-images/card-img-4.png",
+      "/portfolio-images/Card-images/card-image-4.png",
     ],
     stats: [
       { value: "3 Min", label: "Video Creation Time" },
@@ -206,7 +206,7 @@ export const caseStudies: CaseStudy[] = [
     uiDesign: "Designed warm, food-focused visual interface",
     development: "Built responsive website with booking and menu features",
     heroImages: [
-      "/portfolio-images/Card-images/card-image-6.png",
+      "/portfolio-images/Card-images/card-img-6.png",
     ],
     stats: [
       { value: "Fresh", label: "Ingredients" },

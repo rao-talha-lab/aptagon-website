@@ -292,7 +292,7 @@ const MobileHero: React.FC<AnimatedHeroSectionProps> = ({
               Developing intuitive, high-performance mobile apps for iOS and Android to engage your users anywhere.
             </motion.p>
 
-            <div className="flex flex-wrap gap-5">
+            <div className="flex flex-wrap gap-4">
             <Link href="/schedule-call">
                   <motion.button
                     whileHover={{

@@ -54,7 +54,7 @@ export default function MoreProjectsSection({
           viewport={{ once: true, margin: "-100px" }}
         >
           {/* Section Header */}
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#335ECE] dark:text-white mb-8">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-[#335ECE] dark:text-white mb-8">
             More projects
           </h2>
 
@@ -64,7 +64,7 @@ export default function MoreProjectsSection({
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8"
           >
             {displayedProjects.map((project) => (
               <motion.div
@@ -95,12 +95,12 @@ export default function MoreProjectsSection({
                     <div className="p-6 flex flex-col grow justify-between">
                       <div>
                         {/* Category Label */}
-                        <span className=" text-[15px] font-semibold text-[#666666] dark:text-gray-400 uppercase tracking-wider mb-5">
+                        <span className=" text-[13px] font-semibold text-[#666666] dark:text-gray-400 uppercase tracking-wider mb-5">
                           {project.category}
                         </span>
 
                         {/* Title */}
-                        <h3 className="text-[15px] md:text-[20px] font-bold text-[#335ECE] dark:text-[#5383FF] group-hover:text-[#2849a5] transition-colors duration-300 leading-snug">
+                        <h3 className="text-[15px] md:text-[18px] font-semibold text-[#335ECE] dark:text-[#5383FF] group-hover:text-[#2849a5] transition-colors duration-300 leading-snug">
                           {project.title}
                         </h3>
                       </div>

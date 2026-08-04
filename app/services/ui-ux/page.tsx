@@ -101,7 +101,7 @@ function page() {
         contentAlignment="center"
         height="h-[550px]"
       /> */}
-<UiUxHero/>
+      <UiUxHero />
       <TwoSectionCTA
         tagline="User-Centered UI / UX Design"
         heading="Crafting Digital Experiences That Inspire Engagement"
@@ -110,10 +110,12 @@ function page() {
         buttonLink="/reach-us"
       />
 
-      <FeatureSection
+       <FeatureSection
         heading="Top Custom Software Development Services"
-        description="Aptagon Technologies transforms your vision into powerful, scalable software solutions that drive innovation and deliver real business impact."
+        description="Aptagon Technologies transforms your vision..."
         cards={cardsData}
+        currentSlug="ai"
+        relevantSlugs={["sqa", "llm-development", "chatbot"]} 
       />
 
       <CoreTechnologies />

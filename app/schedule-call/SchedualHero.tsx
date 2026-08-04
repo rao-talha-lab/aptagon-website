@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 
 // --- Internal Typewriter Component ---
@@ -9,7 +9,6 @@ const TypewriterEffect = ({ words }: { words: string[] }) => {
   const [reverse, setReverse] = useState(false);
   const [blink, setBlink] = useState(true);
 
-  // Blinking cursor logic
   useEffect(() => {
     const timeout2 = setTimeout(() => {
       setBlink((prev) => !prev);
@@ -17,7 +16,6 @@ const TypewriterEffect = ({ words }: { words: string[] }) => {
     return () => clearTimeout(timeout2);
   }, [blink]);
 
-  // Typing logic
   useEffect(() => {
     if (subIndex === words[index].length + 1 && !reverse) {
       setTimeout(() => setReverse(true), 2000);
@@ -45,156 +43,37 @@ const TypewriterEffect = ({ words }: { words: string[] }) => {
   );
 };
 
-// --- Particle Interface ---
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  yv: number;
-  vy: number;
-  size: number;
-  opacity: number;
-  glow: number;
-}
-
 const SchedualHero = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseRef = useRef({ x: -1000, y: -1000 });
-
-  // --- Animation Logic ---
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    let particles: Particle[] = [];
-    const particleCount = 120;
-    const connectionDistance = 180;
-    const mouseRadius = 250;
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      initParticles();
-    };
-
-    const initParticles = () => {
-      particles = [];
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 1.2,
-          vy: (Math.random() - 0.5) * 1.2,
-          yv: 0,
-          size: Math.random() * 2.5 + 1,
-          opacity: Math.random() * 0.4 + 0.2,
-          glow: 0,
-        });
-      }
-    };
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-        const dx = mouseRef.current.x - p.x;
-        const dy = mouseRef.current.y - p.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < mouseRadius) {
-          const force = (mouseRadius - distance) / mouseRadius;
-          p.x -= dx * force * 0.03;
-          p.y -= dy * force * 0.03;
-          p.glow = Math.min(force, 1);
-        } else {
-          p.glow *= 0.9;
-        }
-
-        // ctx.beginPath();
-        // ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        // ctx.fillStyle = `rgba(14, 186, 176, ${p.opacity + p.glow})`;
-        // ctx.fill();
-
-        // for (let j = i + 1; j < particles.length; j++) {
-        //   const p2 = particles[j];
-        //   const dx2 = p.x - p2.x;
-        //   const dy2 = p.y - p2.y;
-        //   const dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
-        //   if (dist2 < connectionDistance) {
-        //     ctx.beginPath();
-        //     const alpha = (1 - dist2 / connectionDistance) * 0.3;
-        //     ctx.strokeStyle = `rgba(7, 58, 83, ${alpha})`;
-        //     ctx.lineWidth = 0.8;
-        //     ctx.moveTo(p.x, p.y);
-        //     ctx.lineTo(p2.x, p2.y);
-        //     ctx.stroke();
-        //   }
-        // }
-      }
-      animationFrameId = requestAnimationFrame(draw);
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
-    };
-
-    window.addEventListener("resize", resize);
-    window.addEventListener("mousemove", handleMouseMove);
-    resize();
-    draw();
-
-    return () => {
-      window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
-  // Correctly Typed Variants
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+    visible: { opacity: 1, transition: { staggerChildren: 0.18 } },
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
   };
 
   return (
-    <div className="relative z-30 shadow-[0_5px_15px_rgba(0,0,0,0.05)]">
-      <section className="relative flex items-center justify-start overflow-hidden bg-[#FFFFFF] min-h-[85vh] py-16">
-        {/* Particle Canvas */}
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 z-0 pointer-events-none opacity-60"
-        />
+    /* SOFT BOTTOM SHADOW FOR SECTION TRANSITION */
+    <div className="relative z-30 bg-white shadow-[0_20px_30px_-10px_rgba(0,0,0,0.10)]">
+      {/* Background Soft Glow Orb */}
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-100/50 rounded-full blur-[120px] pointer-events-none -z-10" />
 
-        <div className="relative z-10 container mx-auto px-6 sm:px-12 lg:px-10 flex flex-col items-start text-left">
+      {/* --- HERO SECTION --- */}
+      <section className="relative flex flex-col items-center justify-center overflow-hidden min-h-[85vh] pt-36 pb-16 md:pt-44 md:pb-18">
+        <div className="relative z-10 container mx-auto px-6 sm:px-12 lg:px-10 flex flex-col items-center text-center">
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
-            className="max-w-4xl w-full flex flex-col items-start"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+            className="max-w-4xl w-full flex flex-col items-center"
           >
-            {/* Tagline */}
-            <motion.div variants={itemVariants} className="flex mt-20 mb-4">
-              <span className="text-[#666666] font-bold uppercase tracking-widest text-[15px] md:text-[15px]">Let's Start a Conversation</span>
-            </motion.div>
-
             {/* Main Heading */}
             <motion.h1
               variants={itemVariants}
-              className="text-[30px] md:text-[45px] lg:text-[50px] font-black text-[#666666] leading-[1.1] mb-4 tracking-tighter"
+              className="text-[32px] sm:text-[45px] lg:text-[52px] font-extrabold text-[#555555] leading-[1.15] mb-5 tracking-tight"
             >
               Book a Strategy Session <br />
               <TypewriterEffect
@@ -205,7 +84,7 @@ const SchedualHero = () => {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-[20px] md:text-[18px] text-[#666666] mb-8 max-w-2xl leading-relaxed font-medium "
+              className="text-[17px] md:text-[19px] text-[#666666] mb-10 max-w-2xl leading-relaxed font-normal text-center"
             >
               Pick a time that works for you to discuss your project requirements and explore
               how our digital solutions can scale your business.
@@ -214,31 +93,28 @@ const SchedualHero = () => {
             {/* CTA Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-5 w-full justify-start items-center"
+              className="flex flex-col sm:flex-row gap-4 w-full justify-center items-center"
             >
               <motion.button
-              whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.04, boxShadow: "0px 10px 25px rgba(51,94,206,0.3)" }}
+                whileTap={{ scale: 0.96 }}
                 onClick={() =>
                   document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="w-full sm:w-auto px-8 h-14 bg-[#355ED1] text-white font-black rounded-[10px] shadow-xl transition-all"
+                className="w-full sm:w-auto px-9 h-14 bg-[#335ECE] text-white font-bold rounded-[10px] shadow-lg transition-all cursor-pointer"
               >
                 Check Availability
               </motion.button>
-              <motion.button
-                whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
 
-                whileTap={{ scale: 0.95 }}
+              <motion.button
+                whileHover={{ scale: 1.04, borderColor: "#335ECE", color: "#335ECE" }}
+                whileTap={{ scale: 0.96 }}
                 onClick={() => window.open("https://wa.me/923704640036", "_blank")}
-                className="w-full sm:w-auto px-8 h-14 border-2 border-[#666666] text-[#666666] font-black rounded-[10px] hover:text-[#335ECE] transition-all"
+                className="inline-flex items-center justify-center px-8 h-14 text-[#666666] text-[16px] border-[1.5px] border-[#666666] font-semibold  rounded-[10px] hover:text-[#335ECE] transition-all cursor-pointer"
               >
                 Contact Support
               </motion.button>
             </motion.div>
-
-            {/* Badge */}
-
           </motion.div>
         </div>
       </section>

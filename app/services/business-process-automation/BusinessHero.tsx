@@ -296,7 +296,7 @@ const BusinessHero: React.FC<AnimatedHeroSectionProps> = ({
             </motion.p>
 
             {/* --- Buttons Section --- */}
-            <div className="flex flex-wrap gap-5">
+            <div className="flex flex-wrap gap-4">
               {/* Explore Services Button */}
               <Link href="/schedule-call">
                   <motion.button

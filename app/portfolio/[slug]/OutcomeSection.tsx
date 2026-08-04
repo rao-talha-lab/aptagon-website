@@ -41,16 +41,16 @@ export default function OutcomeSection({
         </div>
 
         {/* Top Stat Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
           {stats?.map((stat, index) => (
             <div
               key={index}
               className="flex flex-col items-center justify-center p-8 bg-white dark:bg-[#1a1a1a] border border-[#335ECE]/30 dark:border-gray-800 rounded-2xl shadow-sm hover:shadow-md transition-shadow text-center min-h-[140px]"
             >
-              <span className="text-[20px] sm:text-[30px] font-['Poppins'] font-bold text-[#335ECE] dark:text-[#5383FF]">
+              <span className="text-[20px] sm:text-[24px] font-['Poppins'] font-semibold text-[#335ECE] dark:text-[#5383FF]">
                 {stat.value}
               </span>
-              <span className="text-[15px] sm:text-[18px] font-medium text-gray-600 dark:text-gray-400">
+              <span className="text-[15px] sm:text-[20px] font-semibold text-gray-600 dark:text-gray-400">
                 {stat.label}
               </span>
             </div>
@@ -99,7 +99,7 @@ export default function OutcomeSection({
                         />
                       </svg>
                     </span>
-                    <span className="text-[#666666] dark:text-gray-300 text-base sm:text-lg font-medium">
+                    <span className="text-[#666666] dark:text-gray-300 text-base sm:text-lg font-semibold">
                       {feature}
                     </span>
                   </li>

@@ -34,7 +34,7 @@ export default function CTASection() {
           >
             <motion.h2
               variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#FFFFFF] mb-6"
+              className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#FFFFFF] mb-6"
             >
               Have a project in mind?
             </motion.h2>

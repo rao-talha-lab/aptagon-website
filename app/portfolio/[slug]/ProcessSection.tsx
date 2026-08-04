@@ -72,10 +72,10 @@ export default function ProcessSection({
         >
           {/* Section Header */}
           <div className="mb-10 md:mb-12">
-            <p className="text-[#666666] text-[18px] font-bold uppercase tracking-[0.18em] mb-2">
+            <p className="text-[#666666] text-[18px] font-semibold uppercase tracking-[0.18em] mb-2">
               Process
             </p>
-            <h2 className="text-3xl md:text-4xl lg:text-[2.6rem] font-bold text-[#335ECE] dark:text-white leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-[2.4rem] font-bold text-[#335ECE] dark:text-white leading-tight">
               How we got there.
             </h2>
           </div>

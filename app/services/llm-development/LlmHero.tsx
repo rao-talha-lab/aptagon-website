@@ -493,7 +493,7 @@ const LlmHero: React.FC<AnimatedHeroSectionProps> = ({
                 {description}
               </motion.p>
 
-              <motion.div variants={itemVariants} className="flex flex-wrap gap-5">
+              <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
                 <Link href="/schedule-call">
                   <motion.button
                     whileHover={{

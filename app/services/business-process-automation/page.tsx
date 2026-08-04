@@ -114,11 +114,13 @@ From workflow optimization to AI-driven analytics, we design automation framewor
       />
 
       {/* Feature Section */}
-      <FeatureSection
-        heading="Empower Your Business with Smart Automation"
-        description="Aptagon Technologies helps organizations automate repetitive processes, minimize errors, and maximize efficiency. Our smart digital solutions are tailored to enhance your workflows and drive measurable results."
-        cards={cardsData}
-      />
+    <FeatureSection
+  heading="Top Custom Software Development Services"
+  description="Aptagon Technologies transforms your vision..."
+  cards={cardsData}
+  currentSlug="ai"
+  relevantSlugs={["sqa", "llm-development", "chatbot"]} 
+/>
 
       {/* Core Technologies Section */}
       <CoreTechnologies />

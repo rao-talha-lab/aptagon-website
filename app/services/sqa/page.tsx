@@ -112,10 +112,13 @@ Whether it's a mobile app, legacy system, or enterprise cloud solution — we de
         buttonLink="/reach-us"
       />
       <FeatureSection
-        heading="Comprehensive Quality Assurance & Delivery Services"
-        description="From functionality to performance, we ensure your software meets the highest quality standards and delivers exceptional user experiences."
-        cards={cardsData}
-      />
+       heading="Top Custom Software Development Services"
+       description="Aptagon Technologies transforms your vision..."
+       cards={cardsData}
+       currentSlug="ai"
+       relevantSlugs={["web-development", "mobile-app-development", "ui-ux"]} 
+     />
+
       <CoreTechnologies />
       <section className="py-10 bg-white">
         <InfiniteMovingCards

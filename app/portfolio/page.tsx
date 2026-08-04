@@ -38,21 +38,21 @@ const PortfolioPage = () => {
   );
 
   const cardImages: Record<string, string> = {
-    "northwave-commerce": "/portfolio-images/Card-images/card-image-1.png",
+    // "northwave-commerce": "/portfolio-images/Card-images/card-image-1.png",
     "pvp-gaming": "/portfolio-images/Card-images/card-image-1.png",
     "finlight-personal-finance": "/portfolio-images/Card-images/card-image-2.png",
-    "evergreen-brand-identity": "/portfolio-images/Card-images/card-image-3.png",
-    "pulse-analytics-dashboard": "/portfolio-images/Card-images/card-img-4.png",
+    "evergreen-brand-identity": "/portfolio-images/Card-images/card-images-3.png",
+    "pulse-analytics-dashboard": "/portfolio-images/Card-images/card-image-4.png",
     "lumen-social-campaign": "/portfolio-images/Card-images/card-img-5.png",
-    "savor-restaurant-booking": "/portfolio-images/Card-images/card-image-6.png",
+    "savor-restaurant-booking": "/portfolio-images/Card-images/card-img-6.png",
   };
 
   const cardBgColors: Record<string, string> = {
     "northwave-commerce": "bg-[#5383FF]",
     "pvp-gaming": "bg-[#5383FF]",
     "finlight-personal-finance": "bg-[#8EAEFF]",
-    "evergreen-brand-identity": "bg-[#F0EFED]",
-    "pulse-analytics-dashboard": "bg-[#F0EFED]",
+   "evergreen-brand-identity": "bg-[#C7D9FF]",
+    "pulse-analytics-dashboard": "bg-[#A5B4FC]",
     "lumen-social-campaign": "bg-[#8EAEFF]",
     "savor-restaurant-booking": "bg-[#D7E2FF]",
   };
@@ -85,8 +85,8 @@ const PortfolioPage = () => {
     <>
       <Navbar />
 
-      <div className="min-h-screen bg-[#FFFFFF] dark:bg-[#1a1a1a] transition-colors duration-300 pt-24">
-        <div className="relative z-30 shadow-[0_5px_15px_rgba(0,0,0,0.05)]">
+      <div className="min-h-screen bg-[#FFFFFF] dark:bg-[#1a1a1a] transition-colors duration-300 pt-32">
+        <div className="relative z-30 shadow-[0_5px_15px_rgba(0,0,0,0.10)]">
           {/* HERO SECTION */}
           <motion.section
             initial={{ opacity: 0 }}
@@ -132,7 +132,7 @@ const PortfolioPage = () => {
         behavior: "smooth",
       });
     }}
-    className="px-8 py-4 bg-[#335ECE] text-[17px] text-white font-bold rounded-sm shadow-lg hover:cursor-pointer transition-all"
+    className="px-8 py-4 bg-[#335ECE] text-[16px] text-white font-bold rounded-[10px] shadow-lg hover:cursor-pointer transition-all"
   >
     View Case Studies
   </motion.button>
@@ -140,7 +140,7 @@ const PortfolioPage = () => {
   <Link href="/schedule-call">
     <motion.button
       whileHover={{ scale: 1.05 }}
-      className="px-8 py-4 border-2 border-[#666666] text-[#666666] font-bold text-[17px] rounded-sm hover:cursor-pointer hover:border-[#335ECE] hover:text-[#335ECE] transition-all"
+      className="px-8 py-4 border-2 border-[#666666] text-[#666666] font-semibold text-[16px] rounded-[10px] hover:cursor-pointer hover:border-[#335ECE] hover:text-[#335ECE] transition-all"
     >
       Start your Project →
     </motion.button>

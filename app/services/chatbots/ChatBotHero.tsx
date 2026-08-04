@@ -354,7 +354,7 @@ const BusinessHero: React.FC = () => {
               </motion.p>
 
               {/* Buttons */}
-              <div className="flex flex-wrap gap-5">
+              <div className="flex flex-wrap gap-4">
                 <Link href="/schedule-call">
                   <motion.button
                     whileHover={{

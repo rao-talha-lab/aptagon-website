@@ -262,7 +262,7 @@ const AnimatedHeroSection: React.FC = () => {
                 Creating visually stunning, user-centered designs that deliver seamless and engaging digital experiences.
               </p>
 
-              <div className="flex flex-wrap gap-5">
+              <div className="flex flex-wrap gap-4">
                 <Link href="/schedule-call">
                   <motion.button
                     whileHover={{

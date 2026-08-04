@@ -301,7 +301,7 @@ const SqaHero: React.FC<AnimatedHeroSectionProps> = ({
               {description}
             </motion.p>
 
-            <div className="flex flex-wrap gap-5">
+            <div className="flex flex-wrap gap-4">
               <Link href="/schedule-call">
                 <motion.button
                   whileHover={{

@@ -105,7 +105,7 @@ function page() {
         contentAlignment="center"
         height="h-[550px]"
       /> */}
-      <LlmHero/>
+      <LlmHero />
       <TwoSectionCTA
         tagline="LLM Development & Training"
         heading="Empower Your Business with Intelligent AI Solutions"
@@ -113,11 +113,14 @@ function page() {
         imageSrc="/services-images/llm.png"
         buttonLink="/reach-us"
       />
-      <FeatureSection
-        heading="End-to-End LLM Development and Fine-Tuning Services"
-        description="From model selection to fine-tuning and deployment, we help you leverage advanced language models for real business impact."
+       <FeatureSection
+        heading="Top Custom Software Development Services"
+        description="Aptagon Technologies transforms your vision..."
         cards={cardsData}
+        currentSlug="ai"
+        relevantSlugs={["web-development", "llm-development", "chatbot"]} 
       />
+
       <CoreTechnologies />
       <section className="py-10 bg-white">
         <InfiniteMovingCards

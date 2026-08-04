@@ -1,5 +1,4 @@
 import Footer from "@/app/components/Footer";
-import AnimatedHeroSection from "@/app/components/Herosection";
 import TransparentNavbar from "@/app/components/Navbar";
 import FeatureSection from "@/app/components/Services-Components/FeatureSection";
 import InfiniteMovingCards from "@/app/components/Services-Components/InfiniteServiceCards";
@@ -66,6 +65,7 @@ const cardsData = [
       "Empower your business with powerful AI-driven innovation. We deliver smart, generative solutions for automation, insights, and sustainable growth.",
   },
 ];
+
 const Infintecards = [
   {
     image: "/services-images/ai-infinite/image-1.svg",
@@ -94,28 +94,29 @@ function page() {
   return (
     <>
       <TransparentNavbar />
-      {/* AiHero handles the custom event to open the navbar dropdown */}
-      <AiHero/>
-     <TwoSectionCTA
-  tagline="AI & Generative Solutions"
-  heading="Unlock Creativity, Automate Content, and Drive Next-Generation Innovation"
-  description={[
-  "At Aptagon Technologies, we help businesses harness Artificial Intelligence and Generative AI to innovate, automate, and scale. Our AI-powered solutions integrate seamlessly into business operations, transforming complex processes into smarter, faster, and more efficient workflows. From custom AI models and LLM applications to NLP systems and generative solutions, we build intelligent technologies that analyze, create, and optimize with precision. The result is greater efficiency, improved accuracy, lower operational costs, and scalable growth. Whether automating workflows or developing next-generation AI products, we deliver intelligent solutions that turn innovation into measurable business value."
-]}
-  imageSrc="/services-images/ai.png"
-  buttonText="Get Started"
-  buttonLink="/schedule-call"
-/>
+      <AiHero />
+      <TwoSectionCTA
+        tagline="AI & Generative Solutions"
+        heading="Unlock Creativity, Automate Content, and Drive Next-Generation Innovation"
+        description={[
+          "At Aptagon Technologies, we help businesses harness Artificial Intelligence and Generative AI to innovate, automate, and scale. Our AI-powered solutions integrate seamlessly into business operations, transforming complex processes into smarter, faster, and more efficient workflows. From custom AI models and LLM applications to NLP systems and generative solutions, we build intelligent technologies that analyze, create, and optimize with precision. The result is greater efficiency, improved accuracy, lower operational costs, and scalable growth. Whether automating workflows or developing next-generation AI products, we deliver intelligent solutions that turn innovation into measurable business value."
+        ]}
+        imageSrc="/services-images/ai.png"
+        buttonText="Get Started"
+        buttonLink="/schedule-call"
+      />
       <FeatureSection
-        heading="Smart AI Solutions for the Modern Enterprise"
-        description="From autonomous agents to generative content, our AI-driven solutions redefine how businesses innovate, operate, and scale in the digital age."
+        heading="Top Custom Software Development Services"
+        description="Aptagon Technologies transforms your vision..."
         cards={cardsData}
+        currentSlug="ai"
+        relevantSlugs={["llm-development", "chatbot", "business-process-automation"]}
       />
       <CoreTechnologies />
       <section className="py-10 bg-white">
         <InfiniteMovingCards
           cards={Infintecards}
-          speed={60} 
+          speed={60}
           heading="Our AI Development Lifecycle"
           subheading="We follow a strategic, data-centric approach to design, train, and deploy generative models that deliver tangible business value and innovation."
         />

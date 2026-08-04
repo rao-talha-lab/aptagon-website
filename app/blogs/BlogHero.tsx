@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 
 // --- Internal Typewriter Component ---
@@ -31,22 +31,12 @@ const TypewriterEffect = ({ words }: { words: string[] }) => {
   }, [subIndex, index, reverse, words]);
 
   return (
-    <span className="text-[#335ECE]">
+    <span className="text-[#335ECE] inline-block">
       {`${words[index].substring(0, subIndex)}`}
       <span className={`inline-block w-1 h-8 md:h-12 ml-2 bg-[#666666] align-middle ${blink ? 'opacity-100' : 'opacity-0'}`} />
     </span>
   );
 };
-
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  size: number;
-  opacity: number;
-  glow: number;
-}
 
 interface AnimatedHeroSectionProps {
   tagline?: string;
@@ -75,83 +65,6 @@ const BlogHero: React.FC<AnimatedHeroSectionProps> = ({
   onSearchChange = () => { },
   onSearchSubmit = () => { },
 }) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mouseRef = useRef({ x: -1000, y: -1000 });
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    let particles: Particle[] = [];
-    const particleCount = 120;
-    const mouseRadius = 250;
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      initParticles();
-    };
-
-    const initParticles = () => {
-      particles = [];
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 1.2,
-          vy: (Math.random() - 0.5) * 1.2,
-          size: Math.random() * 2.5 + 1,
-          opacity: Math.random() * 0.4 + 0.2,
-          glow: 0,
-        });
-      }
-    };
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-        const dx = mouseRef.current.x - p.x;
-        const dy = mouseRef.current.y - p.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < mouseRadius) {
-          const force = (mouseRadius - distance) / mouseRadius;
-          p.x -= dx * force * 0.03;
-          p.y -= dy * force * 0.03;
-          p.glow = Math.min(force, 1);
-        } else {
-          p.glow *= 0.9;
-        }
-      }
-      animationFrameId = requestAnimationFrame(draw);
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
-    };
-
-    window.addEventListener("resize", resize);
-    window.addEventListener("mousemove", handleMouseMove);
-    resize();
-    draw();
-
-    return () => {
-      window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
@@ -163,12 +76,9 @@ const BlogHero: React.FC<AnimatedHeroSectionProps> = ({
   };
 
   return (
-    <div className="relative z-30 shadow-[0_5px_15px_rgba(0,0,0,0.05)]">
-      <section className={`relative flex items-center justify-center overflow-hidden bg-[#FFFFFF] ${height}`}>
-        {/* Dynamic Particle Background */}
-        <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none opacity-60" />
-
-        {/* Decorative Blobs */}
+    <div className="relative z-30 shadow-[0_20px_30px_-10px_rgba(0,0,0,0.10)]">
+      <section className={`relative flex items-center justify-center overflow-hidden bg-[#FFFFFF] pt-32 pb-16 md:pt-40 md:pb-20 ${height}`}>
+        {/* Soft Background Blobs (Optional for subtle depth) */}
         <div className="absolute top-[-10%] left-[-5%] w-[400px] h-[400px] bg-[#0EBAB0]/5 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] bg-[#073A53]/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -180,32 +90,32 @@ const BlogHero: React.FC<AnimatedHeroSectionProps> = ({
             viewport={{ once: false }}
             className="max-w-4xl w-full flex flex-col items-center"
           >
-            {/* Main Heading */}
+            {/* 2-Line Main Heading */}
             <motion.h1
               variants={itemVariants}
-              className="text-3xl md:text-5xl font-black text-[#666666] leading-[1.15] mb-6 tracking-tighter"
+              className="text-3xl md:text-5xl lg:text-[52px] font-black text-[#666666] leading-[1.2] mb-6 tracking-tight min-h-[100px] md:min-h-[120px]"
             >
-              Building Scalable &
+              <span className="block mb-1">Building Scalable &</span>
               <TypewriterEffect
-                words={[" Impactful Software", " Strategic Solutions", " Digital Futures"]}
+                words={["Impactful Software", "Strategic Solutions", "Digital Futures"]}
               />
             </motion.h1>
 
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-lg md:text-xl text-[#666666] mb-10 max-w-2xl leading-relaxed"
+              className="text-lg md:text-xl text-[#666666] mb-10 max-w-2xl leading-relaxed font-normal"
             >
               {description}
             </motion.p>
 
-            {/* Prominent Search Bar Matched with Screenshot */}
+            {/* Search Bar */}
             {showSearchBar && (
               <motion.div
                 variants={itemVariants}
                 className="w-full max-w-md relative"
               >
-                <div className="relative flex items-center bg-white rounded-full h-13 px-6 shadow-[0_12px_30px_rgba(51,94,206,0.20)] border border-[#E2E8F0] hover:border-[#335ECE]/30 transition-all duration-300">
+                <div className="relative flex items-center bg-white rounded-full h-13 px-6 shadow-[0_12px_30px_rgba(51,94,206,0.18)] border border-[#E2E8F0] hover:border-[#335ECE]/30 transition-all duration-300">
                   <input
                     type="text"
                     placeholder={searchPlaceholder}
@@ -216,7 +126,7 @@ const BlogHero: React.FC<AnimatedHeroSectionProps> = ({
                   />
                   <button 
                     onClick={() => onSearchSubmit(searchValue)}
-                    className="text-[#666666] hover:text-[#335ECE] transition-colors focus:outline-none pl-2"
+                    className="text-[#666666] hover:text-[#335ECE] transition-colors focus:outline-none pl-2 cursor-pointer"
                   >
                     <svg
                       width="20"

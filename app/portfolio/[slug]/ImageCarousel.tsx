@@ -25,7 +25,6 @@ export default function ImageCarousel({
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState(0); 
 
-  // Added ": Variants" annotation here:
   const slideVariants: Variants = {
     enter: (dir: number) => ({
       x: dir > 0 ? 60 : -60,
@@ -48,14 +47,10 @@ export default function ImageCarousel({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      style={{ backgroundColor: bgColor, minHeight: "600px" }}
-      className="relative rounded-2xl overflow-hidden transition-colors duration-300"
+      style={{ backgroundColor: bgColor }}
+      className="relative rounded-2xl overflow-hidden transition-colors duration-300 w-full flex items-center justify-center p-8 md:p-12 lg:p-16 min-h-[450px] md:min-h-[550px]"
     >
-      
-      <div
-        className="relative w-full flex items-center justify-center px-16 py-10"
-        style={{ minHeight: "500px" }}
-      >
+      <div className="relative w-full h-full flex items-center justify-center">
         <AnimatePresence custom={direction} mode="wait">
           <motion.div
             key={currentImageIndex}
@@ -64,14 +59,13 @@ export default function ImageCarousel({
             initial="enter"
             animate="center"
             exit="exit"
-            className="relative w-full"
-            style={{ height: "460px" }}
+            className="relative w-full h-[350px] sm:h-[420px] md:h-[480px] flex items-center justify-center"
           >
             <Image
               src={displayImages[currentImageIndex]}
               alt={`${title} - Image ${currentImageIndex + 1}`}
               fill
-              className="object-contain drop-shadow-xl"
+              className="object-contain drop-shadow-xl my-auto"
               priority={currentImageIndex === 0}
               sizes="(max-width: 768px) 100vw, 90vw"
             />

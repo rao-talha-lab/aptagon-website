@@ -107,10 +107,12 @@ export default function Page() {
         buttonLink="/reach-us"
       />
 
-      <FeatureSection
+       <FeatureSection
         heading="Top Custom Software Development Services"
-        description="Aptagon Technologies transforms your vision into powerful, scalable software solutions that drive innovation and deliver real business impact."
+        description="Aptagon Technologies transforms your vision..."
         cards={cardsData}
+        currentSlug="ai"
+        relevantSlugs={["sqa", "llm-development", "chatbot"]} 
       />
 
       <CoreTechnologies />

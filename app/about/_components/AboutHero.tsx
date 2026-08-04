@@ -269,11 +269,11 @@ const AboutHero = () => {
                 Your trusted technology partner for innovative digital solutions that drive real business impact.
               </p>
 
-              <div className="flex flex-wrap justify-center lg:justify-start gap-5">
+              <div className="flex flex-wrap justify-center lg:justify-start gap-4">
                 <motion.button
                   whileHover={{ scale: 1.05, y: -5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center justify-center px-8 h-14 bg-[#355ED1] text-white font-semibold rounded-xl shadow-[0_20px_40px_-10px_rgba(7,58,83,0.3)] transition-all uppercase tracking-wider text-s"
+                  className="inline-flex items-center justify-center px-8 h-14 bg-[#355ED1] text-white font-semibold rounded-[10px] shadow-[0_20px_40px_-10px_rgba(7,58,83,0.3)] transition-all uppercase tracking-wider text-s"
                 >
                   <Link href="/schedule-call">
                     <span>Get In Touch →</span>
@@ -288,7 +288,7 @@ const AboutHero = () => {
                       .getElementById("team")
                       ?.scrollIntoView({ behavior: "smooth" })
                   }
-                  className="inline-flex items-center justify-center px-8 h-14 border-2 border-[#666666] text-[#666666] font-semibold rounded-xl hover:text-[#335ECE] transition-all uppercase tracking-wider text-s"
+                  className="inline-flex text-[16px] items-center justify-center px-8 h-14 border-2 border-[#666666] text-[#666666] font-semibold rounded-[10px] hover:text-[#335ECE] transition-all uppercase tracking-wider text-s"
                 >
                   Meet Our Team
                 </motion.button>

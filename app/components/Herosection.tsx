@@ -491,7 +491,7 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
                   <motion.a
                     href={secondaryCtaHref}
                     whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
-                    className="inline-flex items-center justify-center px-8 h-14 text-[#666666] text-[16px] border-[1.5px] border-[#666666] font-medium font-inter rounded-[10px] hover:text-[#335ECE] transition-all"
+                    className="inline-flex items-center justify-center px-8 h-14 text-[#666666] text-[16px] border-[1.5px] border-[#666666] font-semibold  rounded-[10px] hover:text-[#335ECE] transition-all"
                   >
                     {secondaryCtaText}
                   </motion.a>

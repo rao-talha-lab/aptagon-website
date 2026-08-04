@@ -102,7 +102,7 @@ function page() {
         height="h-[550px]"
       /> */}
 
-      <ChatBotHero/>
+      <ChatBotHero />
 
       <TwoSectionCTA
         tagline="Chatbot Development"
@@ -112,10 +112,12 @@ function page() {
         buttonLink="/reach-us"
       />
 
-      <FeatureSection
-        heading="Smart Chatbot Solutions for Every Business Need"
-        description="From customer service to lead generation, we create intelligent bots that automate workflows and improve user experience."
+       <FeatureSection
+        heading="Top Custom Software Development Services"
+        description="Aptagon Technologies transforms your vision..."
         cards={cardsData}
+        currentSlug="ai"
+        relevantSlugs={["web-development", "mobile-app-development", "ui-ux"]} 
       />
 
       <CoreTechnologies />

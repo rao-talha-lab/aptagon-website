@@ -32,7 +32,7 @@ export default function ProblemSolutionSection({
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.7 }}
-      className="py-5 px-4 mb-13 md:px-6 lg:px-8 bg-[#FFFFFF] dark:bg-[#1a1a1a]"
+      className="py-4 px-4 mb-13 md:px-6 lg:px-8 bg-[#FFFFFF] dark:bg-[#1a1a1a]"
     >
       <div className="container mx-auto">
         <motion.div
@@ -55,11 +55,11 @@ export default function ProblemSolutionSection({
             "
           >
             {/* Label */}
-            <span className="text-[#666666] text-[15px] font-bold uppercase tracking-widest">
+            <span className="text-[#666666] text-[15px] font-semibold uppercase tracking-widest">
               Problem
             </span>
             {/* Client name as bold heading */}
-            <h3 className="text-[#335ECE] dark:text-white text-[18px] md:text-[25px] font-bold leading-snug">
+            <h3 className="text-[#335ECE] dark:text-white text-[18px] md:text-[25px] font-semibold leading-snug">
               {client}
             </h3>
             {/* Problem text — dark, readable */}
@@ -82,11 +82,11 @@ export default function ProblemSolutionSection({
             "
           >
             {/* Label */}
-            <span className="text-[#FFFFFF] text-[15px] font-bold uppercase tracking-widest">
+            <span className="text-[#FFFFFF] text-[15px] font-semibold uppercase tracking-widest">
               Solution
             </span>
             {/* "What we did" heading */}
-            <h3 className="text-[#FFFFFF] text-[18px] md:text-[25px] font-bold leading-snug">
+            <h3 className="text-[#FFFFFF] text-[18px] md:text-[25px] font-semibold leading-snug">
               What we did
             </h3>
             {/* Solution text */}

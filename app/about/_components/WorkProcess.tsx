@@ -16,10 +16,10 @@ interface ProcessStep {
 }
 
 const steps: ProcessStep[] = [
-  { id: 1, title: "Discovery",  description: "We begin by deeply understanding your goals, audience, and challenges.", iconSrc: "/icons/explore.png"  },
-  { id: 2, title: "Design", description: "We craft a strategic and creative roadmap tailored to your needs.",      iconSrc: "/icons/envision.png" },
-  { id: 3, title: "Create",   description: "Our team brings ideas to life with purposeful design and development.",  iconSrc: "/icons/create.png"   },
-  { id: 4, title: "Deploy",  description: "We deliver impactful results that drive growth and long-term value.",    iconSrc: "/icons/elevate.png"  },
+  { id: 1, title: "Discovery",  description: "We begin by deeply understanding your goals, audience, and challenges.", iconSrc: "/icons/explore.svg"  },
+  { id: 2, title: "Design", description: "We craft a strategic and creative roadmap tailored to your needs.",      iconSrc: "/icons/envision.svg" },
+  { id: 3, title: "Create",   description: "Our team brings ideas to life with purposeful design and development.",  iconSrc: "/icons/create.svg"   },
+  { id: 4, title: "Deploy",  description: "We deliver impactful results that drive growth and long-term value.",    iconSrc: "/icons/elevate.svg"  },
 ];
 
 /* ── Animated counter util ── */

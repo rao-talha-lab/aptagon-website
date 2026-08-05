@@ -144,7 +144,7 @@ const ContactSection = () => {
               <div className="flex items-start gap-6">
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#335ECE] text-xl shrink-0">
                   <Image
-                    src="/reach-us/call.png"
+                    src="/reach-us/call.svg"
                     alt="Call"
                     height={20}
                     width={20}
@@ -160,7 +160,7 @@ const ContactSection = () => {
               <div className="flex items-start gap-6">
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#335ECE] text-xl shrink-0">
                   <Image
-                    src="/reach-us/mail.png"
+                    src="/reach-us/mail.svg"
                     alt="Call"
                     height={20}
                     width={20}
@@ -176,7 +176,7 @@ const ContactSection = () => {
               <div className="flex items-start gap-6">
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#335ECE] text-xl shrink-0">
                   <Image
-                    src="/reach-us/location.png"
+                    src="/reach-us/location.svg"
                     alt="Call"
                     height={40}
                     width={40}

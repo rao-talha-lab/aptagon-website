@@ -27,10 +27,10 @@ export default function FeaturedPosts() {
           transition={{ duration: 0.8 }}
           className="mb-12"
         >
-          <h2 className="text-4xl md:text-4xl font-black text-white mb-3 tracking-tighter leading-tight">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tighter leading-tight">
             Our Featured Posts
           </h2>
-          <p className="max-w-2xl text-[20px] md:text-[17px] text-white font-medium">
+          <p className="max-w-2xl text-[18px] md:text-[16px] text-white font-medium">
             Discover how headless CMS empowers developers to build faster, 
             scalable websites with greater flexibility and control.
           </p>

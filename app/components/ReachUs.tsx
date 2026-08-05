@@ -26,12 +26,12 @@ const ContactSection = () => {
     try {
       const res = await fetch("/api/reach-us", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
       const data = await res.json();
 
-      if(res.ok && data.success){
+      if (res.ok && data.success) {
         setStatus("success");
         formRef.current?.reset();
       } else {
@@ -45,79 +45,78 @@ const ContactSection = () => {
       setTimeout(() => setStatus("idle"), 3000)
     }
   };
-  
+
   return (
     <section className="w-full min-h-screen bg-white flex justify-center items-center py-15 px-6">
-      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        
+      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
         {/* LEFT SIDE: FORM (SQUARE INPUTS WITH DARK SHADOWS) */}
         <div className="lg:col-span-7">
           <header className="mb-10">
-            <p className="text-[#666666] font-bold text-sm tracking-widest mb-4">
+            <p className="text-[#666666] font-bold text-sm tracking-widest mb-4 ml-2">
               Reach Us
             </p>
-            <h2 className="text-[42px] font-black text-[#335ECE] leading-[1.1] tracking-tight">
+            <h2 className="text-[40px] font-bold text-[#335ECE] leading-[1.1] tracking-tight">
               Join Us In Creating <br /> Something Great
             </h2>
           </header>
 
           <form ref={formRef} onSubmit={sendEmail} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input 
-                type="text" 
+              <input
+                type="text"
                 name="user_first_name"
                 required
-                placeholder="First Name *" 
+                placeholder="First Name *"
                 className="w-full px-5 py-4 bg-[#FFFFFF] shadow-[0_5px_10px_rgba(0,0,0,0.3)] rounded-none focus:outline-none focus:border-[#335ECE] transition-all text-sm text-[#666666]"
               />
-              <input 
-                type="text" 
+              <input
+                type="text"
                 name="user_last_name"
                 required
-                placeholder="Last Name *" 
+                placeholder="Last Name *"
                 className="w-full px-5 py-4 bg-white border shadow-[0_5px_10px_rgba(0,0,0,0.3)] rounded-none focus:outline-none focus:border-[#335ECE] transition-all text-sm text-[#666666]"
               />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input 
-                type="email" 
+              <input
+                type="email"
                 name="user_email"
                 required
-                placeholder="Email *" 
+                placeholder="Email *"
                 className="w-full px-5 py-4 bg-white shadow-[0_5px_10px_rgba(0,0,0,0.3)] rounded-none focus:outline-none focus:border-[#335ECE] transition-all text-sm text-[#666666]"
               />
-              <input 
-                type="tel" 
+              <input
+                type="tel"
                 name="user_phone"
                 required
-                placeholder="Phone Number *" 
+                placeholder="Phone Number *"
                 className="w-full px-5 py-4 bg-white shadow-[0_5px_10px_rgba(0,0,0,0.3)] rounded-none focus:outline-none focus:border-[#335ECE] transition-all text-sm text-[#666666]"
               />
             </div>
 
-            <input 
-              type="text" 
+            <input
+              type="text"
               name="subject"
               required
-              placeholder="Subject *" 
+              placeholder="Subject *"
               className="w-full px-5 py-4 bg-white shadow-[0_5px_10px_rgba(0,0,0,0.3)] rounded-none focus:outline-none focus:border-[#335ECE] transition-all text-sm text-[#666666]"
             />
 
-            <textarea 
-              rows={8} 
+            <textarea
+              rows={8}
               name="message"
               required
-              placeholder="Message" 
+              placeholder="Message"
               className="w-full px-5 py-4 bg-white shadow-[0_5px_10px_rgba(0,0,0,0.3)] rounded-none focus:outline-none focus:border-[#335ECE] transition-all text-sm text-[#666666] resize-none"
             ></textarea>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <button 
+              <button
                 type="submit"
                 disabled={status === "sending"}
-                className="bg-[#355ED1] hover:bg-[#0a4a69] text-white font-bold px-12 py-3 rounded-[6px] text-sm transition-all shadow-lg disabled:opacity-50"
-              >
+                className="bg-[#355ED1] text-white font-bold px-12 py-3 rounded-[6px] text-sm transform transition-all duration-300 hover:scale-105 shadow-lg disabled:opacity-50"              >
                 {status === "sending" ? "Sending..." : "Submit"}
               </button>
 
@@ -129,7 +128,7 @@ const ContactSection = () => {
               )}
               {status === "error" && (
                 <span className="text-red-500 font-semibold text-sm transition-all">
-                Dispatch error ✕ 
+                  Dispatch error ✕
                 </span>
               )}
             </div>
@@ -138,33 +137,33 @@ const ContactSection = () => {
 
         {/* RIGHT SIDE: GRADIENT BOX (TOP ALIGNED) */}
         <div className="lg:col-span-5 h-full">
-          <div className="bg-gradient-to-b from-[#355ED1] to-[#04368d] p-12 flex flex-col justify-start min-h-[600px] text-white rounded-none">
-            
+          <div className="bg-gradient-to-b from-[#355ED1] to-[#04368d] p-12 flex flex-col justify-start min-h-[500px] text-white rounded-none mt-40">
+
             <div className="space-y-6">
               {/* Contact Us */}
               <div className="flex items-start gap-6">
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#335ECE] text-xl shrink-0">
                   <Image
-                  src="/reach-us/call.png"
-                  alt="Call"
-                  height={20}
-                  width={20}
+                    src="/reach-us/call.png"
+                    alt="Call"
+                    height={20}
+                    width={20}
                   />
                 </div>
                 <div>
                   <h4 className="text-lg font-bold mb-1">Contact Us</h4>
-                  <p className="text-lg opacity-90">contact@aptagon.com</p>
+                  <p className="text-lg opacity-90">+44 7882 610679</p>
                 </div>
               </div>
 
               {/* Email Us */}
               <div className="flex items-start gap-6">
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#335ECE] text-xl shrink-0">
-                <Image
-                  src="/reach-us/mail.png"
-                  alt="Call"
-                  height={20}
-                  width={20}
+                  <Image
+                    src="/reach-us/mail.png"
+                    alt="Call"
+                    height={20}
+                    width={20}
                   />
                 </div>
                 <div>
@@ -176,16 +175,16 @@ const ContactSection = () => {
               {/* Locations */}
               <div className="flex items-start gap-6">
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#335ECE] text-xl shrink-0">
-                <Image
-                  src="/reach-us/location.png"
-                  alt="Call"
-                  height={40}
-                  width={40}
+                  <Image
+                    src="/reach-us/location.png"
+                    alt="Call"
+                    height={40}
+                    width={40}
                   />
                 </div>
                 <div>
                   <h4 className="text-lg font-bold mb-1">Locations</h4>
-                  <p className="text-lg opacity-90">contact@aptagon.com</p>
+                  <p className="text-lg opacity-90">Dallas, USA | Poole, UK</p>
                 </div>
               </div>
             </div>

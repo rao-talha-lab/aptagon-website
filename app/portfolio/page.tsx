@@ -60,7 +60,7 @@ const PortfolioPage = () => {
   const featuredImages: Record<number, string> = {
     0: "/portfolio-images/Card-images/card-image-1.png",
     1: "/portfolio-images/Card-images/card-image-2.png",
-    2: "/portfolio-images/Card-images/card-image-6.png",
+    2: "/portfolio-images/Card-images/card-img-6.png",
   };
 
   const containerVariants = {
@@ -241,7 +241,7 @@ const PortfolioPage = () => {
                               <span className="text-[#888888] dark:text-gray-400 text-xs font-medium block mb-1">
                                 {project.category}
                               </span>
-                              <h3 className="text-lg md:text-xl font-bold text-[#335ECE] dark:text-white mb-2 group-hover:text-[#2547a8] transition-colors duration-300">
+                              <h3 className="text-base md:text-md font-bold text-[#335ECE] dark:text-white mb-2 group-hover:text-[#2547a8] transition-colors duration-300">
                                 {project.title}
                               </h3>
                               <p className="text-[#666666] dark:text-gray-400 text-sm leading-relaxed line-clamp-2">
@@ -276,7 +276,7 @@ const PortfolioPage = () => {
               <h2 className="text-[#666666] text-[20px] font-semibold tracking-wider mb-2">
                 Featured
               </h2>
-              <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#335ECE] dark:text-white mb-12">
+              <p className="text-1xl md:text-2xl lg:text-3xl font-bold text-[#335ECE] dark:text-white mb-12">
                 Stories we're proud of.
               </p>
 
@@ -316,13 +316,13 @@ const PortfolioPage = () => {
 
                         {/* Content Wrapper */}
                         <div className="w-full lg:w-1/2 p-6 md:p-8 lg:p-12 flex flex-col justify-center bg-[#FFFFFF] dark:bg-[#1a1a1a]">
-                          <p className="text-[#666666] dark:text-gray-400 font-medium text-base md:text-lg mb-1">
+                          <p className="text-[#666666] dark:text-gray-400 font-medium text-base md:text-md mb-1">
                             {project.category}
                           </p>
-                          <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#335ECE] dark:text-white mb-4">
+                          <h3 className="text-1xl md:text-2xl lg:text-3xl font-bold text-[#335ECE] dark:text-white mb-4">
                             {project.f_title || project.title}
                           </h3>
-                          <p className="text-[#666666] dark:text-gray-400 text-base md:text-lg mb-6 line-clamp-3">
+                          <p className="text-[#666666] dark:text-gray-400 text-base md:text-md mb-6 line-clamp-3">
                             {project.description}
                           </p>
 
@@ -334,7 +334,7 @@ const PortfolioPage = () => {
     {project.stats.map((stat: { value: string; label: string }, sIdx: number) => (
       <div key={sIdx} className="min-w-0 text-center">
         {/* Top Value Line (Centered) */}
-        <p className="text-xl sm:text-2xl md:text-2xl font-extrabold text-[#335ECE] dark:text-blue-400 whitespace-nowrap">
+        <p className="text-md sm:text-2xl md:text-2xl font-extrabold text-[#335ECE] dark:text-blue-400 whitespace-nowrap">
           {stat.value}
         </p>
 

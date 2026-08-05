@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import TransparentNavbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
-import { Calendar, Clock, CheckCircle } from "lucide-react";
+import { Video, Clock, CheckCircle } from "lucide-react";
 import SchedualHero from "./SchedualHero";
 import { email } from "zod";
 
@@ -161,7 +161,7 @@ const ScheduleCallPage = () => {
       <SchedualHero />
 
       {/* Main Container */}
-      <div id="booking" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+      <div id="booking" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -171,7 +171,7 @@ const ScheduleCallPage = () => {
           <p className="text-[20px] font-bold text-[#666666] dark:text-[#0EBAB0] uppercase tracking-wider mb-2">
             LET's SHAPE YOUR DIGITAL SUCCESS
           </p>
-          <h1 className="text-4xl font-bold text-[#335ECE] dark:text-white mb-4">
+          <h1 className="text-3xl font-bold text-[#335ECE] dark:text-white mb-4">
             Book a Free Consultation and Turn Your Goals into Reality
           </h1>
         </motion.div>
@@ -184,7 +184,7 @@ const ScheduleCallPage = () => {
               {/* Logo Section */}
               <div className="p-6 pb-6 mb-8 flex justify-start">
                 <img
-                  src="/logos/aptagon-new-logo.png"
+                  src="/logos/aptagon-tech-new-logo.png"
                   alt="Aptagon Technologies"
                   className="h-12 w-auto object-contain dark:invert"
                 />
@@ -199,11 +199,11 @@ const ScheduleCallPage = () => {
                 className="w-16 h-16 rounded-full object-cover shrink-0"
               />
               <div>
-                <h3 className="text-2xl font-black text-[#335ECE] tracking-tight leading-none dark:text-white">
-                  30 Minutes meeting
+                <h3 className="text-sm font-semibold text-[#666666] tracking-tight leading-none dark:text-white">
+                  Syed Faizan Amjad
                 </h3>
-                <p className="text-sm text-[#666666] dark:text-gray-400 mt-1">
-                  with Aptagon Team
+                <p className="text-xl text-[#335ECE] font-bold mt-1">
+                  30 Minutes meeting
                 </p>
               </div>
             </div>
@@ -216,7 +216,7 @@ const ScheduleCallPage = () => {
                 </span>
               </div>
               <div className="flex items-start gap-3">
-                <Calendar className="w-5 h-5 text-[#335ECE] dark:text-[#0EBAB0] mt-0.5" />
+                <Video className="w-5 h-5 text-[#335ECE] dark:text-[#0EBAB0] mt-0.5" />
                 <span className="text-[#666666] dark:text-gray-300">
                   Web conferencing details provided upon confirmation
                 </span>

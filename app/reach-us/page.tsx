@@ -20,7 +20,7 @@ export default function ReachUsPage() {
         <ReachUs />
 
         {/* FULL WIDTH MAP CONTAINER */}
-        <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] overflow-hidden shadow-inner">
+        <div className="relative w-full h-[300px] sm:h-[350px] md:h-[400px] overflow-hidden shadow-inner mt-8">
           <Image
             src="/reach-us/map.png"
             alt="Aptagon Technologies Location Map"

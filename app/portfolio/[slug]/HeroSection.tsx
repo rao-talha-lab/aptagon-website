@@ -63,13 +63,13 @@ export default function HeroSection({
         >
           <motion.h1
             variants={itemVariants}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#335ECE] dark:text-white mb-3 leading-tight"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#335ECE] dark:text-white mb-3 leading-tight"
           >
             {title}
           </motion.h1>
           <motion.p
             variants={itemVariants}
-            className="text-[#666666] dark:text-gray-400 text-base md:text-lg max-w-full"
+            className="text-[#666666] dark:text-gray-400 text-base max-w-2xl max-w-full"
           >
             {description}
           </motion.p>

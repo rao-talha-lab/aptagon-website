@@ -75,7 +75,7 @@ export default function ProcessSection({
             <p className="text-[#666666] text-[18px] font-semibold uppercase tracking-[0.18em] mb-2">
               Process
             </p>
-            <h2 className="text-3xl md:text-4xl lg:text-[2.4rem] font-bold text-[#335ECE] dark:text-white leading-tight">
+            <h2 className="text-2xl md:text-3xl lg:text-[2.4rem] font-bold text-[#335ECE] dark:text-white leading-tight">
               How we got there.
             </h2>
           </div>

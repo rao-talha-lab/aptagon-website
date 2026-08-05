@@ -59,11 +59,11 @@ export default function ProblemSolutionSection({
               Problem
             </span>
             {/* Client name as bold heading */}
-            <h3 className="text-[#335ECE] dark:text-white text-[18px] md:text-[25px] font-semibold leading-snug">
+            <h3 className="text-[#335ECE] dark:text-white text-[18px] md:text-[25px] font-bold leading-snug">
               {client}
             </h3>
             {/* Problem text — dark, readable */}
-            <p className="text-[#666666] dark:text-gray-300 text-[14px] md:text-[17px] leading-relaxed">
+            <p className="text-[#666666] dark:text-gray-300 text-[14px] md:text-[16px] leading-relaxed">
               {problem}
             </p>
           </motion.div>
@@ -86,11 +86,11 @@ export default function ProblemSolutionSection({
               Solution
             </span>
             {/* "What we did" heading */}
-            <h3 className="text-[#FFFFFF] text-[18px] md:text-[25px] font-semibold leading-snug">
+            <h3 className="text-[#FFFFFF] text-[18px] md:text-[25px] font-bold leading-snug">
               What we did
             </h3>
             {/* Solution text */}
-            <p className="text-[#FFFFFF] text-[14px] md:text-[17px] leading-relaxed">
+            <p className="text-[#FFFFFF] text-[14px] md:text-[16px] leading-relaxed">
               {solution}
             </p>
           </motion.div>

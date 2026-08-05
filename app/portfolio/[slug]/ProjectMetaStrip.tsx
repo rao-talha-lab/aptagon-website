@@ -23,8 +23,8 @@ export default function ProjectMetaStrip({
   ];
 
   return (
-    <section className="py-14 px-4 md:px-6 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+    <section className="py-14 px-6 md:px-12 lg:px-14 max-w-6xl mx-auto w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {metaData.map((item, index) => (
           <motion.div
             key={index}
@@ -33,10 +33,10 @@ export default function ProjectMetaStrip({
             transition={{ duration: 0.4, delay: index * 0.1 }}
             className="bg-[#f5f7fa] border border-[#bfdbfe] dark:border-[#335ECE]/30 rounded-xl px-4 py-3 flex flex-col justify-center min-h-[90px]"
           >
-            <span className="text-[14px] text-gray-500 font-semibold mb-1">
+            <span className="text-[12px] text-gray-500 font-semibold mb-1">
               {item.label}
             </span>
-            <h4 className="text-[16px] md:text-[15px] font-semibold text-[#2563eb] leading-tight">
+            <h4 className="text-[12px] md:text-[14px] font-bold text-[#2563eb] leading-tight break-words">
               {item.value}
             </h4>
           </motion.div>

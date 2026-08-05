@@ -49,7 +49,7 @@ const SpotlightSection: React.FC<SpotlightSectionProps> = ({
       </div>
 
       
-      <div className="max-w-6xl mx-auto px-4 md:px-6">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 pt-5">
         <div className={`grid ${gridColsClass} gap-3 md:gap-4 w-full`}>
           {items.map((item) => (
             <Link key={item.id} href={item.href} className="group block w-full">

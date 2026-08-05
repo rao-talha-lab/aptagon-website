@@ -114,12 +114,12 @@ From workflow optimization to AI-driven analytics, we design automation framewor
       />
 
       {/* Feature Section */}
-    <FeatureSection
+   <FeatureSection
   heading="Top Custom Software Development Services"
   description="Aptagon Technologies transforms your vision..."
   cards={cardsData}
   currentSlug="ai"
-  relevantSlugs={["sqa", "llm-development", "chatbot"]} 
+  relevantSlugs={["sqa", "llm-development", "chatbots"]} 
 />
 
       {/* Core Technologies Section */}

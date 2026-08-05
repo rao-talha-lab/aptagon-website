@@ -109,8 +109,6 @@ function page() {
         heading="Top Custom Software Development Services"
         description="Aptagon Technologies transforms your vision..."
         cards={cardsData}
-        currentSlug="ai"
-        relevantSlugs={["llm-development", "chatbot", "business-process-automation"]}
       />
       <CoreTechnologies />
       <section className="py-10 bg-white">

@@ -116,8 +116,6 @@ function page() {
         heading="Top Custom Software Development Services"
         description="Aptagon Technologies transforms your vision..."
         cards={cardsData}
-        currentSlug="ai"
-        relevantSlugs={["web-development", "mobile-app-development", "ui-ux"]} 
       />
 
       <CoreTechnologies />

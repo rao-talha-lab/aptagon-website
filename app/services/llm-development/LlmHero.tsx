@@ -489,8 +489,9 @@ const LlmHero: React.FC<AnimatedHeroSectionProps> = ({
                 />
               </motion.h1>
 
-              <motion.p variants={itemVariants} className="text-[20px] text-[#666666] mb-10 leading-wide">
-                {description}
+              <motion.p variants={itemVariants} className="text-[20px] text-[#666666] mb-10 leading-relaxed max-w-xl">
+                Delivering tailored LLM solutions and training to enhance <br className="hidden sm:block" />
+                automation, efficiency, and AI-driven insights.
               </motion.p>
 
               <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
@@ -510,7 +511,7 @@ const LlmHero: React.FC<AnimatedHeroSectionProps> = ({
                 <motion.button
                   whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
                   onClick={handleExploreClick}
-                    className="inline-flex items-center justify-center px-8 h-14 text-[#666666] text-[16px] border-[1.5px] border-[#666666] font-medium font-inter rounded-[10px] hover:text-[#335ECE] transition-all"
+                  className="inline-flex items-center justify-center px-8 h-14 text-[#666666] text-[16px] border-[1.5px] border-[#666666] font-medium font-inter rounded-[10px] hover:text-[#335ECE] transition-all"
                 >
                   Explore Services
                 </motion.button>

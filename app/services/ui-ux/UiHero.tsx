@@ -242,7 +242,7 @@ const AnimatedHeroSection: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="flex-1 text-left"
             >
-              <h1 className="itext-[#666666] font-['Poppins'] font-semibold tracking-wide text-[15px] mb-6 ml-1">
+              <h1 className="text-[#666666] font-['Poppins'] font-semibold tracking-wide text-[15px] mb-6 ml-1">
                 UI/UX Design
               </h1>
 

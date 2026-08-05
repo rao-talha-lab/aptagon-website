@@ -119,7 +119,7 @@ const ReachUsHero = () => {
               </motion.div>
 
               {/* Heading */}
-              <h1 className="text-[28px] md:text-[44px] font-black leading-[1.25] text-[#666666] mb-6 tracking-tighter min-h-[110px] md:min-h-[120px]">
+              <h1 className="text-[28px] md:text-[42px] font-black leading-[1.25] text-[#666666] mb-6 tracking-tighter min-h-[110px] md:min-h-[120px]">
                 <span className="block">Partner With Us To</span>
                 <TypewriterEffect
                   words={[

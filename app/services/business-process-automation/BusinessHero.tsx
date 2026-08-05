@@ -132,7 +132,7 @@ const SmartAutomation = () => {
                     alt={item.title}
                     width={18}
                     height={18}
-                    className="object-contain"
+                    className="object-contain filter-[brightness(0)_saturate(100%)_invert(31%)_sepia(87%)_saturate(1676%)_hue-rotate(210deg)_brightness(94%)_contrast(91%)]"
                   />
                 </div>
 
@@ -273,32 +273,32 @@ const BusinessHero: React.FC<AnimatedHeroSectionProps> = ({
     <div className="relative z-30 shadow-[0_5px_15px_rgba(0,0,0,0.05)]">
 
 
-    <section className={`relative flex items-center overflow-hidden bg-[#FFFFFF] dark:bg-[#0a0a0a] ${height}`}>
-      <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none opacity-40" />
-      <div className="relative lg:mt-20 z-10 container mx-auto px-2 pt-20 lg:pt-10 pb-3 lg:pb-10">
-        <div className="flex flex-col lg:flex-row items-center gap-6">
-          <div className="px-1 flex-1 max-w-3xl text-left">
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-3 text-[#666666] font-semibold font-['Poppins'] tracking-wide text-[15px]">
-              Business Process Automation
-            </motion.p>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-[50px] font-black text-[#666666] dark:text-white mb-6 leading-[1.25] tracking-tighter">
-              Optimizing <br /> Operations With <br />
-              <TypewriterEffect words={[
+      <section className={`relative flex items-center overflow-hidden bg-[#FFFFFF] dark:bg-[#0a0a0a] ${height}`}>
+        <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none opacity-40" />
+        <div className="relative lg:mt-20 z-10 container mx-auto px-2 pt-20 lg:pt-10 pb-3 lg:pb-10">
+          <div className="flex flex-col lg:flex-row items-center gap-6">
+            <div className="px-1 flex-1 max-w-3xl text-left">
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-3 text-[#666666] font-semibold font-['Poppins'] tracking-wide text-[15px]">
+                Business Process Automation
+              </motion.p>
+              <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-[50px] font-black text-[#666666] dark:text-white mb-6 leading-[1.25] tracking-tighter">
+                Optimizing <br /> Operations With <br />
+                <TypewriterEffect words={[
 
-                "Digital Transformation",
-                "Smart Automation",
-                "Agile Project Execution",
+                  "Digital Transformation",
+                  "Smart Automation",
+                  "Agile Project Execution",
 
-              ]} />
-            </motion.h1>
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[20px] text-[#666666] dark:text-slate-400 mb-10 leading-tight font-['Poppins'] font-medium">
-              {description}
-            </motion.p>
+                ]} />
+              </motion.h1>
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[20px] text-[#666666] dark:text-slate-400 mb-10 leading-tight font-['Poppins'] font-medium">
+                {description}
+              </motion.p>
 
-            {/* --- Buttons Section --- */}
-            <div className="flex flex-wrap gap-4">
-              {/* Explore Services Button */}
-              <Link href="/schedule-call">
+              {/* --- Buttons Section --- */}
+              <div className="flex flex-wrap gap-4">
+                {/* Explore Services Button */}
+                <Link href="/schedule-call">
                   <motion.button
                     whileHover={{
                       scale: 1.05,
@@ -318,12 +318,12 @@ const BusinessHero: React.FC<AnimatedHeroSectionProps> = ({
                 >
                   Explore Services
                 </motion.button>
+              </div>
             </div>
+            <SmartAutomation />
           </div>
-          <SmartAutomation />
         </div>
-      </div>
-    </section>
+      </section>
     </div>
   );
 };

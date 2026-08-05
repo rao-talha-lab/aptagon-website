@@ -254,7 +254,7 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
                 alt="cpu"
                 width={16}
                 height={16}
-                className="w-4 h-4 object-contain"
+                className="w-4 h-4 object-contain filter-[brightness(0)_saturate(100%)_invert(31%)_sepia(87%)_saturate(1676%)_hue-rotate(210deg)_brightness(94%)_contrast(91%)]"
               />
             </div>
             <div>
@@ -275,7 +275,7 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
                 alt="image"
                 width={16}
                 height={16}
-                className="w-4 h-4 object-contain"
+                className="w-4 h-4 object-contain filter-[brightness(0)_saturate(100%)_invert(31%)_sepia(87%)_saturate(1676%)_hue-rotate(210deg)_brightness(94%)_contrast(91%)]"
               />
             </div>
             <div>
@@ -294,7 +294,7 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
                 alt="code"
                 width={16}
                 height={16}
-                className="w-4 h-4 object-contain"
+                className="w-4 h-4 object-contain filter-[brightness(0)_saturate(100%)_invert(31%)_sepia(87%)_saturate(1676%)_hue-rotate(210deg)_brightness(94%)_contrast(91%)]"
               />
             </div>
             <div>
@@ -313,7 +313,7 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
                 alt="bot"
                 width={16}
                 height={16}
-                className="w-4 h-4 object-contain"
+                className="w-4 h-4 object-contain filter-[brightness(0)_saturate(100%)_invert(31%)_sepia(87%)_saturate(1676%)_hue-rotate(210deg)_brightness(94%)_contrast(91%)]"
               />
             </div>
             <div>

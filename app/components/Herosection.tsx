@@ -453,7 +453,7 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
             {/* FIXED PARAGRAPH BREAK */}
             <motion.p
               variants={itemVariants}
-              className="text-[17px] lg:text-[19px] font-['Poppins'] text-[#666666] font-medium mb-8 text-left leading-relaxed max-w-full"
+              className="text-[15px] lg:text-[17px] font-['Poppins'] text-[#666666] font-semibold mb-8 text-left leading-relaxed max-w-full"
             >
               Transforming businesses with innovative technology solutions, strategic <br className="hidden lg:block" />
               consulting, and world-class digital experiences.

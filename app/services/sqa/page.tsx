@@ -115,8 +115,6 @@ Whether it's a mobile app, legacy system, or enterprise cloud solution — we de
        heading="Top Custom Software Development Services"
        description="Aptagon Technologies transforms your vision..."
        cards={cardsData}
-       currentSlug="ai"
-       relevantSlugs={["web-development", "mobile-app-development", "ui-ux"]} 
      />
 
       <CoreTechnologies />

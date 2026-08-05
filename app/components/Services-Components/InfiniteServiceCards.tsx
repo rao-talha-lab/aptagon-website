@@ -43,7 +43,6 @@ function ServiceCard({ card, stepNumber }: { card: CardItem; stepNumber: number 
           : "0 15px 40px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.05)",
         transform: hovered ? "translateY(-15px) scale(1.02)" : "translateY(0) scale(1)",
         transition: "all 0.5s cubic-bezier(0.2, 1, 0.3, 1)",
-        cursor: "pointer",
         display: "flex",
         flexDirection: "column",
         zIndex: hovered ? 20 : 1,

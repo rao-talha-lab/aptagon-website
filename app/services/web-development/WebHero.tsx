@@ -281,7 +281,7 @@ const WebDevHero = () => {
         <div className="relative z-10 container mx-auto px-6">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             {/* ── Left Content ── */}
-            <div className="flex-1 max-w-3xl text-left lg:mt-15 pt-30 lg:pt-20 pb-5 lg:pb-10">
+            <div className="flex-1 max-w-3xl text-left lg:mt-22 pt-30 lg:pt-20 pb-5 lg:pb-10">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -295,7 +295,7 @@ const WebDevHero = () => {
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-3xl md:text-[55px] font-black text-[#666666] dark:text-white leading-[1.25] mb-2 tracking-tighter"
+                className="text-3xl md:text-[46px] font-black text-[#666666] dark:text-white leading-[1.25] mb-2 tracking-tighter"
               >
                 Crafting Web <br />
                 Experiences That <br />
@@ -341,7 +341,7 @@ const WebDevHero = () => {
             </div>
 
             {/* ── Right: Dashboard — hidden below lg ── */}
-            <div className="flex-1 flex items-center justify-center w-full lg:mt-20 hidden lg:flex">
+            <div className="flex-1 flex items-center justify-center w-full lg:mt-20 hidden lg:flex -ml-16">
               <WebDevelopmentDashboard inView={inView} />
             </div>
           </div>

@@ -37,7 +37,7 @@ const TypewriterEffect = ({ words }: { words: string[] }) => {
   return (
     <span className="text-[#335ECE]">
       {`${words[index].substring(0, subIndex)}`}
-      <span className={`inline-block w-1 h-10 md:h-14 ml-2 bg-[#666666] align-middle ${blink ? "opacity-100" : "opacity-0"}`} />
+      <span className={`inline-block w-1 h-8 md:h-10 ml-2 bg-[#666666] align-middle ${blink ? "opacity-100" : "opacity-0"}`} />
     </span>
   );
 };
@@ -51,24 +51,6 @@ interface Particle {
   opacity: number;
   glow: number;
 }
-
-const Counter = ({ target, duration = 2, suffix = "" }: { target: number; duration?: number; suffix?: string }) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let frame = 0;
-    const totalFrames = duration * 60;
-    const counter = setInterval(() => {
-      frame++;
-      const progress = frame / totalFrames;
-      setCount(Math.floor(target * progress));
-      if (frame === totalFrames) clearInterval(counter);
-    }, 1000 / 60);
-    return () => clearInterval(counter);
-  }, [target, duration]);
-
-  return <span>{count}{suffix}</span>;
-};
 
 interface AnimatedHeroSectionProps {
   tagline?: string;
@@ -96,7 +78,7 @@ const QAReportCard = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="hidden lg:flex flex-1 items-center justify-center self-center"
     >
-      <div className="w-[420px] xl:w-[460px] bg-[#FAFAFA] rounded-[18px] p-6 xl:p-7 shadow-[0_4px_15px_rgba(51,94,206,0.2)]">
+      <div className="w-[360px] xl:w-[410px] bg-[#FAFAFA] rounded-[18px] p-6 shadow-[0_4px_15px_rgba(51,94,206,0.15)]">
 
         {/* TOP */}
         <div className="flex items-start justify-between mb-5 mt-1">
@@ -117,17 +99,17 @@ const QAReportCard = () => {
         </div>
 
         {/* SCORE BOX */}
-        <div className="bg-gradient-to-r from-[#1B3887] to-[#335ED1] rounded-xl px-4 py-7 flex justify-between items-center text-[#FFFFFF] mb-6">
+        <div className="bg-gradient-to-r from-[#1B3887] to-[#335ED1] rounded-xl px-4 py-5 flex justify-between items-center text-[#FFFFFF] mb-6">
           <div>
-            <p className="text-[10px] uppercase mb-2 -mt-4 tracking-wider">OVERALL SCORE</p>
-            <h3 className="text-[25px] font-bold leading-none">
-              98<span className="text-[17px] text-[#FFFFFFB2]">/100</span>
+            <p className="text-[10px] uppercase mb-1 tracking-wider">OVERALL SCORE</p>
+            <h3 className="text-[24px] font-bold leading-none">
+              98<span className="text-[16px] text-[#FFFFFFB2]">/100</span>
             </h3>
           </div>
-          <div>
-            <p className="text-[10px] uppercase mb-2 ml-8 -mt-4 tracking-wider">PASSED</p>
-            <h3 className="text-[21px] font-bold leading-none">
-              412<span className="text-[21px]">/420</span>
+          <div className="text-right">
+            <p className="text-[10px] uppercase mb-1 tracking-wider">PASSED</p>
+            <h3 className="text-[20px] font-bold leading-none">
+              412<span className="text-[18px]">/420</span>
             </h3>
           </div>
         </div>
@@ -138,7 +120,7 @@ const QAReportCard = () => {
             <div key={index}>
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 flex items-center justify-center rounded-full">
+                  <div className="w-5 h-5 flex items-center justify-center rounded-full">
                     <Image
                       src="/hero-right/tick1.svg"
                       width={14}
@@ -175,8 +157,6 @@ const SqaHero: React.FC<AnimatedHeroSectionProps> = ({
   tagline = "Software Quality Assurance & Delivery",
   heading = "Reliable & High-Quality",
   description = "End-to-end QA and delivery services that guarantee seamless, bug-free, and scalable software — every time.",
-  primaryCtaText = "Explore Services",
-  secondaryCtaText = "Let's Collaborate",
   height = "min-h-screen",
   alignment = "left",
 }) => {
@@ -271,65 +251,64 @@ const SqaHero: React.FC<AnimatedHeroSectionProps> = ({
   };
 
   return (
-    <div className="relative z-30 shadow-[0_5px_15px_rgba(0,0,0,0.05)]">
+    <div className="relative z-30 shadow-[0_4px_40px_rgba(51,94,206,0.3)] pt-6">
+      <section className={`relative flex items-center overflow-hidden bg-[#FFFFFF] ${height}`}>
+        <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
 
-    <section className={`relative flex items-center overflow-hidden bg-[#FFFFFF] ${height}`}>
-      <canvas ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />
+        {/* Added pt-24 lg:pt-32 to push content down safely below navbar */}
+        <div className="relative z-10 container mx-auto px-6 lg:pl-12 lg:pr-20 pt-24 lg:pt-32 pb-12">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            /* Reduced gap to gap-4 xl:gap-6 */
+            className="flex flex-col lg:flex-row items-center justify-between gap-2 xl:gap-4"
+          >
+            {/* LEFT — Text Content */}
+            <div className="max-w-2xl flex flex-col items-start">
+              <motion.p variants={itemVariants} className="mb-3 text-[15px] text-[#666666] font-['Poppins'] font-semibold tracking-wide">
+                {tagline}
+              </motion.p>
 
-      <div className="relative lg:mt-20 z-10 container mx-auto px-4">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          className="flex flex-col lg:flex-row items-center gap-12"
-        >
-          {/* LEFT — text content (unchanged) */}
-          <div className="max-w-3xl flex flex-col items-start">
-            <motion.p variants={itemVariants} className="mb-3 text-[15px] text-[#666666] font-['Poppins'] font-semibold tracking-wide">
-              {tagline}
-            </motion.p>
+              <motion.h1
+                variants={itemVariants}
+                className="text-3xl md:text-[38px] xl:text-[42px] font-black text-[#666666] leading-[1.2] mb-6 tracking-tighter"
+              >
+                {heading} <br />
+                <TypewriterEffect words={["Software Solutions", "QA Excellence", "Bug-Free Code", "Rapid Delivery"]} />
+              </motion.h1>
 
-            <motion.h1
-              variants={itemVariants}
-              className="text-4xl md:text-[50px] font-black text-[#666666] leading-[1.25] mb-6 tracking-tighter"
-            >
-              {heading} <br />
-              <TypewriterEffect words={["Software Solutions","QA Excellence", "Bug-Free Code", "Rapid Delivery"]} />
-            </motion.h1>
+              <motion.p variants={itemVariants} className="text-[18px] md:text-[20px] text-[#666666] mb-8 leading-relaxed font-medium">
+                {description}
+              </motion.p>
 
-            <motion.p variants={itemVariants} className="text-[20.5px] text-[#666666] mb-10 leading-relaxed font-medium">
-              {description}
-            </motion.p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link href="/schedule-call">
-                <motion.button
-                  whileHover={{
-                    scale: 1.05,
-                  }}
-                  className="px-8 h-14 bg-[#335ECE] text-white font-semibold rounded-[10px] shadow-lg lg:shadow-2xl text-s tracking-wide group cursor-pointer"
+              <div className="flex flex-wrap gap-4">
+                <Link href="/schedule-call">
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    className="px-8 h-14 bg-[#335ECE] text-white font-semibold rounded-[10px] shadow-lg text-s tracking-wide group cursor-pointer"
                   >
-                  Let&apos;s Collaborate
-                  <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </motion.button>
-              </Link>
-              <motion.button
-                whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
-                onClick={handleExploreClick}
-                    className="inline-flex items-center justify-center px-8 h-14 text-[#666666] text-[16px] border-[1.5px] border-[#666666] font-medium font-inter rounded-[10px] hover:text-[#335ECE] transition-all"
+                    Let&apos;s Collaborate
+                    <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
+                      →
+                    </span>
+                  </motion.button>
+                </Link>
+                <motion.button
+                  whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
+                  onClick={handleExploreClick}
+                  className="inline-flex items-center justify-center px-8 h-14 text-[#666666] text-[16px] border-[1.5px] border-[#666666] font-medium font-inter rounded-[10px] hover:text-[#335ECE] transition-all"
                 >
-                Explore Services
-              </motion.button>
+                  Explore Services
+                </motion.button>
+              </div>
             </div>
-          </div>
 
-          {/* RIGHT — QA Report Card (hidden below lg) */}
-          {alignment === "left" && <QAReportCard />}
-        </motion.div>
-      </div>
-    </section>
+            {/* RIGHT — QA Report Card */}
+            {alignment === "left" && <QAReportCard />}
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 };

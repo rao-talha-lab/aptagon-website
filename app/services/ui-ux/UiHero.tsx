@@ -62,7 +62,7 @@ const DigitalExperienceCard = () => {
     <div className="hidden lg:flex flex-1 items-center justify-center">
       <div>
         {/* Main Card */}
-        <div className="w-[500px] xl:w-[540px] bg-[#FFFFFF] rounded-[18px] p-6 shadow-[0_4px_40px_rgba(51,94,206,0.3)]">
+        <div className="w-[380px] xl:w-[440px] bg-[#FFFFFF] rounded-[18px] p-6 shadow-[0_4px_40px_rgba(51,94,206,0.3)]">
 
           {/* Heading */}
           <p className="text-[#666666] text-[15px] font-['Poppins'] tracking-wide font-semibold mb-1 mt-5">
@@ -245,15 +245,17 @@ const AnimatedHeroSection: React.FC = () => {
               <h1 className="text-[#666666] font-['Poppins'] font-semibold tracking-wide text-[15px] mb-6 ml-1">
                 UI/UX Design
               </h1>
-
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-[50px] font-black text-[#666666] dark:text-white mb-6 leading-[1.25] tracking-tighter">
-                Designing <br />
-                Impactful{" "}
+              <motion.h1
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-4xl md:text-[44px] font-black text-[#666666] dark:text-white mb-6 leading-[1.2] tracking-tighter"
+              >
+                Designing Impactful <br />
                 <TypewriterEffect
                   words={[
-                    "Interface Innovation",
                     "Digital Experiences",
-                    "User Experience Flow",
+                    "Interface Innovations",
+                    "User Experience Flows",
                   ]}
                 />
               </motion.h1>

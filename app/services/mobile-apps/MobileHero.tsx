@@ -61,10 +61,10 @@ const MobileAppSection = () => {
       transition={{ duration: 1 }}
       className="hidden lg:flex flex-1 items-center justify-center"
     >
-      <div className="bg-transparent p-2 flex flex-col md:flex-row items-center justify-center gap-9 font-sans relative">
+      <div className="bg-transparent p-2 flex flex-col md:flex-row items-center justify-center gap-8 font-sans relative">
 
         {/* Mobile Mockup */}
-        <div className="relative w-[235px] -left-7 h-[425px] bg-[#FFFFFF] rounded-[45px] border-[10px] border-[#335ECE] shadow-2xl overflow-hidden flex flex-col">
+        <div className="relative w-[235px] h-[425px] bg-[#FFFFFF] rounded-[45px] border-[10px] border-[#335ECE] shadow-2xl overflow-hidden flex flex-col">
 
           {/* TOP BAR */}
           <div className="h-8 bg-[#FFFFFF] w-full flex justify-center items-end pt-2 pb-3">
@@ -135,7 +135,7 @@ const MobileAppSection = () => {
         </div>
 
         {/* Right Side Cards */}
-        <div className="flex flex-col gap-4 -ml-12 mr-auto">
+        <div className="flex flex-col gap-4 mr-auto">
           {/* First Card */}
           <div className="bg-white shadow-lg rounded-2xl p-5 w-40 border border-gray-50">
             <Image
@@ -276,8 +276,8 @@ const MobileHero: React.FC<AnimatedHeroSectionProps> = ({
               Mobile App Development
             </motion.p>
 
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-              <h2 className="text-[35px] md:text-[40px] lg:text-[47px] font-black text-[#666666] leading-[1.25] tracking-tighter">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-4">
+              <h2 className="text-[35px] md:text-[40px] lg:text-[46px] font-black text-[#666666] leading-[1.25] tracking-tighter">
                 Delivering Engaging
                 <br />
                 <TypewriterEffect words={["Mobile Experiences", "Innovative App Ideas", "Smart App Features"]} />
@@ -287,7 +287,7 @@ const MobileHero: React.FC<AnimatedHeroSectionProps> = ({
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-[15px] md:text-[22px] text-[#666666] mb-10 leading-relaxed font-medium"
+              className="text-[16px] md:text-[20px] text-[#666666] mb-8 leading-relaxed font-medium "
             >
               Developing intuitive, high-performance mobile apps for iOS and Android to engage your users anywhere.
             </motion.p>

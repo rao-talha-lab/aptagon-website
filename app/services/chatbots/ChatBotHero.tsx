@@ -334,7 +334,7 @@ const BusinessHero: React.FC = () => {
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-5xl md:text-[54px] font-black text-[#666666] dark:text-white leading-[1.25] mb-6 tracking-tighter"
+                className="text-4xl md:text-[48px] font-black text-[#666666] dark:text-white leading-[1.25] mb-6 tracking-tighter"
               >
                 Enhancing <br /> Engagement <br />
                 <TypewriterEffect

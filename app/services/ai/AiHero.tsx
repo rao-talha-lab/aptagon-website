@@ -38,9 +38,8 @@ const TypewriterEffect = ({ words }: { words: string[] }) => {
     <span className="text-[#335ECE]">
       {`${words[index].substring(0, subIndex)}`}
       <span
-        className={`inline-block w-1 h-10 md:h-12 ml-2 bg-[#666666] align-middle ${
-          blink ? "opacity-100" : "opacity-0"
-        }`}
+        className={`inline-block w-1 h-10 md:h-12 ml-2 bg-[#666666] align-middle ${blink ? "opacity-100" : "opacity-0"
+          }`}
       />
     </span>
   );
@@ -397,22 +396,23 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
             <div className="flex flex-col items-start w-full">
               <motion.p
                 variants={itemVariants}
-                className="mb-3 text-[15px] text-[#666666] font-semibold font-['Poppins'] tracking-wide"
+                className="mb-3 ml-1 text-[15px] text-[#666666] font-semibold font-['Poppins'] tracking-wide "
               >
                 {tagline}
               </motion.p>
 
               <motion.h1
                 variants={itemVariants}
-                className="text-4xl md:text-[52px] font-black text-[#666666] leading-[1.15] mb-6 tracking-tight"
+                className="text-3xl md:text-[38px] xl:text-[42px] font-black text-[#666666] dark:text-white leading-[1.2] mb-6 tracking-tight"
               >
-                Driving Innovation <br /> With AI &amp;{" "}
+                Driving Innovation <br />
+                With AI & <br />
                 <TypewriterEffect
                   words={[
-                    "Generative",
-                    "Technologies",
-                    "Intelligent Automation",
                     "Machine Learning",
+                    "Generative Tech",
+                    "Smart Automation",
+                    "Neural Networks",
                   ]}
                 />
               </motion.h1>
@@ -439,7 +439,7 @@ const AiHero: React.FC<AnimatedHeroSectionProps> = ({
                 </Link>
 
                 <motion.button
-                   whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
+                  whileHover={{ borderColor: "#335ECE", scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={handleExploreClick}
                   className="px-8 h-14 border-[1.5px] border-[#666666] text-[#666666] hover:text-[#335ECE] font-semibold rounded-[12px] text-base tracking-wide cursor-pointer bg-transparent"

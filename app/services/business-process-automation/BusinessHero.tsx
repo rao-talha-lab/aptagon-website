@@ -103,9 +103,9 @@ const SmartAutomation = () => {
       initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
       whileInView={{ opacity: 1, scale: 1, rotateY: -5 }}
       transition={{ duration: 1.2 }}
-      className="hidden lg:flex flex-1 items-center justify-center self-center"
+      className="hidden lg:flex flex-1 items-center justify-center self-center pt-7"
     >
-      <div className="w-full max-w-[450px] bg-[#FAFAFA] rounded-[22px] p-6 shadow-[0_4px_15px_rgba(51,94,206,0.2)]">
+      <div className="w-full max-w-[450px] bg-[#FAFAFA] rounded-[22px] p-6  shadow-[0_4px_15px_rgba(51,94,206,0.2)]">
 
         {/* Heading */}
         <p className="text-[#666666] text-[12px] tracking-widest font-bold uppercase mt-1">

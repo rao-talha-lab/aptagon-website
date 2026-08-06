@@ -436,7 +436,7 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
 
             <motion.h1
               variants={itemVariants}
-              className="text-[34px] md:text-[44px] lg:text-[50px] font-['Poppins'] font-bold text-[#355ED1] mb-3 tracking-tighter leading-tight"
+              className="text-[34px] md:text-[44px] lg:text-[48px] font-['Poppins'] font-bold text-[#355ED1] mb-3 tracking-tighter leading-tight"
             >
               We Build Digital <br />
               <span className="block overflow-visible">
@@ -506,7 +506,7 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="w-full lg:max-[48%] flex items-center justify-center lg:justify-center pt-20 lg:pt-28 pb-12"
+              className="w-full lg:max-[48%] flex items-center justify-center lg:justify-center pt-20 lg:pt-28 pb-12 -ml-4"
             >
               <AboutSection />
             </motion.div>

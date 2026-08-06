@@ -253,7 +253,7 @@ const AboutHero = () => {
                 </span>
               </motion.div>
 
-              <motion.h1 className="text-[36px] sm:text-[46px] lg:text-[60px] font-['Poppins'] font-bold text-[#666666] leading-[1.1] tracking-tighter">
+              <motion.h1 className="text-[34px] sm:text-[46px] lg:text-[50px] font-['Poppins'] font-bold text-[#666666] leading-[1.1] tracking-tighter">
                 Driven by <br /> Innovation,
                 <br />
                 <TypewriterEffect

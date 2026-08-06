@@ -10,22 +10,19 @@ import Footer from "@/app/components/Footer";
 
 const PortfolioPage = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [mounted, setMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Ensure component is fully hydrated before rendering motion animations
   useEffect(() => {
-    setMounted(true);
+    setIsMounted(true);
   }, []);
 
   const allProjects = caseStudies;
 
-  // Extract unique categories safely
   const categories = useMemo(
     () => ["All", ...Array.from(new Set(allProjects.map((p) => p.category?.trim())))],
     [allProjects]
   );
 
-  // Robust Case-insensitive Filtering
   const filteredProjects = useMemo(() => {
     if (activeCategory === "All") return allProjects;
     return allProjects.filter(
@@ -33,7 +30,6 @@ const PortfolioPage = () => {
     );
   }, [activeCategory, allProjects]);
 
-  // Featured Projects
   const featuredProjects = useMemo(
     () =>
       [
@@ -77,12 +73,7 @@ const PortfolioPage = () => {
       <div className="min-h-screen bg-[#FFFFFF] dark:bg-[#1a1a1a] transition-colors duration-300 pt-32">
         <div className="relative z-30 shadow-[0_5px_15px_rgba(0,0,0,0.10)]">
           {/* HERO SECTION */}
-          <motion.section
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="relative py-12 px-4 md:py-16 md:px-6 lg:px-8 overflow-hidden"
-          >
+          <section className="relative py-12 px-4 md:py-16 md:px-6 lg:px-8 overflow-hidden">
             <div className="container mx-auto text-center mb-12">
               <p className="inline-block px-5 py-1.5 bg-[#002892]/10 border border-[#335ECE] text-[#335ECE] font-semibold text-sm md:text-base rounded-full mb-4">
                 Portfolio
@@ -91,8 +82,7 @@ const PortfolioPage = () => {
                 Our work that <span className="text-[#335ECE]">drives results.</span>
               </h1>
               <p className="text-[#666666] dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto mb-8">
-                A selection of brands, products and campaigns we've shaped —
-                across industries, stages and ambitions.
+                A selection of brands, products and campaigns we've shaped — across industries, stages and ambitions.
               </p>
 
               <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -114,7 +104,7 @@ const PortfolioPage = () => {
                 </Link>
               </div>
             </div>
-          </motion.section>
+          </section>
         </div>
 
         {/* ALL CASE STUDIES SECTION */}
@@ -151,21 +141,18 @@ const PortfolioPage = () => {
               </div>
             </div>
 
-            {/* GRID OF PROJECTS WITH ANIMATE PRESENCE */}
-            <motion.div
-              layout
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 min-h-[300px]"
-            >
-              {mounted && (
+            {/* GRID OF PROJECTS */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 min-h-[300px]">
+              {isMounted && (
                 <AnimatePresence mode="popLayout">
                   {filteredProjects.map((project, idx) => (
                     <motion.div
                       key={project.slug}
                       layout
-                      initial={{ opacity: 0, scale: 0.95 }}
+                      initial={{ opacity: 0, scale: 0.98 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.3 }}
+                      exit={{ opacity: 0, scale: 0.98 }}
+                      transition={{ duration: 0.2 }}
                       className="group cursor-pointer h-full flex flex-col"
                     >
                       <Link href={`/portfolio/${project.slug}`} className="h-full flex flex-col">
@@ -185,9 +172,10 @@ const PortfolioPage = () => {
                                 alt={project.title}
                                 fill
                                 priority={idx < 3}
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                                loading={idx < 3 ? "eager" : "lazy"}
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 style={{ objectFit: "contain", objectPosition: "center" }}
-                                className="group-hover:scale-105 transition-transform duration-500 ease-out"
+                                className="group-hover:scale-105 transition-transform duration-300 ease-out"
                               />
                             </div>
                           </div>
@@ -212,7 +200,7 @@ const PortfolioPage = () => {
                   ))}
                 </AnimatePresence>
               )}
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -223,7 +211,7 @@ const PortfolioPage = () => {
               Featured
             </h2>
             <p className="text-1xl md:text-2xl lg:text-3xl font-bold text-[#335ECE] dark:text-white mb-12">
-              Stories we're proud of.
+              Stories we'proud of.
             </p>
 
             <div className="space-y-8 md:space-y-12">
@@ -236,7 +224,6 @@ const PortfolioPage = () => {
                       }`}
                       style={{ boxShadow: "0 4px 20px rgba(0, 0, 0, 0.08)" }}
                     >
-                      {/* Image Wrapper */}
                       <div
                         className={`relative w-full lg:w-1/2 h-72 md:h-96 lg:h-[450px] overflow-hidden flex items-center justify-center ${
                           cardBgColors[project.slug] || "bg-[#5383FF]"
@@ -252,12 +239,12 @@ const PortfolioPage = () => {
                           alt={project.title}
                           fill
                           priority={index === 0}
-                          sizes="(max-width: 1024px) 100vw, 800px"
-                          className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                          loading={index === 0 ? "eager" : "lazy"}
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
 
-                      {/* Content Wrapper */}
                       <div className="w-full lg:w-1/2 p-6 md:p-8 lg:p-12 flex flex-col justify-center bg-[#FFFFFF] dark:bg-[#1a1a1a]">
                         <p className="text-[#666666] dark:text-gray-400 font-medium text-base md:text-md mb-1">
                           {project.category}
@@ -269,7 +256,6 @@ const PortfolioPage = () => {
                           {project.description}
                         </p>
 
-                        {/* Dynamic Stats Row */}
                         {project.stats && project.stats.length > 0 && (
                           <div className="grid grid-cols-3 gap-4 mb-8">
                             {project.stats.map(

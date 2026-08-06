@@ -112,7 +112,7 @@ export const portfolioData: Record<string, PortfolioProject> = {
     'Visual identity guidelines',
   ],
   image: '/portfolio-images/image-3-(SRB).png',
-  mockupImage: '/portfolio-images/Card-images/card-img3-(EBI).png',
+  mockupImage: '/portfolio-images/Card-images/card-images-3.png',
   challenge:
     'Developing an authentic brand identity that communicates sustainability values.',
   solution:
@@ -144,7 +144,7 @@ export const portfolioData: Record<string, PortfolioProject> = {
     'Data filtering and drill-down',
   ],
   image: '/portfolio-images/image-1-(NCP).png',
-  mockupImage: '/portfolio-images/Card-images/card-img4.png',
+  mockupImage: '/portfolio-images/Card-images/card-image-4.png',
   challenge:
     'Presenting complex analytics in a clear and actionable manner.',
   solution:

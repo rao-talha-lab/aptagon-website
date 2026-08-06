@@ -1,5 +1,6 @@
+
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useMemo } from "react";
 import TransparentNavbar from "../components/Navbar";
 import BlogHero from "./BlogHero";
 import SpotlightSection from "./_components/SpotlightSection";
@@ -8,6 +9,14 @@ import FeaturedPosts from "./_components/FeaturedPosts";
 import PopularArticles from "./_components/PopularArticles";
 import NewsletterBanner from "./_components/NewsletterBanner";
 import Footer from "../components/Footer";
+
+// --- Data Definitions ---
+
+const mainRecentUpdate = {
+  mainTitle: "Software License Management",
+  mainDescription: "A Cornerstone of IT Efficiency",
+  mainImage: "/blogs/updates-cards/left-image.jpg",
+};
 
 const customPosts = [
   {
@@ -77,7 +86,6 @@ const spotlightItems = [
   },
 ];
 
-// UPDATED: Image ke mutabiq 3 cards aur authors ke sath
 const spotlightItems2 = [
   {
     id: "1",
@@ -114,27 +122,107 @@ const spotlightItems2 = [
   },
 ];
 
-// Featured posts data
-const featuredPosts = [
-  { id: 1, title: "Smart UI for Businesses" },
-  { id: 2, title: "Powering Insights with Data" },
-  { id: 3, title: "Future of Business Automation" },
+const featuredPostsData = [
+  { id: 1, title: "Smart UI for Businesses", image: "/blogs/feature-cards/image-1.jpg" },
+  { id: 2, title: "Powering Insights with Data", image: "/blogs/feature-cards/image-2.jpg" },
+  { id: 3, title: "Future of Business Automation", image: "/blogs/feature-cards/image-3.jpg" },
+  { id: 4, title: "Smarter, Data-Driven Decisions", image: "/blogs/feature-cards/image-4.jpg" },
 ];
 
-// Popular articles data
-const popularArticles = [
-  { id: 1, title: "Building Trust Through Consistent UI" },
-  { id: 2, title: "AI-Driven Product Design Revolution" },
-  { id: 3, title: "Smarter Documentation for Agile Teams" },
+const popularArticlesData = [
+  {
+    id: 1,
+    title: "Building Trust Through Consistent UI",
+    date: "10 July 2025",
+    image: "/blogs/popular/image-1.jpg",
+  },
+  {
+    id: 2,
+    title: "AI-Driven Product Design Revolution",
+    date: "10 July 2025",
+    image: "/blogs/popular/image-2.jpg",
+  },
+  {
+    id: 3,
+    title: "Smarter Documentation for Agile Teams",
+    date: "8 July 2025",
+    image: "/blogs/popular/image-3.png",
+  },
+  {
+    id: 4,
+    title: "Mastering Visual Hierarchy in UX",
+    date: "24 June 2025",
+    image: "/blogs/popular/image-4.jpg",
+  },
 ];
 
 function Page() {
   const [searchQuery, setSearchQuery] = useState("");
-  const spotlightRef = useRef<HTMLDivElement>(null);
-  const recentUpdatesRef = useRef<HTMLDivElement>(null);
-  const featuredRef = useRef<HTMLDivElement>(null);
-  const editorsPickRef = useRef<HTMLDivElement>(null);
-  const popularRef = useRef<HTMLDivElement>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
+
+  const term = searchQuery.toLowerCase().trim();
+
+  // 1. Filter Today's Spotlight (Matches title or description)
+  const filteredSpotlight = useMemo(() => {
+    if (!term) return spotlightItems;
+    return spotlightItems.filter(
+      (item) =>
+        (item.titleFirstPart + item.titleSecondPart).toLowerCase().includes(term) ||
+        item.description.toLowerCase().includes(term)
+    );
+  }, [term]);
+
+  // 2. Filter Editors' Pick (Matches title, description, or author)
+  const filteredSpotlight2 = useMemo(() => {
+    if (!term) return spotlightItems2;
+    return spotlightItems2.filter(
+      (item) =>
+        (item.titleFirstPart + item.titleSecondPart).toLowerCase().includes(term) ||
+        item.description.toLowerCase().includes(term) ||
+        (item.author && item.author.toLowerCase().includes(term))
+    );
+  }, [term]);
+
+  // 3. Filter Recent Updates (Matches right-side posts OR main featured left card)
+  const filteredUpdates = useMemo(() => {
+    if (!term) return customPosts;
+    return customPosts.filter(
+      (item) =>
+        (item.title1 + item.title2).toLowerCase().includes(term) ||
+        item.date.toLowerCase().includes(term)
+    );
+  }, [term]);
+
+  const showMainRecentUpdate = useMemo(() => {
+    if (!term) return true;
+    const combinedMain = (mainRecentUpdate.mainTitle + " " + mainRecentUpdate.mainDescription).toLowerCase();
+    return combinedMain.includes(term);
+  }, [term]);
+
+  // 4. Filter Featured Posts Marquee
+  const filteredFeatured = useMemo(() => {
+    if (!term) return featuredPostsData;
+    return featuredPostsData.filter((item) =>
+      item.title.toLowerCase().includes(term)
+    );
+  }, [term]);
+
+  // 5. Filter Popular Articles
+  const filteredPopular = useMemo(() => {
+    if (!term) return popularArticlesData;
+    return popularArticlesData.filter((item) =>
+      item.title.toLowerCase().includes(term)
+    );
+  }, [term]);
+
+  // Has results check across everything
+  const hasUpdatesSection = filteredUpdates.length > 0 || showMainRecentUpdate;
+  const hasResults =
+    filteredSpotlight.length > 0 ||
+    filteredSpotlight2.length > 0 ||
+    hasUpdatesSection ||
+    filteredFeatured.length > 0 ||
+    filteredPopular.length > 0;
 
   const handleSearchChange = (value: string) => {
     setSearchQuery(value);
@@ -142,114 +230,8 @@ function Page() {
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-
-    if (!query.trim()) {
-      return;
-    }
-
-    const searchTerm = query.toLowerCase().trim();
-    let found = false;
-
-    // Search index configuration
-    const searchIndex = [
-      {
-        section: "Today's Spotlight",
-        ref: spotlightRef,
-        items: spotlightItems.map((item) => ({
-          title: item.titleFirstPart + item.titleSecondPart,
-          description: item.description,
-          fullContent: (
-            item.titleFirstPart +
-            " " +
-            item.titleSecondPart +
-            " " +
-            item.description
-          ).toLowerCase(),
-        })),
-      },
-      {
-        section: "Editors' Pick",
-        ref: editorsPickRef,
-        items: spotlightItems2.map((item) => ({
-          title: item.titleFirstPart + item.titleSecondPart,
-          description: item.description,
-          fullContent: (
-            item.titleFirstPart +
-            " " +
-            item.titleSecondPart +
-            " " +
-            item.description
-          ).toLowerCase(),
-        })),
-      },
-      {
-        section: "Recent Updates",
-        ref: recentUpdatesRef,
-        items: customPosts.map((item) => ({
-          title: item.title1 + item.title2,
-          description: item.date,
-          fullContent: (
-            item.title1 +
-            " " +
-            item.title2 +
-            " Software License Management"
-          ).toLowerCase(),
-        })),
-      },
-      {
-        section: "Featured Posts",
-        ref: featuredRef,
-        items: featuredPosts.map((item) => ({
-          title: item.title,
-          description: "",
-          fullContent: item.title.toLowerCase(),
-        })),
-      },
-    ];
-
-    for (const section of searchIndex) {
-      if (section.section.toLowerCase().includes(searchTerm)) {
-        section.ref.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-        found = true;
-        break;
-      }
-
-      for (const item of section.items) {
-        if (item.title.toLowerCase().includes(searchTerm)) {
-          section.ref.current?.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-          found = true;
-          break;
-        }
-
-        if (
-          item.description &&
-          item.description.toLowerCase().includes(searchTerm)
-        ) {
-          section.ref.current?.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-          found = true;
-          break;
-        }
-
-        if (item.fullContent.includes(searchTerm)) {
-          section.ref.current?.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-          found = true;
-          break;
-        }
-      }
-
-      if (found) break;
+    if (query.trim() && resultsRef.current) {
+      resultsRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -264,49 +246,75 @@ function Page() {
         onSearchSubmit={handleSearch}
       />
 
-      {/* 1. Today's Spotlight Section (Default 4 Cards) */}
-      <div ref={spotlightRef}>
-        <SpotlightSection
-          HeadingFirstPart="Today's "
-          HeadingSecondPart="Spotlight"
-          items={spotlightItems}
-        />
+      <div ref={resultsRef} className="pt-8">
+        {/* Active Search Badge */}
+        {searchQuery.trim() !== "" && (
+          <div className="container mx-auto px-6 mb-6 flex items-center justify-between bg-blue-50/50 p-4 rounded-xl border border-blue-100 max-w-7xl">
+            <p className="text-gray-700 text-sm md:text-base">
+              Showing search results for:{" "}
+              <span className="font-semibold text-[#335ECE]">"{searchQuery}"</span>
+            </p>
+            <button
+              onClick={() => setSearchQuery("")}
+              className="text-xs md:text-sm font-semibold text-red-500 hover:underline cursor-pointer"
+            >
+              Clear Search
+            </button>
+          </div>
+        )}
+
+        {/* No Results Fallback */}
+        {searchQuery.trim() !== "" && !hasResults && (
+          <div className="container mx-auto px-6 py-16 text-center">
+            <h3 className="text-2xl font-bold text-gray-700 mb-2">No matching content found</h3>
+            <p className="text-gray-500">
+              Try searching for terms like "Real Estate", "Leads", "Automation", or "UX".
+            </p>
+          </div>
+        )}
+
+        {/* 1. Today's Spotlight */}
+        {filteredSpotlight.length > 0 && (
+          <SpotlightSection
+            HeadingFirstPart="Today's "
+            HeadingSecondPart="Spotlight"
+            items={filteredSpotlight}
+          />
+        )}
+
+        {/* 2. Recent Updates */}
+        {hasUpdatesSection && (
+          <RecentUpdates
+            mainTitle={mainRecentUpdate.mainTitle}
+            mainDescription={mainRecentUpdate.mainDescription}
+            mainImage={mainRecentUpdate.mainImage}
+            updates={filteredUpdates}
+            showMain={showMainRecentUpdate}
+          />
+        )}
+
+        {/* 3. Featured Posts */}
+        {filteredFeatured.length > 0 && (
+          <FeaturedPosts items={filteredFeatured} />
+        )}
+
+        {/* 4. Editors' Pick */}
+        {filteredSpotlight2.length > 0 && (
+          <SpotlightSection
+            HeadingFirstPart="Editors "
+            HeadingSecondPart="Pick"
+            items={filteredSpotlight2}
+            columns={3}
+          />
+        )}
+
+        {/* 5. Popular Articles */}
+        {filteredPopular.length > 0 && (
+          <PopularArticles items={filteredPopular} />
+        )}
       </div>
 
-      {/* Recent Updates */}
-      <div ref={recentUpdatesRef}>
-        <RecentUpdates
-          mainTitle="Software License Management"
-          mainDescription="A Cornerstone of IT Efficiency"
-          mainImage="/blogs/updates-cards/left-image.jpg"
-          updates={customPosts}
-        />
-      </div>
-
-      {/* Featured Posts */}
-      <div ref={featuredRef}>
-        <FeaturedPosts />
-      </div>
-
-      {/* 2. Editors' Pick Section (Width increased with columns={3}) */}
-      <div ref={editorsPickRef}>
-        <SpotlightSection
-          HeadingFirstPart="Editors "
-          HeadingSecondPart="Pick"
-          items={spotlightItems2}
-          columns={3} // <-- Yeh prop width aur grid layout 3 columns kar raha hai
-        />
-      </div>
-
-      {/* Popular Articles */}
-      <div ref={popularRef}>
-        <PopularArticles />
-      </div>
-
-      {/* Newsletter */}
       <NewsletterBanner />
-
-      {/* Footer */}
       <Footer />
     </>
   );

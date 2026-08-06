@@ -1,8 +1,8 @@
+
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 
-// --- Internal Typewriter Component ---
 const TypewriterEffect = ({ words }: { words: string[] }) => {
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
@@ -60,7 +60,7 @@ const BlogHero: React.FC<AnimatedHeroSectionProps> = ({
   description = "Explore how technology, design, and strategy shape the digital future with Aptagon’s expert insights.",
   height = "min-h-[85vh]",
   showSearchBar = true,
-  searchPlaceholder = "Search Articles",
+  searchPlaceholder = "Search Articles...",
   searchValue = "",
   onSearchChange = () => { },
   onSearchSubmit = () => { },
@@ -75,10 +75,16 @@ const BlogHero: React.FC<AnimatedHeroSectionProps> = ({
     visible: { opacity: 1, y: 0 },
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      onSearchSubmit(searchValue);
+    }
+  };
+
   return (
     <div className="relative z-30 shadow-[0_20px_30px_-10px_rgba(0,0,0,0.10)]">
       <section className={`relative flex items-center justify-center overflow-hidden bg-[#FFFFFF] pt-32 pb-16 md:pt-40 md:pb-20 ${height}`}>
-        {/* Soft Background Blobs (Optional for subtle depth) */}
         <div className="absolute top-[-10%] left-[-5%] w-[400px] h-[400px] bg-[#0EBAB0]/5 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-[-10%] right-[-5%] w-[400px] h-[400px] bg-[#073A53]/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -90,7 +96,6 @@ const BlogHero: React.FC<AnimatedHeroSectionProps> = ({
             viewport={{ once: false }}
             className="max-w-4xl w-full flex flex-col items-center"
           >
-            {/* 2-Line Main Heading */}
             <motion.h1
               variants={itemVariants}
               className="text-3xl md:text-5xl lg:text-[52px] font-black text-[#666666] leading-[1.2] mb-6 tracking-tight min-h-[100px] md:min-h-[120px]"
@@ -101,7 +106,6 @@ const BlogHero: React.FC<AnimatedHeroSectionProps> = ({
               />
             </motion.h1>
 
-            {/* Description */}
             <motion.p
               variants={itemVariants}
               className="text-lg md:text-xl text-[#666666] mb-10 max-w-2xl leading-relaxed font-normal"
@@ -109,23 +113,28 @@ const BlogHero: React.FC<AnimatedHeroSectionProps> = ({
               {description}
             </motion.p>
 
-            {/* Search Bar */}
             {showSearchBar && (
               <motion.div
                 variants={itemVariants}
                 className="w-full max-w-md relative"
               >
-                <div className="relative flex items-center bg-white rounded-full h-13 px-6 shadow-[0_12px_30px_rgba(51,94,206,0.18)] border border-[#E2E8F0] hover:border-[#335ECE]/30 transition-all duration-300">
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    onSearchSubmit(searchValue);
+                  }}
+                  className="relative flex items-center bg-white rounded-full h-13 px-6 shadow-[0_12px_30px_rgba(51,94,206,0.18)] border border-[#E2E8F0] hover:border-[#335ECE]/30 transition-all duration-300"
+                >
                   <input
                     type="text"
                     placeholder={searchPlaceholder}
                     value={searchValue}
                     onChange={(e) => onSearchChange(e.target.value)}
-                    onKeyPress={(e) => e.key === "Enter" && onSearchSubmit(searchValue)}
+                    onKeyDown={handleKeyDown}
                     className="flex-1 h-full text-sm md:text-base text-[#666666] placeholder-[#A0AEC0] outline-none bg-transparent font-medium"
                   />
-                  <button 
-                    onClick={() => onSearchSubmit(searchValue)}
+                  <button
+                    type="submit"
                     className="text-[#666666] hover:text-[#335ECE] transition-colors focus:outline-none pl-2 cursor-pointer"
                   >
                     <svg
@@ -142,7 +151,7 @@ const BlogHero: React.FC<AnimatedHeroSectionProps> = ({
                       <path d="m21 21-4.3-4.3" />
                     </svg>
                   </button>
-                </div>
+                </form>
               </motion.div>
             )}
           </motion.div>

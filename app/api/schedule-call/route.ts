@@ -60,6 +60,7 @@ import { scheduleCallSchema } from "@/lib/validation";
 import { sendEmail } from "@/lib/email";
 import { scheduleCallHrTemplate, scheduleCallUserAckTemplate } from "@/emails/templates";
 import { syncToHubSpot } from "@/lib/hubspot";
+import { createGoogleMeetEvent } from "@/lib/googleCalendar";
 
 export async function POST(request: Request) {
   try {
@@ -82,6 +83,36 @@ export async function POST(request: Request) {
     const data = validation.data;
     const hrEmail = process.env.EMAIL_TO || process.env.SMTP_USER!;
 
+    const [year, month, day] = data.date.split("-").map(Number);
+    const rawTime = data.pktTime || data.time;
+
+    const timeMatch = rawTime.match(/(\d+): (\d+)\s*(AM|PM)?/i);
+    let hours = 9;
+    let minutes = 0;
+
+    if(timeMatch) {
+      hours = parseInt(timeMatch[1], 10);
+      minutes = parseInt(timeMatch[2], 10);
+      const modifier = timeMatch[3];
+
+      if(modifier) {
+        if(modifier.toUpperCase() === "PM" && hours < 12) hours += 12;
+        if(modifier.toUpperCase() === "AM" && hours === 12) hours = 0;
+      }
+    }
+
+    const startTimeIso = new Date(Date.UTC(year, month - 1, day, hours - 5, minutes)).toISOString();
+
+    const dynamicMeetLink = await createGoogleMeetEvent({
+      title: `Consultation: ${data.name} & Aptagon Technologies`,
+      description: `Consultaion meeting with ${data.name} (${data.email})`,
+      startTimeIso,
+      clientEmail: data.email,
+      hrEmail: hrEmail,
+    });
+
+    const meetingLink = dynamicMeetLink || "https://meet.google.com";
+
     // Fixed split logic: split by space " " instead of ""
     const nameParts = (data.name || "").trim().split(/\s+/);
     const firstname = nameParts[0] || "";
@@ -95,6 +126,7 @@ export async function POST(request: Request) {
         html: scheduleCallHrTemplate({
           ...data,
           displayTime: `${data.pktTime || data.time} (Asia/Karachi PKT)`,
+          meetingLink,
         }),
         replyTo: data.email,
       }),
@@ -106,6 +138,7 @@ export async function POST(request: Request) {
         html: scheduleCallUserAckTemplate({
           ...data,
           displayTime: `${data.time} (${data.timezone || "Local Time"})`,
+          meetingLink,
         }),
       }),
 

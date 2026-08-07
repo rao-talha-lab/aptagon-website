@@ -503,10 +503,14 @@ const ScheduleCallPage = () => {
   const getAvailableDates = () => {
     const dates = [];
     const today = new Date();
-    for (let i = 1; i <= 30; i++) {
+    
+    // Start loop from 0 instead of 1 to include today
+    for (let i = 0; i <= 30; i++) {
       const date = new Date(today);
       date.setDate(date.getDate() + i);
       const day = date.getDay();
+      
+      // Skip weekends (Saturday: 6, Sunday: 0)
       if (day !== 0 && day !== 6) {
         dates.push(date);
       }

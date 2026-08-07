@@ -14,6 +14,8 @@ const layout = (content: string) => `
         .field-box { background: #f8fafc; border-left: 4px solid ${BRAND_COLOR}; padding: 12px 16px; margin-bottom: 12px; }
         .field-label { font-size: 12px; text-transform: uppercase; color: #666666; font-weight: bold; }
         .field-value { font-size: 15px; color: #111111; margin-top: 2px; }
+        .button-wrapper { text-align: center; margin: 24px 0 16px 0; }
+        .btn-meet {background-color: ${BRAND_COLOR}; color: #ffffff !important; padding: 14px 28px; text-decoration:none; font-weight: bold; border-radius: 6px; display: inline-block; font-size: 15px; }
         .footer { background-color: #f8fafc; text-align: center; padding: 16px; font-size: 12px; color: #888888; border-top: 1px solid #eeeeee; }
       </style>
     </head>
@@ -67,21 +69,34 @@ export const contactHrTemplate = (data: { name: string; email: string; subject: 
   `);
   
   // --- Schedule Call Templates ---
-  export const scheduleCallHrTemplate = (data: { name: string; email: string; date: string; time: string }) => layout(`
+  export const scheduleCallHrTemplate = (data: { name: string; email: string; date: string; time: string; displayTime?: string; meetingLink?: string; }) => layout(`
     <h3 style="color: ${BRAND_COLOR}; margin-top:0;">New Consultation Scheduled</h3>
     <div class="field-box"><div class="field-label">Client Name</div><div class="field-value">${data.name}</div></div>
     <div class="field-box"><div class="field-label">Client Email</div><div class="field-value">${data.email}</div></div>
     <div class="field-box"><div class="field-label">Scheduled Date</div><div class="field-value">${data.date}</div></div>
-    <div class="field-box"><div class="field-label">Scheduled Time</div><div class="field-value">${data.time}</div></div>
+
+    <div class="field-box"><div class="field-label">Office Time (PKT)</div><div class= "field-value">${data.displayTime || data.time}</div></div>
+    ${data.meetingLink ? `
+    <div class="button-wrapper">
+    <a href="${data.meetingLink}" target= "_blank" class="btn-meet">Join Google Meet Call</a>
+    </div>
+    <p style="font-size:12px; color:#666; text-align:center;">Meeting Link: <a href="${data.meetingLink}">${data.meetingLink}</a></p>
+    `: ``}
   `);
   
-  export const scheduleCallUserAckTemplate = (data: { name: string; date: string; time: string }) => layout(`
+  export const scheduleCallUserAckTemplate = (data: { name: string; date: string; time: string; displayTime?: string; meetingLink?: string; }) => layout(`
     <h3 style="color: ${BRAND_COLOR}; margin-top:0;">Consultation Booking Confirmed!</h3>
     <p>Hi <strong>${data.name}</strong>,</p>
     <p>Your free 30-minute consultation with the Aptagon Team is officially scheduled for:</p>
     <div class="field-box">
-      <div class="field-value"><strong>${data.date}</strong> at <strong>${data.time}</strong></div>
+      <div class="field-value"><strong>${data.date}</strong> at <strong>${data.displayTime || data.time}</strong></div>
     </div>
-    <p>Web conferencing link and meeting details will be sent prior to the call.</p>
+    ${data.meetingLink ? `
+    <p>Click the button below at your scheduled time to join the video video consultaion: </p>
+    <div class="button-wrapper">
+    <a href="${data.meetingLink}" target="_blank" class="btn-meet"> Join Google Meet Call</a>
+    </div>
+    <p style="font-size:12px; color:#666; text-align:center;">Direct Link: <a href="${data.meetingLink}">${data.meetingLink}</a></p>
+    `: '<p> Web Conferencing Link and meeting details will be sent prior to the call.</p>'}
     <p>Best Regards,<br/><strong>Aptagon Technologies Team</strong></p>
   `);

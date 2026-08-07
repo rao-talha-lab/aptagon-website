@@ -26,14 +26,14 @@ const FloatingActions = () => {
   };
 
   const actions = [
-    {
-      icon: <Phone size={22} />,
-      href: "tel:+923704640036", 
-      baseColor: "#335ECE",
-      hoverColor: "#2CB6E8",
-      label: "Call us",
-      type: "tel"
-    },
+    // {
+    //   icon: <Phone size={22} />,
+    //   href: "tel:+923704640036", 
+    //   baseColor: "#335ECE",
+    //   hoverColor: "#2CB6E8",
+    //   label: "Call us",
+    //   type: "tel"
+    // },
     {
   icon: <FaWhatsapp size={26} />, 
   href: "https://wa.me/447882610679", 

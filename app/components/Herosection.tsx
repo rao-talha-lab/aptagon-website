@@ -506,7 +506,7 @@ const AnimatedHeroSection: React.FC<AnimatedHeroSectionProps> = ({
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="w-full lg:max-[48%] flex items-center justify-center lg:justify-center pt-20 lg:pt-28 pb-12 -ml-4"
+              className="w-full lg:max-[48%] flex items-center justify-center lg:justify-center pt-13 lg:pt-15 -ml-4"
             >
               <AboutSection />
             </motion.div>

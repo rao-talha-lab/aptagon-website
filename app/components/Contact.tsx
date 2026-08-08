@@ -96,8 +96,7 @@ const Contact = () => {
             <div className="flex flex-col gap-6 pt-4">
               <InfoItem icon={<MdPhoneInTalk />} title="Contact Us" value="+44 7882 610679" />
               <InfoItem icon={<MdOutlineEmail />} title="Email Us" value="contact@aptagon.com" />
-              <InfoItem icon={<IoLocationOutline />} title="Locations" value="Dallas, USA | Poole, UK" />
-            </div>
+<InfoItem icon={<IoLocationOutline />} title="Locations" value="Clearwater, FL, USA | Poole, UK" />            </div>
 
             <div className="mt-auto pt-4">
               <ConnectCard />
@@ -169,7 +168,7 @@ const Contact = () => {
               name="message"
               value={formData.message}
               onChange={handleInputChange}
-              placeholder="Message"
+              placeholder="Enter Project Details"
               rows={6}
               required
               className="w-full bg-white dark:bg-[#FFFFFF] px-6 py-6 rounded-2xl border border-gray-100 dark:border-transparent shadow-[0_3px_5px_rgba(0,0,0,0.15)] text-sm text-[#000000] focus:outline-none focus:ring-2 focus:ring-[#335ECE]/20 transition-all placeholder-[#666666] resize-none"

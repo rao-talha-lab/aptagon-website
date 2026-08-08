@@ -84,52 +84,51 @@ const Footer: React.FC = () => {
             </p>
 
             {/* --- CONNECT WITH US ROW (EXACT LAYOUT FROM REFERENCE IMAGE) --- */}
-            {/* --- CONNECT WITH US ROW --- */}
-            {/* --- CONNECT WITH US ROW --- */}
-            {/* --- CONNECT WITH US ROW --- */}
+           
+           
             <div className="pt-4">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
 
                 {/* Column 1: Title & Email Stacked */}
                 <div className="grid grid-rows-2 gap-2">
-                  <h3 className="font-bold text-white text-[17px] flex items-center">Connect With Us</h3>
+                  <h3 className="font-bold text-white text-[16px] flex items-center pb-2">Connect With Us</h3>
                   <div className="flex items-end gap-2">
-                    <div className="w-6 h-6 flex items-center justify-center shrink-0">
+                    <div className="w-6 h-6 flex items-center justify-center shrink-0 pb-4">
                       <Image src="/footer/mail-icon.png" alt="mail" height={32} width={32} className="object-contain" />
                     </div>
-                    <span className="font-medium text-white text-[13px]">info@aptagon.com</span>
+                    <span className="font-medium text-white text-[12.9px] pb-2">info@aptagon.com</span>
                   </div>
                 </div>
 
                 {/* Column 2: Phone Numbers */}
-                <div className="grid grid-rows-2 gap-2">
+                <div className="grid grid-rows-2 gap-1">
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 flex items-center justify-center shrink-0">
                       <Image src="/footer/phone.png" alt="call" height={22} width={22} className="object-contain" />
                     </div>
-                    <span className="font-medium text-white text-[13px]">03704640036</span>
+                    <span className="font-medium text-white text-[12.9px]">03704640036</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 flex items-center justify-center shrink-0">
                       <Image src="/footer/phone.png" alt="call" height={22} width={22} className="object-contain" />
                     </div>
-                    <span className="font-medium text-white text-[13px]">+447882610679</span>
+                    <span className="font-medium text-white text-[12.9px]">+447882610679</span>
                   </div>
                 </div>
 
                 {/* Column 3: Locations */}
-                <div className="grid grid-rows-2 gap-2">
+                <div className="grid grid-rows-2 gap-1">
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 flex items-center justify-center shrink-0">
-                      <Image src="/footer/locat.png" alt="location" height={24} width={24} className="object-contain" />
+                      <Image src="/footer/locat.png" alt="location" height={28} width={28} className="object-contain" />
                     </div>
-                    <span className="font-medium text-white text-[13px]">Dallas, USA</span>
+                    <span className="font-medium text-white text-[12.9px]">Clearwater, FL, USA</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 flex items-center justify-center shrink-0">
-                      <Image src="/footer/locat.png" alt="location" height={24} width={24} className="object-contain" />
+                      <Image src="/footer/locat.png" alt="location" height={28} width={28} className="object-contain" />
                     </div>
-                    <span className="font-medium text-white text-[13px]">Poole, UK</span>
+                    <span className="font-medium text-white text-[12.9px]">Poole, UK</span>
                   </div>
                 </div>
 

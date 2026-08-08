@@ -108,7 +108,7 @@ const ContactSection = () => {
               rows={8}
               name="message"
               required
-              placeholder="Message"
+              placeholder="Enter Project Details"
               className="w-full px-5 py-4 bg-white shadow-[0_5px_10px_rgba(0,0,0,0.3)] rounded-none focus:outline-none focus:border-[#335ECE] transition-all text-sm text-[#666666] resize-none"
             ></textarea>
 
@@ -184,7 +184,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold mb-1">Locations</h4>
-                  <p className="text-lg opacity-90">Dallas, USA | Poole, UK</p>
+                  <p className="text-lg opacity-90">Clearwater, FL, USA | Poole, UK</p>
                 </div>
               </div>
             </div>

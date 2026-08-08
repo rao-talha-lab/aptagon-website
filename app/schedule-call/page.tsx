@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import TransparentNavbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
-import { Video, Clock, CheckCircle, Globe, Plus, Trash2 } from "lucide-react";
+import { Video, Clock, CheckCircle, Globe } from "lucide-react";
 import SchedualHero from "./SchedualHero";
 
 interface BaseTimeSlot {
@@ -16,30 +16,16 @@ interface BaseTimeSlot {
 interface BookingData {
   name: string;
   email: string;
-  projectType: string;
-  agenda: string;
-  guests: string[];
   date: string;
   time: string; // Client's local time string
   pktTime: string; // Office (Pakistan) time string
   timezone: string;
 }
 
+// Office location timezone (Pakistan Standard Time)
 const OFFICE_TIMEZONE = "Asia/Karachi";
 
-const PROJECT_TYPES = [
-  "Web Development",
-  "Mobile App Development",
-  "UI/UX Designing",
-  "Business Process Automation",
-  "Software Quality Assurance",
-  "LLM Development & Training",
-  "Chatbot Development",
-  "AI & Generative Solutions",
-  "DevOps / Cloud Consulting",
-  "Other / General Inquiry",
-];
-
+// Base business hours in Pakistan Time (9:00 AM – 5:00 PM PKT)
 const BASE_PKT_SLOTS: BaseTimeSlot[] = [
   { pktTime: "09:00 AM", time24: "09:00", available: true },
   { pktTime: "09:30 AM", time24: "09:30", available: true },
@@ -55,6 +41,9 @@ const BASE_PKT_SLOTS: BaseTimeSlot[] = [
   { pktTime: "04:30 PM", time24: "16:30", available: true },
 ];
 
+/**
+ * Converts a 24-hour time slot on a given date in Asia/Karachi into the user's local timezone.
+ */
 function convertPktToClientTime(
   dateStr: string,
   time24: string,
@@ -113,14 +102,9 @@ const ScheduleCallPage = () => {
   const [userTimeZone, setUserTimeZone] = useState(OFFICE_TIMEZONE);
   const [timeZoneName, setTimeZoneName] = useState("PKT");
 
-  const [guestEmail, setGuestEmail] = useState("");
-
   const [formData, setFormData] = useState<BookingData>({
     name: "",
     email: "",
-    projectType: "",
-    agenda: "",
-    guests: [],
     date: "",
     time: "",
     pktTime: "",
@@ -128,6 +112,7 @@ const ScheduleCallPage = () => {
   });
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
 
+  // Auto-detect visitor's timezone on load
   useEffect(() => {
     const detectedTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
     if (detectedTz) {
@@ -152,12 +137,14 @@ const ScheduleCallPage = () => {
   const getAvailableDates = () => {
     const dates = [];
     const today = new Date();
-
+    
+    // Start loop from 0 instead of 1 to include today
     for (let i = 0; i <= 30; i++) {
       const date = new Date(today);
       date.setDate(date.getDate() + i);
       const day = date.getDay();
-
+      
+      // Skip weekends (Saturday: 6, Sunday: 0)
       if (day !== 0 && day !== 6) {
         dates.push(date);
       }
@@ -185,44 +172,60 @@ const ScheduleCallPage = () => {
     }));
   };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleAddGuest = () => {
-    if (guestEmail && !formData.guests.includes(guestEmail)) {
-      setFormData((prev) => ({
-        ...prev,
-        guests: [...prev.guests, guestEmail],
-      }));
-      setGuestEmail("");
-    }
-  };
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (!formData.name || !formData.email || !formData.date || !formData.time) {
+  //     return;
+  //   }
+  //   try {
+  //     const res = await fetch("api/schedule-call", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         name: formData.name,
+  //         email: formData.email,
+  //         date: formData.date,
+  //         clientTime: formData.time,      // e.g. "02:00 PM" (Client Time)
+  //         clientTimezone: formData.timezone,// e.g. "Europe/London"
+  //         pktTime: formData.pktTime,      // e.g. "07:00 PM PKT" (Pakistan Office Time)
+  //       }),
+  //     });
+  //     const data = await res.json();
 
-  const handleRemoveGuest = (emailToRemove: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      guests: prev.guests.filter((email) => email !== emailToRemove),
-    }));
-  };
-
+  //     if (res.ok && data.success) {
+  //       setBookingConfirmed(true);
+  //       setTimeout(() => {
+  //         setBookingConfirmed(false);
+  //         setFormData({
+  //           name: "",
+  //           email: "",
+  //           date: "",
+  //           time: "",
+  //           pktTime: "",
+  //           timezone: userTimeZone,
+  //         });
+  //         setSelectedDate("");
+  //         setSelectedTime("");
+  //         setSelectedPktTime("");
+  //       }, 3000);
+  //     } else {
+  //       alert(data.message || "Booking failed. Please try again.");
+  //     }
+  //   } catch (err) {
+  //     console.error("Network Error:", err);
+  //     alert("Network error. Please try again.");
+  //   }
+  // };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.date ||
-      !formData.time
-    ) {
-      alert("Please fill all required fields.");
+    if (!formData.name || !formData.email || !formData.date || !formData.time) {
       return;
     }
-
     try {
       const res = await fetch("/api/schedule-call", {
         method: "POST",
@@ -230,15 +233,12 @@ const ScheduleCallPage = () => {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          projectType: formData.projectType,
-          agenda: formData.agenda,
-          guests: formData.guests,
           date: formData.date,
-          time: formData.time,
-          clientTime: formData.time,
-          clientTimezone: formData.timezone,
+          time: formData.time, // Keeps compatibility with existing backend
+          clientTime: formData.time, // Client's local time (e.g. "02:00 PM")
+          clientTimezone: formData.timezone, // Client's timezone (e.g. "Europe/London")
           timezone: formData.timezone,
-          pktTime: formData.pktTime,
+          pktTime: formData.pktTime, // Pakistan Office Time (e.g. "07:00 PM PKT")
         }),
       });
       const data = await res.json();
@@ -250,9 +250,6 @@ const ScheduleCallPage = () => {
           setFormData({
             name: "",
             email: "",
-            projectType: "",
-            agenda: "",
-            guests: [],
             date: "",
             time: "",
             pktTime: "",
@@ -307,8 +304,7 @@ const ScheduleCallPage = () => {
               We sent a confirmation email to {formData.email}
             </p>
             <p className="text-gray-700 dark:text-gray-300 font-semibold">
-              {formatDateDisplay(formData.date)} at {formData.time} (
-              {timeZoneName})
+              {formatDateDisplay(formData.date)} at {formData.time} ({timeZoneName})
             </p>
           </motion.div>
         </motion.div>
@@ -317,10 +313,7 @@ const ScheduleCallPage = () => {
       <SchedualHero />
 
       {/* Main Container */}
-      <div
-        id="booking"
-        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24"
-      >
+      <div id="booking" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -328,7 +321,7 @@ const ScheduleCallPage = () => {
           className="text-center mb-12"
         >
           <p className="text-[20px] font-bold text-[#666666] dark:text-[#0EBAB0] uppercase tracking-wider mb-2">
-            LET&apos;S SHAPE YOUR DIGITAL SUCCESS
+            LET's SHAPE YOUR DIGITAL SUCCESS
           </p>
           <h1 className="text-3xl font-bold text-[#335ECE] dark:text-white mb-4">
             Book a Free Consultation and Turn Your Goals into Reality
@@ -381,9 +374,7 @@ const ScheduleCallPage = () => {
               </div>
               <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-100 dark:border-gray-800">
                 <Globe className="w-4 h-4 text-[#335ECE] shrink-0" />
-                <span>
-                  Detected Timezone: <strong>{timeZoneName}</strong>
-                </span>
+                <span>Detected Timezone: <strong>{timeZoneName}</strong></span>
               </div>
             </div>
           </motion.div>
@@ -460,8 +451,7 @@ const ScheduleCallPage = () => {
                         key={slot.pktTime}
                         type="button"
                         onClick={() =>
-                          slot.available &&
-                          handleTimeSelect(localTimeStr, slot.pktTime)
+                          slot.available && handleTimeSelect(localTimeStr, slot.pktTime)
                         }
                         disabled={!slot.available}
                         className={`p-2 rounded-lg text-sm font-medium transition-all ${
@@ -490,7 +480,7 @@ const ScheduleCallPage = () => {
               >
                 <div>
                   <label className="block text-sm font-bold text-[#335ECE] dark:text-white mb-2">
-                    Full Name *
+                    Full Name
                   </label>
                   <input
                     type="text"
@@ -498,14 +488,14 @@ const ScheduleCallPage = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Your name"
-                    className="w-full px-4 py-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-300 dark:border-gray-700 dark:bg-[#1a1a1a] dark:text-white rounded-lg focus:ring-2 focus:ring-[#335ECE] dark:focus:ring-[#0EBAB0] focus:border-transparent outline-none transition"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 dark:bg-[#1a1a1a] dark:text-white rounded-lg focus:ring-2 focus:ring-[#335ECE] dark:focus:ring-[#0EBAB0] focus:border-transparent outline-none transition"
                     required
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-bold text-[#335ECE] dark:text-white mb-2">
-                    Email *
+                    Email
                   </label>
                   <input
                     type="email"
@@ -513,96 +503,14 @@ const ScheduleCallPage = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="your@email.com"
-                    className="w-full px-4 py-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-300 dark:border-gray-700 dark:bg-[#1a1a1a] dark:text-white rounded-lg focus:ring-2 focus:ring-[#335ECE] dark:focus:ring-[#0EBAB0] focus:border-transparent outline-none transition"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 dark:bg-[#1a1a1a] dark:text-white rounded-lg focus:ring-2 focus:ring-[#335ECE] dark:focus:ring-[#0EBAB0] focus:border-transparent outline-none transition"
                     required
                   />
                 </div>
 
-                {/* Project Type Dropdown - Text Color Gray (Matching inputs) */}
-                <div>
-                  <label className="block text-sm font-bold text-[#335ECE] dark:text-white mb-2">
-                    Project Type
-                  </label>
-                  <select
-                    name="projectType"
-                    value={formData.projectType}
-                    onChange={handleInputChange}
-                    className={`w-full px-4 py-2 bg-white dark:bg-[#1a1a1a] border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-[#335ECE] dark:focus:ring-[#0EBAB0] focus:border-transparent outline-none transition cursor-pointer ${
-                      formData.projectType ? "text-gray-700 dark:text-gray-200" : "text-gray-400"
-                    }`}
-                  >
-                    <option value="" className="text-gray-400">
-                      Select Project Type
-                    </option>
-                    {PROJECT_TYPES.map((type) => (
-                      <option key={type} value={type} className="text-gray-700 dark:text-gray-200">
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Meeting Agenda Text Box */}
-                <div>
-                  <label className="block text-sm font-bold text-[#335ECE] dark:text-white mb-2">
-                    Meeting Agenda / Project Details
-                  </label>
-                  <textarea
-                    name="agenda"
-                    rows={3}
-                    value={formData.agenda}
-                    onChange={handleInputChange}
-                    placeholder="Please share your meeting agenda or project requirements..."
-                    className="w-full px-4 py-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-300 dark:border-gray-700 dark:bg-[#1a1a1a] dark:text-white rounded-lg focus:ring-2 focus:ring-[#335ECE] dark:focus:ring-[#0EBAB0] focus:border-transparent outline-none transition resize-none"
-                  />
-                </div>
-
-                {/* Guest Email Field */}
-                <div>
-                  <label className="block text-sm font-bold text-[#335ECE] dark:text-white mb-2">
-                    Add Guest Emails (Team Members)
-                  </label>
-                  <div className="flex gap-2 mb-2">
-                    <input
-                      type="email"
-                      value={guestEmail}
-                      onChange={(e) => setGuestEmail(e.target.value)}
-                      placeholder="guest@company.com"
-                      className="flex-1 px-4 py-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-300 dark:border-gray-700 dark:bg-[#1a1a1a] dark:text-white rounded-lg focus:ring-2 focus:ring-[#335ECE] dark:focus:ring-[#0EBAB0] focus:border-transparent outline-none transition"
-                    />
-                    <button
-                      type="button"
-                      onClick={handleAddGuest}
-                      className="px-3 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-[#1a1a1a] dark:hover:bg-[#3a3a3a] text-[#335ECE] dark:text-white rounded-lg transition flex items-center gap-1 text-sm font-semibold"
-                    >
-                      <Plus className="w-4 h-4" /> Add
-                    </button>
-                  </div>
-
-                  {formData.guests.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {formData.guests.map((gEmail) => (
-                        <span
-                          key={gEmail}
-                          className="inline-flex items-center gap-1.5 px-3 py-1 bg-gray-100 dark:bg-[#1a1a1a] text-xs font-medium text-gray-700 dark:text-gray-300 rounded-full"
-                        >
-                          {gEmail}
-                          <button
-                            type="button"
-                            onClick={() => handleRemoveGuest(gEmail)}
-                            className="text-red-500 hover:text-red-700"
-                          >
-                            <Trash2 className="w-3.5 h-3.5" />
-                          </button>
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
                 <button
                   type="submit"
-                  className="w-full bg-[#355ED1] dark:bg-[#0EBAB0] hover:bg-[#335ECE] dark:hover:bg-[#0EBAB0]/80 text-white dark:text-[#1a1a1a] font-semibold py-3 rounded-lg transition-colors duration-200 mt-4"
+                  className="w-full bg-[#355ED1] dark:bg-[#0EBAB0] hover:bg-[#335ECE] dark:hover:bg-[#0EBAB0]/80 text-white dark:text-[#1a1a1a] font-semibold py-3 rounded-lg transition-colors duration-200"
                 >
                   Confirm Booking
                 </button>
@@ -616,8 +524,7 @@ const ScheduleCallPage = () => {
                   <span className="font-semibold text-gray-900 dark:text-white">
                     Selected:{" "}
                   </span>
-                  {formatDateDisplay(selectedDate)} {selectedTime} (
-                  {timeZoneName})
+                  {formatDateDisplay(selectedDate)} {selectedTime} ({timeZoneName})
                 </p>
               </div>
             )}
